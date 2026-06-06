@@ -20,8 +20,7 @@ export function CTAStrip() {
           Ready to <span className="text-[var(--color-accent)]">Fly</span>?
         </h2>
         <p className="mt-4 text-lg text-[var(--color-text-secondary)] max-w-xl mx-auto text-center" style={{ textAlign: 'center' }}>
-          Join Delhi&apos;s most dynamic fitness community. Your first session is a conversation —
-          not a commitment.
+          {"Join Delhi's most dynamic fitness community. Your first session is a conversation — not a commitment."}
         </p>
         <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
           <Button
