@@ -27,8 +27,8 @@ export function DisciplineGrid() {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
           {disciplines.slice(0, 8).map((discipline, i) => {
-            // Only first and sixth items span 2 columns on lg
-            const isWide = i === 0 || i === 5
+            // Balance columns across 3 rows on lg: Row 1 (2+1+1), Row 2 (1+1+2), Row 3 (2+2)
+            const isWide = i === 0 || i === 5 || i === 6 || i === 7
             
             return (
               <motion.div
@@ -42,7 +42,7 @@ export function DisciplineGrid() {
                 <Link
                   to={`/classes/${discipline.slug}`}
                   className="group relative flex flex-col justify-end w-full overflow-hidden rounded-[var(--radius-lg)] bg-[var(--color-bg-surface)] border border-[var(--color-border)] hover:border-[var(--color-border-accent)] transition-all duration-300 hover:scale-[1.01]"
-                  style={{ height: isWide ? '280px' : '240px' }}
+                  style={{ height: '260px' }}
                 >
                   {/* Background image */}
                   <LazyImage

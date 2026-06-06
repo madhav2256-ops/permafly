@@ -56,6 +56,7 @@ export function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.8 }}
           className="mt-6 text-lg md:text-xl text-[var(--color-text-secondary)] max-w-2xl mx-auto text-center"
+          style={{ textAlign: 'center' }}
         >
           Delhi&apos;s first machine-free parkour, calisthenics & gymnastics academy.<br className="hidden md:block" />
           All ages. All levels. Zero limits.

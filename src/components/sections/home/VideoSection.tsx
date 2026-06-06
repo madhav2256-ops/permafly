@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { Play } from 'lucide-react'
 import { SectionLabel } from '@/components/ui/SectionLabel'
-import { siteConfig } from '@/data/siteConfig'
+import { siteConfig, getAssetUrl } from '@/data/siteConfig'
 import { LazyImage } from '@/components/ui/LazyImage'
 
 export function VideoSection() {
@@ -38,7 +38,7 @@ export function VideoSection() {
             {!isPlaying ? (
               <>
                 <LazyImage
-                  src={`https://img.youtube.com/vi/${siteConfig.heroVideoId}/maxresdefault.jpg`}
+                  src={getAssetUrl('video_cover', `https://img.youtube.com/vi/${siteConfig.heroVideoId}/hqdefault.jpg`)}
                   alt="PERMAFLY Academy training video cover"
                   width={1280}
                   height={720}
