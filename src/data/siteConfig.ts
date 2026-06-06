@@ -32,7 +32,7 @@ export const siteConfig = {
     youtube: 'https://www.youtube.com/channel/UCiQ_ZPw6E84ntT0pwIzXI0g',
     login: 'https://login.permafly.in',
   },
-  heroVideo: 'https://www.youtube.com/embed/wTnrJKeHsig',
+  heroVideo: 'https://www.youtube-nocookie.com/embed/wTnrJKeHsig',
   heroVideoId: 'wTnrJKeHsig',
   logo: getAssetUrl('logo', 'https://www.permafly.in/images/logo.png'),
 } as const
