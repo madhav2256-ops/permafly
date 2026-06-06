@@ -37,15 +37,17 @@ export function Navbar() {
       >
         <nav className="container-site flex items-center justify-between h-16 md:h-20" aria-label="Main navigation">
           {/* Logo */}
-          <Link to="/" className="flex items-center gap-3 group" aria-label="PERMAFLY home">
-            <img
-              src="https://www.permafly.in/images/logo.png"
-              alt="PERMAFLY logo"
-              width="40"
-              height="40"
-              className="w-10 h-10 object-contain"
-            />
-            <span className="text-xl font-bold text-[var(--color-text-primary)] tracking-tight group-hover:text-[var(--color-accent)] transition-colors">
+          <Link to="/" className="flex items-center gap-2.5 group shrink-0" aria-label="PERMAFLY home">
+            <div className="w-8 h-8 rounded-[var(--radius-sm)] overflow-hidden shrink-0">
+              <img
+                src="https://www.permafly.in/images/logo.png"
+                alt="PERMAFLY logo"
+                width="32"
+                height="32"
+                className="w-full h-full object-contain"
+              />
+            </div>
+            <span className="text-lg font-bold text-[var(--color-text-primary)] tracking-tight group-hover:text-[var(--color-accent)] transition-colors">
               PERMAFLY
             </span>
           </Link>

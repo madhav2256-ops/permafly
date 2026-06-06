@@ -35,51 +35,44 @@ export function DisciplineGrid() {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 auto-rows-[220px] md:auto-rows-[260px]">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
           {disciplines.slice(0, 8).map((discipline, i) => {
-            const spans = [
-              "lg:col-span-2 lg:row-span-2 sm:col-span-2 sm:row-span-2 h-full", // gymnastics (large feature)
-              "lg:col-span-1 lg:row-span-1 sm:col-span-1 sm:row-span-1 h-full", // parkour
-              "lg:col-span-1 lg:row-span-1 sm:col-span-1 sm:row-span-1 h-full", // calisthenics
-              "lg:col-span-1 lg:row-span-1 sm:col-span-1 sm:row-span-1 h-full", // yoga
-              "lg:col-span-1 lg:row-span-1 sm:col-span-1 sm:row-span-1 h-full", // functional
-              "lg:col-span-2 lg:row-span-1 sm:col-span-2 sm:row-span-1 h-full", // movement (wide layout)
-              "lg:col-span-1 lg:row-span-1 sm:col-span-1 sm:row-span-1 h-full", // free weights
-              "lg:col-span-1 lg:row-span-1 sm:col-span-1 sm:row-span-1 h-full", // mma
-            ]
-
+            // Only first and sixth items span 2 columns on lg
+            const isWide = i === 0 || i === 5
+            
             return (
               <motion.div
                 key={discipline.slug}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: '-50px' }}
-                transition={{ duration: 0.5, delay: i * 0.08 }}
-                className={spans[i]}
+                transition={{ duration: 0.5, delay: i * 0.06 }}
+                className={isWide ? 'sm:col-span-2' : ''}
               >
                 <Link
                   to={`/classes/${discipline.slug}`}
-                  className="group relative flex flex-col justify-end w-full h-full overflow-hidden rounded-[var(--radius-lg)] bg-[var(--color-bg-surface)] border border-[var(--color-border)] hover:border-[var(--color-border-accent)] hover:shadow-[0_0_20px_rgba(255,87,34,0.05)] transition-all duration-300 hover:scale-[1.01]"
+                  className="group relative flex flex-col justify-end w-full overflow-hidden rounded-[var(--radius-lg)] bg-[var(--color-bg-surface)] border border-[var(--color-border)] hover:border-[var(--color-border-accent)] transition-all duration-300 hover:scale-[1.01]"
+                  style={{ height: isWide ? '280px' : '240px' }}
                 >
                   {/* Background image */}
                   <img
                     src={discipline.heroImage}
                     alt={discipline.name}
                     loading="lazy"
-                    className="absolute inset-0 w-full h-full object-cover opacity-20 group-hover:opacity-40 group-hover:scale-[1.03] transition-all duration-500"
+                    className="absolute inset-0 w-full h-full object-cover opacity-25 group-hover:opacity-40 group-hover:scale-105 transition-all duration-700"
                   />
                   {/* Gradient overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-[var(--color-bg-primary)] via-[var(--color-bg-primary)]/80 to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[var(--color-bg-primary)] via-[var(--color-bg-primary)]/70 to-transparent" />
 
                   {/* Content */}
-                  <div className="relative z-10 flex flex-col justify-end p-6">
-                    <div className="w-10 h-10 flex items-center justify-center rounded-[var(--radius-md)] bg-[var(--color-accent-glow)] text-[var(--color-accent)] mb-3 group-hover:bg-[var(--color-accent)] group-hover:text-white transition-all duration-300">
+                  <div className="relative z-10 p-5">
+                    <div className="w-9 h-9 flex items-center justify-center rounded-[var(--radius-md)] bg-[var(--color-accent-glow)] text-[var(--color-accent)] mb-2.5 group-hover:bg-[var(--color-accent)] group-hover:text-white transition-all duration-300">
                       {iconMap[discipline.icon]}
                     </div>
-                    <h3 className="text-lg font-semibold text-[var(--color-text-primary)]">
+                    <h3 className="text-base font-semibold text-[var(--color-text-primary)] leading-tight">
                       {discipline.name}
                     </h3>
-                    <p className="mt-1.5 text-sm text-[var(--color-text-secondary)] line-clamp-2">
+                    <p className="mt-1 text-sm text-[var(--color-text-secondary)] line-clamp-2 leading-snug">
                       {discipline.shortDescription}
                     </p>
                   </div>

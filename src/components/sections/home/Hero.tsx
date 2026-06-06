@@ -9,11 +9,11 @@ export function Hero() {
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Video Background */}
-      <div className="absolute inset-0 z-0">
+      <div className="absolute inset-0 z-0 overflow-hidden">
         <iframe
-          src={`${siteConfig.heroVideo}?autoplay=1&mute=1&loop=1&playlist=${siteConfig.heroVideoId}&controls=0&showinfo=0&modestbranding=1&rel=0&disablekb=1&iv_load_policy=3`}
+          src={`${siteConfig.heroVideo}?autoplay=1&mute=1&loop=1&playlist=${siteConfig.heroVideoId}&controls=0&showinfo=0&modestbranding=1&rel=0&disablekb=1&iv_load_policy=3&playsinline=1`}
           allow="autoplay; encrypted-media"
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[177.78vh] min-w-full min-h-full pointer-events-none"
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[177.78vh] min-w-[120%] min-h-[120%] pointer-events-none"
           title="PERMAFLY hero video"
           loading="eager"
         />
@@ -56,9 +56,9 @@ export function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.8 }}
-          className="mt-6 text-lg md:text-xl text-[var(--color-text-secondary)] max-w-2xl mx-auto"
+          className="mt-6 text-lg md:text-xl text-[var(--color-text-secondary)] max-w-2xl mx-auto text-center"
         >
-          Delhi&apos;s first machine-free parkour, calisthenics & gymnastics academy.
+          Delhi&apos;s first machine-free parkour, calisthenics & gymnastics academy.<br className="hidden md:block" />
           All ages. All levels. Zero limits.
         </motion.p>
 
@@ -85,25 +85,6 @@ export function Hero() {
           </Link>
         </motion.div>
 
-        {/* Scroll indicator */}
-        <motion.div
-          initial={{ opacity: 0, x: '-50%', y: 10 }}
-          animate={{ opacity: 1, x: '-50%', y: 0 }}
-          transition={{ delay: 1.5, duration: 0.8 }}
-          className="absolute bottom-8 left-1/2"
-        >
-          <motion.div
-            animate={{ y: [0, 8, 0] }}
-            transition={{ repeat: Infinity, duration: 1.8, ease: "easeInOut" }}
-            className="w-6 h-10 rounded-full border-2 border-[var(--color-text-muted)] flex items-start justify-center p-1.5 cursor-pointer hover:border-[var(--color-accent)] transition-colors duration-300"
-          >
-            <motion.div 
-              animate={{ y: [0, 12, 0], opacity: [1, 0, 1] }}
-              transition={{ repeat: Infinity, duration: 1.8, ease: "easeInOut" }}
-              className="w-1 h-2 rounded-full bg-[var(--color-accent)]" 
-            />
-          </motion.div>
-        </motion.div>
       </div>
     </section>
   )
