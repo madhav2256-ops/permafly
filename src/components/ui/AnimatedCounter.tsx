@@ -11,7 +11,7 @@ interface AnimatedCounterProps {
 
 function useCountUp(end: number, duration: number, start: boolean) {
   const [count, setCount] = useState(0)
-  const frameRef = useRef<number>()
+  const frameRef = useRef<number | null>(null)
 
   useEffect(() => {
     if (!start) return

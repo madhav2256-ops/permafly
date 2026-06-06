@@ -51,35 +51,41 @@ export default function Classes() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: '-50px' }}
                 transition={{ duration: 0.5, delay: i * 0.08 }}
+                className="h-full"
               >
                 <Link
                   to={`/classes/${d.slug}`}
-                  className="group block relative overflow-hidden rounded-[var(--radius-lg)] bg-[var(--color-bg-surface)] border border-[var(--color-border)] hover:border-[var(--color-border-accent)] transition-all duration-300 hover:scale-[1.01]"
+                  className="group flex flex-col relative overflow-hidden rounded-[var(--radius-lg)] bg-[var(--color-bg-surface)] border border-[var(--color-border)] hover:border-[var(--color-border-accent)] transition-all duration-300 hover:scale-[1.01] h-full"
                 >
-                  <div className="flex flex-col sm:flex-row">
-                    <div className="relative sm:w-48 h-48 sm:h-auto shrink-0 overflow-hidden">
-                      <img src={d.heroImage} alt={d.name} loading="lazy" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+                  <div className="flex flex-col sm:flex-row h-full">
+                    <div className="relative sm:w-48 h-48 sm:h-auto shrink-0 overflow-hidden bg-black">
+                      <img src={d.heroImage} alt={d.name} loading="lazy" className="w-full h-full object-cover opacity-60 group-hover:scale-110 transition-transform duration-500" />
                       <div className="absolute inset-0 bg-gradient-to-r from-transparent to-[var(--color-bg-surface)] hidden sm:block" />
                       <div className="absolute inset-0 bg-gradient-to-b from-transparent to-[var(--color-bg-surface)] sm:hidden" />
                     </div>
-                    <div className="p-6 flex flex-col justify-center flex-1">
-                      <div className="flex items-center gap-3 mb-3">
-                        <div className="w-10 h-10 flex items-center justify-center rounded-[var(--radius-md)] bg-[var(--color-accent-glow)] text-[var(--color-accent)] group-hover:bg-[var(--color-accent)] group-hover:text-white transition-all duration-300">
-                          {iconMap[d.icon]}
+                    <div className="p-6 flex flex-col flex-1">
+                      <div>
+                        <div className="flex items-center gap-3 mb-3">
+                          <div className="w-10 h-10 flex items-center justify-center rounded-[var(--radius-md)] bg-[var(--color-accent-glow)] text-[var(--color-accent)] group-hover:bg-[var(--color-accent)] group-hover:text-white transition-all duration-300">
+                            {iconMap[d.icon]}
+                          </div>
+                          <h2 className="text-xl font-semibold text-[var(--color-text-primary)]">{d.name}</h2>
                         </div>
-                        <h2 className="text-xl font-semibold text-[var(--color-text-primary)]">{d.name}</h2>
+                        <p className="text-sm text-[var(--color-text-secondary)] leading-relaxed mb-6">{d.shortDescription}</p>
                       </div>
-                      <p className="text-sm text-[var(--color-text-secondary)] leading-relaxed mb-4">{d.shortDescription}</p>
-                      <div className="flex flex-wrap gap-2 mb-4">
-                        {d.levels.map((level) => (
-                          <span key={level} className="px-3 py-1 text-xs font-medium rounded-full bg-[var(--color-accent-glow)] text-[var(--color-accent)] border border-[var(--color-border-accent)]">
-                            {level}
-                          </span>
-                        ))}
+                      
+                      <div className="mt-auto pt-4 border-t border-[var(--color-border)]">
+                        <div className="flex flex-wrap gap-2 mb-4">
+                          {d.levels.map((level) => (
+                            <span key={level} className="px-3 py-1 text-xs font-medium rounded-full bg-[var(--color-accent-glow)] text-[var(--color-accent)] border border-[var(--color-border-accent)]">
+                              {level}
+                            </span>
+                          ))}
+                        </div>
+                        <span className="inline-flex items-center gap-1 text-sm text-[var(--color-accent)] font-medium group-hover:gap-2 transition-all">
+                          View Details <ArrowRight size={14} />
+                        </span>
                       </div>
-                      <span className="inline-flex items-center gap-1 text-sm text-[var(--color-accent)] font-medium group-hover:gap-2 transition-all">
-                        View Details <ArrowRight size={14} />
-                      </span>
                     </div>
                   </div>
                 </Link>

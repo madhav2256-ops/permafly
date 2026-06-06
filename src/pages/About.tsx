@@ -103,11 +103,11 @@ export default function About() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
             {team.map((member, i) => (
               <motion.div key={i} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: i * 0.1 }}
-                className="group perspective-[1000px]"
+                className="group perspective-1000"
               >
-                <div className="relative w-full aspect-[3/4] transition-transform duration-500 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]">
+                <div className="relative w-full aspect-[3/4] transition-transform duration-500 preserve-3d group-hover:rotate-y-180">
                   {/* Front */}
-                  <div className="absolute inset-0 [backface-visibility:hidden] rounded-[var(--radius-lg)] overflow-hidden border border-[var(--color-border)]">
+                  <div className="absolute inset-0 backface-hidden rounded-[var(--radius-lg)] overflow-hidden border border-[var(--color-border)]">
                     <img src={member.image} alt={`${member.name} — ${member.specialty}`} loading="lazy" width="400" height="533" className="w-full h-full object-cover" />
                     <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-[var(--color-bg-primary)] via-[var(--color-bg-primary)]/80 to-transparent">
                       <h3 className="text-lg font-semibold text-[var(--color-text-primary)]">{member.name}</h3>
@@ -115,7 +115,7 @@ export default function About() {
                     </div>
                   </div>
                   {/* Back */}
-                  <div className="absolute inset-0 [backface-visibility:hidden] [transform:rotateY(180deg)] rounded-[var(--radius-lg)] bg-[var(--color-bg-surface)] border border-[var(--color-border-accent)] p-8 flex flex-col justify-center">
+                  <div className="absolute inset-0 backface-hidden rotate-y-180 rounded-[var(--radius-lg)] bg-[var(--color-bg-surface)] border border-[var(--color-border-accent)] p-8 flex flex-col justify-center">
                     <h3 className="text-lg font-semibold text-[var(--color-text-primary)] mb-1">{member.name}</h3>
                     <p className="text-sm text-[var(--color-accent)] mb-4">{member.role}</p>
                     <p className="text-sm text-[var(--color-text-secondary)] leading-relaxed">{member.bio}</p>

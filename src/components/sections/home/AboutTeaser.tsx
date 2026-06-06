@@ -46,22 +46,30 @@ export function AboutTeaser() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: '-100px' }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="relative"
+            className="relative select-none"
           >
-            <div className="relative overflow-hidden rounded-[var(--radius-xl)] aspect-[4/5]">
+            <div className="relative overflow-hidden rounded-[var(--radius-xl)] aspect-[4/5] group shadow-2xl">
               <img
                 src="https://login.permafly.in/imgs/202104241541118418851.jpg"
                 alt="PERMAFLY academy interior — athletes training in parkour and calisthenics"
                 loading="lazy"
                 width="600"
                 height="750"
-                className="w-full h-full object-cover"
+                className="w-full h-full object-cover group-hover:scale-[1.02] transition-transform duration-750"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[var(--color-bg-primary)]/40 to-transparent" />
             </div>
             {/* Accent decoration */}
-            <div className="absolute -bottom-4 -right-4 w-32 h-32 border-2 border-[var(--color-border-accent)] rounded-[var(--radius-xl)] -z-10" />
-            <div className="absolute -top-4 -left-4 w-20 h-20 bg-[var(--color-accent-glow)] rounded-full blur-2xl" />
+            <motion.div 
+              animate={{ y: [0, 8, 0], x: [0, -4, 0] }}
+              transition={{ repeat: Infinity, duration: 4, ease: "easeInOut" }}
+              className="absolute -bottom-4 -right-4 w-32 h-32 border-2 border-[var(--color-border-accent)] rounded-[var(--radius-xl)] -z-10" 
+            />
+            <motion.div 
+              animate={{ scale: [1, 1.15, 1], opacity: [0.3, 0.5, 0.3] }}
+              transition={{ repeat: Infinity, duration: 5, ease: "easeInOut" }}
+              className="absolute -top-4 -left-4 w-20 h-20 bg-[var(--color-accent-glow)] rounded-full blur-2xl" 
+            />
           </motion.div>
         </div>
       </div>

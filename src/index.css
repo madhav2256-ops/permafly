@@ -125,11 +125,16 @@ img, video {
   display: block;
 }
 
+input, select, textarea, button {
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit;
+}
+
 button {
   cursor: pointer;
   border: none;
   background: none;
-  font-family: inherit;
 }
 
 ul, ol {
@@ -302,6 +307,26 @@ ul, ol {
   background-repeat: repeat;
   pointer-events: none;
   z-index: 1;
+}
+
+/* ============================================================
+   3D CARD FLIP UTILITIES
+   ============================================================ */
+.perspective-1000 {
+  perspective: 1000px;
+}
+
+.preserve-3d {
+  transform-style: preserve-3d;
+}
+
+.backface-hidden {
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.rotate-y-180 {
+  transform: rotateY(180deg);
 }
 
 /* ============================================================
