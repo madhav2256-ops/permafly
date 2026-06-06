@@ -50,18 +50,19 @@ export function Hero() {
           ))}
         </h1>
 
-        {/* Subheadline */}
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.8 }}
-          className="mt-6 text-lg md:text-xl text-[var(--color-text-secondary)] max-w-2xl text-center"
-          style={{ textAlign: 'center', width: '100%' }}
-        >
-          {"Delhi's first machine-free parkour, calisthenics & gymnastics academy."}
-          <br className="hidden md:block" />
-          {"All ages. All levels. Zero limits."}
-        </motion.p>
+          className="mt-6 text-lg md:text-xl text-[var(--color-text-secondary)]"
+          style={{
+            display: 'block',
+            margin: '1.5rem auto 0 auto',
+            maxWidth: '672px',
+            textAlign: 'center',
+            width: '100%'
+          }}
+        >{"Delhi's first machine-free parkour, calisthenics & gymnastics academy."}<br className="hidden md:block" />{"All ages. All levels. Zero limits."}</motion.p>
 
         {/* CTAs */}
         <motion.div

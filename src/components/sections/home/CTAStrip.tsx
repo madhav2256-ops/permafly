@@ -19,9 +19,16 @@ export function CTAStrip() {
         <h2 style={{ fontSize: 'var(--text-h1)', fontWeight: 700, letterSpacing: '-0.02em' }}>
           Ready to <span className="text-[var(--color-accent)]">Fly</span>?
         </h2>
-        <p className="mt-4 text-lg text-[var(--color-text-secondary)] max-w-xl mx-auto text-center" style={{ textAlign: 'center' }}>
-          {"Join Delhi's most dynamic fitness community. Your first session is a conversation — not a commitment."}
-        </p>
+        <p
+          className="mt-4 text-lg text-[var(--color-text-secondary)]"
+          style={{
+            display: 'block',
+            margin: '1rem auto 0 auto',
+            maxWidth: '576px',
+            textAlign: 'center',
+            width: '100%'
+          }}
+        >{"Join Delhi's most dynamic fitness community. Your first session is a conversation — not a commitment."}</p>
         <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
           <Button
             variant="primary"
