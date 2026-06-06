@@ -59,7 +59,7 @@ export default function Home() {
     <PageTransition>
       <SEO
         title="PERMAFLY — Fly with Us | Delhi's First Parkour & Calisthenics Academy"
-        description="Delhi's first machine-free parkour, calisthenics & gymnastics academy in Vishwas Nagar, Shahdara. All ages, all levels. Join 500+ athletes. Fly with us."
+        description="Delhi's first machine-free parkour, calisthenics & gymnastics academy in Vishwas Nagar, Shahdara. All ages, all levels. Join 1000+ athletes. Fly with us."
         path="/"
       />
       <Helmet>
