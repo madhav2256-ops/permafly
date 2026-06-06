@@ -10,7 +10,7 @@ export function StatsStrip() {
   ]
 
   return (
-    <section className="py-16 md:py-20 border-y border-[var(--color-border)] bg-[var(--color-bg-surface)]">
+    <section className="py-[clamp(1.5rem,5vw,2.5rem)] md:py-20 border-y border-[var(--color-border)] bg-[var(--color-bg-surface)]">
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -18,7 +18,7 @@ export function StatsStrip() {
         transition={{ duration: 0.6 }}
         className="container-site"
       >
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-4">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-y-[clamp(1rem,4vw,2rem)] gap-x-[clamp(0.5rem,2vw,1rem)] md:gap-4">
           {stats.map((stat, i) => (
             <motion.div
               key={stat.label}

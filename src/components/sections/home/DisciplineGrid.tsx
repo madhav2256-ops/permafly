@@ -7,14 +7,14 @@ import { disciplineIcons } from '@/lib/icons'
 
 export function DisciplineGrid() {
   return (
-    <section className="py-24 md:py-32 bg-[var(--color-bg-primary)]">
+    <section className="py-10 sm:py-16 md:py-32 bg-[var(--color-bg-primary)]">
       <div className="container-site">
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-100px' }}
           transition={{ duration: 0.6 }}
-          className="mb-16"
+          className="mb-8 md:mb-16"
         >
           <SectionLabel>Our Disciplines</SectionLabel>
           <h2 className="mt-4" style={{ fontSize: 'var(--text-h1)', fontWeight: 700, letterSpacing: '-0.02em' }}>
@@ -25,7 +25,7 @@ export function DisciplineGrid() {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-5">
           {disciplines.slice(0, 8).map((discipline, i) => {
             // Balance columns across 3 rows on lg: Row 1 (2+1+1), Row 2 (1+1+2), Row 3 (2+2)
             const isWide = i === 0 || i === 5 || i === 6 || i === 7
@@ -41,8 +41,7 @@ export function DisciplineGrid() {
               >
                 <Link
                   to={`/classes/${discipline.slug}`}
-                  className="group relative flex flex-col justify-end w-full overflow-hidden rounded-[var(--radius-lg)] bg-[var(--color-bg-surface)] border border-[var(--color-border)] hover:border-[var(--color-border-accent)] transition-all duration-300 hover:scale-[1.01]"
-                  style={{ height: '260px' }}
+                  className="group relative flex flex-col justify-end w-full overflow-hidden rounded-[var(--radius-lg)] bg-[var(--color-bg-surface)] border border-[var(--color-border)] hover:border-[var(--color-border-accent)] transition-all duration-300 hover:scale-[1.01] aspect-[1.3/1] sm:aspect-auto sm:h-[260px]"
                 >
                   {/* Background image */}
                   <LazyImage
@@ -56,17 +55,17 @@ export function DisciplineGrid() {
                   <div className="absolute inset-0 bg-gradient-to-t from-[var(--color-bg-primary)] via-[var(--color-bg-primary)]/70 to-transparent" />
 
                   {/* Content */}
-                  <div className="relative z-10 p-5">
-                    <div className="w-9 h-9 flex items-center justify-center rounded-[var(--radius-md)] bg-[var(--color-accent-glow)] text-[var(--color-accent)] mb-2.5 group-hover:bg-[var(--color-accent)] group-hover:text-white transition-all duration-300">
+                  <div className="relative z-10 p-[clamp(0.75rem,3.5vw,1.25rem)]">
+                    <div className="w-[clamp(1.75rem,6vw,2.25rem)] h-[clamp(1.75rem,6vw,2.25rem)] flex items-center justify-center rounded-[var(--radius-md)] bg-[var(--color-accent-glow)] text-[var(--color-accent)] mb-2 group-hover:bg-[var(--color-accent)] group-hover:text-white transition-all duration-300">
                       {(() => {
                         const IconComponent = disciplineIcons[discipline.icon]
-                        return IconComponent ? <IconComponent size={24} /> : null
+                        return IconComponent ? <IconComponent className="w-4 h-4 sm:w-6 sm:h-6" /> : null
                       })()}
                     </div>
-                    <h3 className="text-base font-semibold text-[var(--color-text-primary)] leading-tight">
+                    <h3 className="text-[clamp(0.875rem,3.5vw,1rem)] font-semibold text-[var(--color-text-primary)] leading-tight">
                       {discipline.name}
                     </h3>
-                    <p className="mt-1 text-sm text-[var(--color-text-secondary)] line-clamp-2 leading-snug">
+                    <p className="mt-1 text-sm text-[var(--color-text-secondary)] line-clamp-2 leading-snug hidden sm:block">
                       {discipline.shortDescription}
                     </p>
                   </div>

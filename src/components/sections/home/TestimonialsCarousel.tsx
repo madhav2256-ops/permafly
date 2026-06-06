@@ -9,14 +9,14 @@ import 'swiper/css/pagination'
 
 export function TestimonialsCarousel() {
   return (
-    <section className="py-24 md:py-32 bg-[var(--color-bg-surface)]">
+    <section className="py-10 sm:py-16 md:py-32 bg-[var(--color-bg-surface)]">
       <div className="container-site">
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className="text-center mb-10 md:mb-16"
         >
           <SectionLabel className="justify-center">Testimonials</SectionLabel>
           <h2 className="mt-4" style={{ fontSize: 'var(--text-h2)', fontWeight: 600 }}>
@@ -44,7 +44,7 @@ export function TestimonialsCarousel() {
           >
             {testimonials.map((review, i) => (
               <SwiperSlide key={i}>
-                <div className="glass rounded-[var(--radius-lg)] p-8 h-full flex flex-col">
+                <div className="glass rounded-[var(--radius-lg)] p-[clamp(1.25rem,4vw,2rem)] h-full flex flex-col">
                   <Quote size={32} className="text-[var(--color-accent)] opacity-30 mb-4" />
                   <p className="text-[var(--color-text-secondary)] leading-relaxed flex-1 text-sm">
                     &ldquo;{review.text}&rdquo;

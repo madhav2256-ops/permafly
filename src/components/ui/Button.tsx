@@ -25,9 +25,9 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
     }
 
     const sizes = {
-      sm: variant === 'icon' ? 'w-8 h-8' : 'px-4 py-2 text-sm',
-      md: variant === 'icon' ? 'w-10 h-10' : 'px-6 py-3 text-base',
-      lg: variant === 'icon' ? 'w-12 h-12' : 'px-8 py-4 text-lg',
+      sm: variant === 'icon' ? 'w-8 h-8' : 'px-3.5 py-1.5 text-xs md:px-4 md:py-2 md:text-sm',
+      md: variant === 'icon' ? 'w-9 h-9 md:w-10 md:h-10' : 'px-5 py-2.5 text-sm md:px-6 md:py-3 md:text-base',
+      lg: variant === 'icon' ? 'w-10 h-10 md:w-12 md:h-12' : 'px-6 py-3 text-base md:px-8 md:py-4 md:text-lg',
     }
 
     if (href) {

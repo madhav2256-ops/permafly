@@ -30,7 +30,7 @@ export function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="section-label justify-center mb-8"
+          className="section-label justify-center mb-4 md:mb-8"
         >
           FLY WITH US
         </motion.p>
@@ -54,7 +54,7 @@ export function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.8 }}
-          className="mt-6 text-lg md:text-xl text-[var(--color-text-secondary)]"
+          className="mt-4 md:mt-6 text-base md:text-xl text-[var(--color-text-secondary)]"
           style={{
             display: 'block',
             margin: '1.5rem auto 0 auto',
@@ -69,13 +69,13 @@ export function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 1.0 }}
-          className="mt-10 flex flex-col sm:flex-row gap-4 justify-center items-center"
+          className="mt-6 md:mt-10 flex flex-col sm:flex-row gap-3 md:gap-4 justify-center items-center w-full max-w-xs sm:max-w-none"
         >
           <Button
             variant="primary"
             size="lg"
             href="/contact"
-            className="group flex items-center gap-2"
+            className="w-full sm:w-auto group flex items-center justify-center gap-2"
           >
             Join Us Now
             <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
@@ -84,6 +84,7 @@ export function Hero() {
             variant="secondary"
             size="lg"
             href="/classes"
+            className="w-full sm:w-auto"
           >
             Explore Classes
           </Button>

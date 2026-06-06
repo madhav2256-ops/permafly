@@ -33,10 +33,10 @@
 
 :root {
   /* Typography scale */
-  --text-hero: clamp(2.5rem, 8vw, 7rem);
-  --text-h1: clamp(2rem, 5vw, 4.5rem);
-  --text-h2: clamp(1.5rem, 3vw, 2.75rem);
-  --text-h3: clamp(1.125rem, 2vw, 1.75rem);
+  --text-hero: clamp(1.75rem, 8vw, 7rem);
+  --text-h1: clamp(1.625rem, 5vw, 4.5rem);
+  --text-h2: clamp(1.25rem, 3.5vw, 2.75rem);
+  --text-h3: clamp(1.05rem, 2vw, 1.75rem);
   --text-body: 1rem;
   --text-small: 0.875rem;
 
@@ -167,6 +167,17 @@ ul, ol {
 ::-webkit-scrollbar-thumb:hover {
   background: var(--color-accent);
 }
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
+}
+/* Hide scrollbar for IE, Edge and Firefox */
+.scrollbar-none {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
 
 /* ============================================================
    SELECTION

@@ -9,14 +9,14 @@ export function VideoSection() {
   const [isPlaying, setIsPlaying] = useState(false)
 
   return (
-    <section className="py-24 md:py-32 bg-[var(--color-bg-primary)]">
+    <section className="py-10 sm:py-16 md:py-32 bg-[var(--color-bg-primary)]">
       <div className="container-site">
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-12"
+          className="text-center mb-[clamp(1.5rem,5vw,3rem)]"
         >
           <SectionLabel className="justify-center">Watch</SectionLabel>
           <h2 className="mt-4" style={{ fontSize: 'var(--text-h2)', fontWeight: 600 }}>
