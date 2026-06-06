@@ -56,13 +56,17 @@ export function VideoSection() {
                 </div>
               </>
             ) : (
-              <iframe
-                src={`${siteConfig.heroVideo}?autoplay=1&rel=0&modestbranding=1&controls=0&disablekb=1&iv_load_policy=3&fs=0&playsinline=1`}
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                title="PERMAFLY Academy — Training overview"
-                className="absolute inset-0 w-full h-full"
-                loading="eager"
-              />
+              <>
+                <iframe
+                  src={`${siteConfig.heroVideo}?autoplay=1&rel=0&modestbranding=1&controls=0&disablekb=1&iv_load_policy=3&fs=0&playsinline=1`}
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  title="PERMAFLY Academy — Training overview"
+                  className="absolute inset-0 w-full h-full"
+                  loading="eager"
+                />
+                {/* Transparent overlay blocks YouTube UI (pause icon, controls, logo) */}
+                <div className="absolute inset-0 z-10" />
+              </>
             )}
           </div>
           {/* Glow behind */}

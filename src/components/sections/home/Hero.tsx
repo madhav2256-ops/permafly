@@ -16,8 +16,10 @@ export function Hero() {
           title="PERMAFLY hero video"
           loading="eager"
         />
+        {/* Transparent click/hover blocker — prevents YouTube UI from appearing */}
+        <div className="absolute inset-0 z-[1]" />
         {/* Dark overlay */}
-        <div className="absolute inset-0 bg-gradient-to-b from-[var(--color-bg-primary)]/70 via-[var(--color-bg-primary)]/50 to-[var(--color-bg-primary)]" />
+        <div className="absolute inset-0 z-[2] bg-gradient-to-b from-[var(--color-bg-primary)]/70 via-[var(--color-bg-primary)]/50 to-[var(--color-bg-primary)]" />
       </div>
 
       {/* Noise texture */}
