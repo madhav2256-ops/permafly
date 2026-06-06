@@ -39,37 +39,56 @@ export default function Schedule() {
       <section className="pb-24 bg-[var(--color-bg-primary)]">
         <div className="container-site">
           {/* Day filter */}
-          <div className="flex flex-wrap gap-2 mb-6">
+          <div className="flex overflow-x-auto pb-2 scrollbar-none gap-2 mb-6 -mx-4 px-4 sm:mx-0 sm:px-0 sm:flex-wrap">
             {schedule.map((d) => (
               <button
                 key={d.day}
                 onClick={() => setActiveDay(d.day)}
                 className={cn(
-                  'px-4 py-2 text-sm font-medium rounded-[var(--radius-md)] transition-all duration-200',
+                  'relative px-4 py-2.5 text-sm font-semibold rounded-[var(--radius-md)] transition-colors duration-300 overflow-hidden shrink-0',
                   activeDay === d.day
-                    ? 'bg-[var(--color-accent)] text-white'
-                    : 'bg-[var(--color-bg-surface)] text-[var(--color-text-secondary)] border border-[var(--color-border)] hover:border-[var(--color-border-accent)] hover:text-[var(--color-text-primary)]'
+                    ? 'text-white border border-transparent'
+                    : 'text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)] bg-[var(--color-bg-surface)] border border-[var(--color-border)]'
                 )}
               >
-                {d.day}
+                {activeDay === d.day && (
+                  <motion.div
+                    layoutId="activeDayBg"
+                    className="absolute inset-0 bg-[var(--color-accent)] -z-10"
+                    transition={{ type: 'spring', stiffness: 380, damping: 30 }}
+                  />
+                )}
+                <span className="relative z-10">
+                  <span className="hidden sm:inline">{d.day}</span>
+                  <span className="sm:hidden">{d.day.substring(0, 3)}</span>
+                </span>
               </button>
             ))}
           </div>
 
           {/* Discipline filter */}
-          <div className="flex flex-wrap gap-2 mb-10">
+          <div className="flex overflow-x-auto pb-2 scrollbar-none gap-2 mb-10 -mx-4 px-4 sm:mx-0 sm:px-0 sm:flex-wrap">
             {allDisciplines.map((d) => (
               <button
                 key={d}
                 onClick={() => setActiveDiscipline(d)}
                 className={cn(
-                  'px-3 py-1.5 text-xs font-medium rounded-full transition-all duration-200 capitalize',
+                  'relative px-3.5 py-2 text-xs font-semibold rounded-full transition-colors duration-300 overflow-hidden shrink-0',
                   activeDiscipline === d
-                    ? 'bg-[var(--color-accent-glow)] text-[var(--color-accent)] border border-[var(--color-border-accent)]'
-                    : 'bg-[var(--color-bg-surface)] text-[var(--color-text-muted)] border border-[var(--color-border)] hover:text-[var(--color-text-secondary)]'
+                    ? 'text-[var(--color-accent)] border border-transparent'
+                    : 'text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)] bg-[var(--color-bg-surface)] border border-[var(--color-border)]'
                 )}
               >
-                {d === 'all' ? 'All Classes' : d.replace('-', ' ')}
+                {activeDiscipline === d && (
+                  <motion.div
+                    layoutId="activeDisciplineBg"
+                    className="absolute inset-0 bg-[var(--color-accent-glow)] border border-[var(--color-border-accent)] rounded-full -z-10"
+                    transition={{ type: 'spring', stiffness: 380, damping: 30 }}
+                  />
+                )}
+                <span className="relative z-10 capitalize">
+                  {d === 'all' ? 'All Classes' : d.replace('-', ' ')}
+                </span>
               </button>
             ))}
           </div>
