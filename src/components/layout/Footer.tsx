@@ -41,7 +41,7 @@ export function Footer() {
                 { platform: 'youtube', url: siteConfig.socials.youtube },
                 { platform: 'twitter', url: siteConfig.socials.twitter },
               ].map(({ platform, url }) => (
-                <a key={platform} href={url} target="_blank" rel="noopener noreferrer" aria-label={platform} className="w-9 h-9 flex items-center justify-center rounded-full bg-white/5 text-[var(--color-text-secondary)] hover:text-[var(--color-accent)] hover:bg-[var(--color-accent-glow)] transition-all">
+                <a key={platform} href={url} target="_blank" rel="noopener noreferrer" aria-label={`PERMAFLY on ${platform.charAt(0).toUpperCase() + platform.slice(1)}`} className="w-9 h-9 flex items-center justify-center rounded-full bg-white/5 text-[var(--color-text-secondary)] hover:text-[var(--color-accent)] hover:bg-[var(--color-accent-glow)] transition-all">
                   <SocialIcon platform={platform} />
                 </a>
               ))}

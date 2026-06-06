@@ -75,18 +75,18 @@ export default function Contact() {
                             <h3 className="text-lg font-semibold text-[var(--color-text-primary)]">Your Details</h3>
                             <div>
                               <label htmlFor="name" className="block text-sm text-[var(--color-text-secondary)] mb-1.5">Name *</label>
-                              <input id="name" {...register('name', { required: 'Name is required' })} className="w-full px-4 py-3 bg-[var(--color-bg-primary)] border border-[var(--color-border)] rounded-[var(--radius-md)] text-[var(--color-text-primary)] focus:outline-none focus:border-[var(--color-accent)] transition-colors" placeholder="Your full name" />
-                              {errors.name && <p className="mt-1 text-xs text-red-400">{errors.name.message}</p>}
+                              <input id="name" aria-required="true" {...register('name', { required: 'Name is required' })} className="w-full px-4 py-3 bg-[var(--color-bg-primary)] border border-[var(--color-border)] rounded-[var(--radius-md)] text-[var(--color-text-primary)] focus:outline-none focus:border-[var(--color-accent)] transition-colors" placeholder="Your full name" />
+                              {errors.name && <p role="alert" className="mt-1 text-xs text-red-400">{errors.name.message}</p>}
                             </div>
                             <div>
                               <label htmlFor="email" className="block text-sm text-[var(--color-text-secondary)] mb-1.5">Email *</label>
-                              <input id="email" type="email" {...register('email', { required: 'Email is required', pattern: { value: /^\S+@\S+$/i, message: 'Invalid email' } })} className="w-full px-4 py-3 bg-[var(--color-bg-primary)] border border-[var(--color-border)] rounded-[var(--radius-md)] text-[var(--color-text-primary)] focus:outline-none focus:border-[var(--color-accent)] transition-colors" placeholder="your@email.com" />
-                              {errors.email && <p className="mt-1 text-xs text-red-400">{errors.email.message}</p>}
+                              <input id="email" type="email" aria-required="true" {...register('email', { required: 'Email is required', pattern: { value: /^\S+@\S+$/i, message: 'Invalid email' } })} className="w-full px-4 py-3 bg-[var(--color-bg-primary)] border border-[var(--color-border)] rounded-[var(--radius-md)] text-[var(--color-text-primary)] focus:outline-none focus:border-[var(--color-accent)] transition-colors" placeholder="your@email.com" />
+                              {errors.email && <p role="alert" className="mt-1 text-xs text-red-400">{errors.email.message}</p>}
                             </div>
                             <div>
                               <label htmlFor="phone" className="block text-sm text-[var(--color-text-secondary)] mb-1.5">Phone *</label>
-                              <input id="phone" type="tel" {...register('phone', { required: 'Phone is required' })} className="w-full px-4 py-3 bg-[var(--color-bg-primary)] border border-[var(--color-border)] rounded-[var(--radius-md)] text-[var(--color-text-primary)] focus:outline-none focus:border-[var(--color-accent)] transition-colors" placeholder="+91 98765 43210" />
-                              {errors.phone && <p className="mt-1 text-xs text-red-400">{errors.phone.message}</p>}
+                              <input id="phone" type="tel" aria-required="true" {...register('phone', { required: 'Phone is required' })} className="w-full px-4 py-3 bg-[var(--color-bg-primary)] border border-[var(--color-border)] rounded-[var(--radius-md)] text-[var(--color-text-primary)] focus:outline-none focus:border-[var(--color-accent)] transition-colors" placeholder="+91 98765 43210" />
+                              {errors.phone && <p role="alert" className="mt-1 text-xs text-red-400">{errors.phone.message}</p>}
                             </div>
                             <button type="button" onClick={nextStep} className="w-full flex items-center justify-center gap-2 px-6 py-3 bg-[var(--color-accent)] text-white font-semibold rounded-[var(--radius-md)] hover:bg-[var(--color-accent-hover)] transition-all">
                               Next <ArrowRight size={16} />
