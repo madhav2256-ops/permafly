@@ -33,23 +33,32 @@
 
 :root {
   /* Typography scale */
-  --text-hero: clamp(1.75rem, 8vw, 7rem);
-  --text-h1: clamp(1.625rem, 5vw, 4.5rem);
-  --text-h2: clamp(1.25rem, 3.5vw, 2.75rem);
-  --text-h3: clamp(1.05rem, 2vw, 1.75rem);
-  --text-body: 1rem;
-  --text-small: 0.875rem;
+  --text-hero: clamp(1.75rem, 7vw, 7rem);
+  --text-h1: clamp(1.5rem, 4.5vw, 4.5rem);
+  --text-h2: clamp(1.2rem, 3vw, 2.75rem);
+  --text-h3: clamp(1rem, 1.8vw, 1.75rem);
+  --text-body: clamp(0.875rem, 1.1vw, 1rem);
+  --text-small: clamp(0.75rem, 0.9vw, 0.875rem);
+
+  /* Fluid section padding — scales smoothly from mobile to large desktop */
+  --section-py: clamp(2.5rem, 6vw, 6rem);
+  --section-py-sm: clamp(1.5rem, 4vw, 3rem);
+
+  /* Fluid grid gaps */
+  --gap-sm: clamp(0.75rem, 2vw, 1.25rem);
+  --gap-md: clamp(1rem, 2.5vw, 2rem);
+  --gap-lg: clamp(1.5rem, 4vw, 4rem);
 
   /* Spacing (8px base) */
   --space-1: 0.5rem;
   --space-2: 1rem;
   --space-3: 1.5rem;
-  --space-4: 2rem;
-  --space-6: 3rem;
-  --space-8: 4rem;
-  --space-12: 6rem;
-  --space-16: 8rem;
-  --space-20: 10rem;
+  --space-4: clamp(1rem, 2vw, 2rem);
+  --space-6: clamp(1.5rem, 3vw, 3rem);
+  --space-8: clamp(2rem, 4vw, 4rem);
+  --space-12: clamp(3rem, 6vw, 6rem);
+  --space-16: clamp(4rem, 8vw, 8rem);
+  --space-20: clamp(5rem, 10vw, 10rem);
 
   color-scheme: dark;
   font-family: var(--font-body);
@@ -247,15 +256,9 @@ ul, ol {
 
 .container-site {
   width: 100%;
-  max-width: 1280px;
+  max-width: min(1280px, 92vw);
   margin: 0 auto;
-  padding-inline: var(--space-4);
-}
-
-@media (max-width: 768px) {
-  .container-site {
-    padding-inline: var(--space-2);
-  }
+  padding-inline: clamp(1rem, 4vw, 2.5rem);
 }
 
 /* ============================================================

@@ -25,7 +25,7 @@ export default function BlogPost() {
       {/* Scroll progress bar */}
       <div className="scroll-progress" style={{ transform: `scaleX(${progress})` }} />
 
-      <article className="pt-32 pb-24 bg-[var(--color-bg-primary)]">
+      <article className="bg-[var(--color-bg-primary)]" style={{ paddingTop: 'clamp(6rem, 10vw, 9rem)', paddingBottom: 'var(--section-py)' }}>
         <div className="container-site max-w-3xl">
           <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
             <Link to="/blog" className="inline-flex items-center gap-2 text-sm text-[var(--color-text-secondary)] hover:text-[var(--color-accent)] transition-colors mb-8">

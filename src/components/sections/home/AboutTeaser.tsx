@@ -7,9 +7,9 @@ import { getAssetUrl } from '@/data/siteConfig'
 
 export function AboutTeaser() {
   return (
-    <section className="py-10 sm:py-16 md:py-32 bg-[var(--color-bg-primary)]">
+    <section style={{ paddingBlock: 'var(--section-py)' }} className="bg-[var(--color-bg-primary)]">
       <div className="container-site">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-20 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 items-center" style={{ gap: 'var(--gap-lg)' }}>
           {/* Text */}
           <motion.div
             initial={{ opacity: 0, x: -40 }}
@@ -50,7 +50,7 @@ export function AboutTeaser() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="relative select-none"
           >
-            <div className="relative overflow-hidden rounded-[var(--radius-xl)] aspect-[1.5/1] sm:aspect-[4/5] group shadow-2xl">
+            <div className="relative overflow-hidden rounded-[var(--radius-xl)] group shadow-2xl" style={{ aspectRatio: 'clamp(1.2, 1.5 + 0.3 * (100vw - 768px) / 512, 4/5)' }}>
               <LazyImage
                 src={getAssetUrl('about_teaser', 'https://login.permafly.in/imgs/202104241541118418851.jpg')}
                 alt="PERMAFLY academy interior — athletes training in parkour and calisthenics"

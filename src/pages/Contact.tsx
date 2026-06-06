@@ -37,7 +37,7 @@ export default function Contact() {
         path="/contact"
       />
 
-      <section className="pt-32 pb-12 bg-[var(--color-bg-primary)]">
+      <section className="bg-[var(--color-bg-primary)]" style={{ paddingTop: 'clamp(6rem, 10vw, 9rem)', paddingBottom: 'var(--section-py-sm)' }}>
         <div className="container-site">
           <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
             <SectionLabel>Contact Us</SectionLabel>
@@ -48,9 +48,9 @@ export default function Contact() {
         </div>
       </section>
 
-      <section className="pb-24 bg-[var(--color-bg-primary)]">
+      <section className="bg-[var(--color-bg-primary)]" style={{ paddingBottom: 'var(--section-py)' }}>
         <div className="container-site">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
+          <div className="grid grid-cols-1 lg:grid-cols-2" style={{ gap: 'var(--gap-lg)' }}>
             {/* Contact Form */}
             <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6, ease: 'easeOut' }}>
               <div className="rounded-[var(--radius-xl)] bg-[var(--color-bg-surface)] border border-[var(--color-border)] p-8">

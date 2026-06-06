@@ -40,9 +40,9 @@ export default function ClassDetail() {
       </section>
 
       {/* Description + Features */}
-      <section className="py-20 bg-[var(--color-bg-primary)]">
+      <section style={{ paddingBlock: 'var(--section-py)' }} className="bg-[var(--color-bg-primary)]">
         <div className="container-site">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
+          <div className="grid grid-cols-1 lg:grid-cols-2" style={{ gap: 'var(--gap-lg)' }}>
             <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }}>
               <SectionLabel>About This Discipline</SectionLabel>
               <p className="mt-6 text-[var(--color-text-secondary)] leading-relaxed text-lg">
@@ -81,7 +81,7 @@ export default function ClassDetail() {
       </section>
 
       {/* CTA */}
-      <section className="py-20 bg-[var(--color-bg-surface)]">
+      <section style={{ paddingBlock: 'var(--section-py)' }} className="bg-[var(--color-bg-surface)]">
         <div className="container-site text-center">
           <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }}>
             <h2 className="text-[var(--text-h2)] font-semibold">

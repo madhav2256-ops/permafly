@@ -45,7 +45,7 @@ export function AnimatedCounter({ end, suffix = '', prefix = '', duration = 2.5,
 
   return (
     <div ref={ref} className="text-center">
-      <div className="text-[clamp(2.5rem,5vw,4rem)] font-bold text-[var(--color-text-primary)] leading-none tracking-tight">
+      <div className="text-[clamp(1.75rem,4vw,4rem)] font-bold text-[var(--color-text-primary)] leading-none tracking-tight">
         {prefix}{count.toLocaleString()}{suffix}
       </div>
       <div className="mt-2 text-sm uppercase tracking-[0.12em] text-[var(--color-text-muted)]">

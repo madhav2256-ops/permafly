@@ -9,14 +9,14 @@ import 'swiper/css/pagination'
 
 export function TestimonialsCarousel() {
   return (
-    <section className="py-10 sm:py-16 md:py-32 bg-[var(--color-bg-surface)]">
+    <section style={{ paddingBlock: 'var(--section-py)' }} className="bg-[var(--color-bg-surface)]">
       <div className="container-site">
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-10 md:mb-16"
+          className="text-center mb-[clamp(2rem,4vw,4rem)]"
         >
           <SectionLabel className="justify-center">Testimonials</SectionLabel>
           <h2 className="mt-4" style={{ fontSize: 'var(--text-h2)', fontWeight: 600 }}>
@@ -32,11 +32,12 @@ export function TestimonialsCarousel() {
         >
           <Swiper
             modules={[Autoplay, Pagination]}
-            spaceBetween={24}
+            spaceBetween={16}
             slidesPerView={1}
             breakpoints={{
-              640: { slidesPerView: 2 },
-              1024: { slidesPerView: 3 },
+              480: { slidesPerView: 1, spaceBetween: 16 },
+              640: { slidesPerView: 2, spaceBetween: 20 },
+              1024: { slidesPerView: 3, spaceBetween: 24 },
             }}
             autoplay={{ delay: 5000, disableOnInteraction: false }}
             pagination={{ clickable: true }}

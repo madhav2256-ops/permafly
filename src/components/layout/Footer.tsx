@@ -17,8 +17,8 @@ export function Footer() {
 
   return (
     <footer className="bg-[var(--color-bg-surface)] border-t border-[var(--color-border)]">
-      <div className="container-site py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+      <div className="container-site" style={{ paddingBlock: 'clamp(2.5rem, 6vw, 5rem)' }}>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4" style={{ gap: 'clamp(1.5rem, 4vw, 3rem)' }}>
           {/* Brand */}
           <div>
             <Link to="/" className="flex items-center gap-3 mb-4">
@@ -128,7 +128,7 @@ export function Footer() {
         </div>
 
         {/* Bottom bar */}
-        <div className="mt-12 pt-8 border-t border-[var(--color-border)] flex flex-col md:flex-row justify-between items-center gap-4">
+        <div className="pt-[clamp(1.5rem,3vw,2rem)] mt-[clamp(2rem,4vw,3rem)] border-t border-[var(--color-border)] flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-xs text-[var(--color-text-muted)]">
             © {currentYear} PERMAFLY. All rights reserved.
           </p>

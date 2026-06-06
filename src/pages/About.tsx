@@ -19,7 +19,7 @@ export default function About() {
       />
 
       {/* Hero */}
-      <section className="pt-32 pb-20 bg-[var(--color-bg-primary)]">
+      <section className="bg-[var(--color-bg-primary)]" style={{ paddingTop: 'clamp(6rem, 10vw, 9rem)', paddingBottom: 'var(--section-py)' }}>
         <div className="container-site">
           <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
             <SectionLabel>About Us</SectionLabel>
@@ -32,9 +32,9 @@ export default function About() {
       </section>
 
       {/* Mission */}
-      <section className="py-20 bg-[var(--color-bg-surface)]">
+      <section style={{ paddingBlock: 'var(--section-py)' }} className="bg-[var(--color-bg-surface)]">
         <div className="container-site">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-2 items-center" style={{ gap: 'var(--gap-lg)' }}>
             <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }}>
               <SectionLabel>Our Mission</SectionLabel>
               <h2 className="mt-4 text-[var(--text-h2)] font-semibold">
@@ -66,7 +66,7 @@ export default function About() {
       </section>
 
       {/* Values */}
-      <section className="py-20 bg-[var(--color-bg-primary)]">
+      <section style={{ paddingBlock: 'var(--section-py)' }} className="bg-[var(--color-bg-primary)]">
         <div className="container-site">
           <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }} className="text-center mb-16">
             <SectionLabel className="justify-center">Our Values</SectionLabel>
@@ -74,14 +74,14 @@ export default function About() {
               What We <span className="text-[var(--color-accent)]">Stand For</span>
             </h2>
           </motion.div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3" style={{ gap: 'var(--gap-md)' }}>
             {[
               { title: 'Machine-Free Philosophy', desc: 'We believe your body is the ultimate machine. No treadmills, no cables — just you, gravity, and the will to fly.' },
               { title: 'All Ages, All Levels', desc: 'From 4-year-old gymnasts to 40-year-old beginners, every athlete finds their place and pace at PERMAFLY.' },
               { title: 'International Standards', desc: 'We equip our facility with international-grade equipment so our athletes can compete on any platform, worldwide.' },
             ].map((value, i) => (
               <motion.div key={i} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: i * 0.1 }}
-                className="p-8 rounded-[var(--radius-lg)] bg-[var(--color-bg-surface)] border border-[var(--color-border)] hover:border-[var(--color-border-accent)] transition-colors"
+                className="p-[clamp(1.25rem,3vw,2rem)] rounded-[var(--radius-lg)] bg-[var(--color-bg-surface)] border border-[var(--color-border)] hover:border-[var(--color-border-accent)] transition-colors"
               >
                 <h3 className="text-lg font-semibold text-[var(--color-text-primary)] mb-3">{value.title}</h3>
                 <p className="text-sm text-[var(--color-text-secondary)] leading-relaxed">{value.desc}</p>
@@ -94,7 +94,7 @@ export default function About() {
       <GlowDivider />
 
       {/* Team */}
-      <section className="py-20 bg-[var(--color-bg-primary)]">
+      <section style={{ paddingBlock: 'var(--section-py)' }} className="bg-[var(--color-bg-primary)]">
         <div className="container-site">
           <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }} className="text-center mb-16">
             <SectionLabel className="justify-center">Our Team</SectionLabel>
@@ -102,7 +102,7 @@ export default function About() {
               Team <span className="text-[var(--color-accent)]">PERMAFLY</span>
             </h2>
           </motion.div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-3 max-w-4xl mx-auto" style={{ gap: 'var(--gap-md)' }}>
             {team.map((member, i) => (
               <motion.div key={i} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: i * 0.1 }}
                 className="group perspective-1000"
@@ -130,7 +130,7 @@ export default function About() {
       </section>
 
       {/* CTA */}
-      <section className="py-20 bg-[var(--color-bg-surface)]">
+      <section style={{ paddingBlock: 'var(--section-py)' }} className="bg-[var(--color-bg-surface)]">
         <div className="container-site text-center">
           <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }}>
             <h2 className="text-[var(--text-h2)] font-semibold">

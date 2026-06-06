@@ -9,7 +9,7 @@ export function VideoSection() {
   const [isPlaying, setIsPlaying] = useState(false)
 
   return (
-    <section className="py-10 sm:py-16 md:py-32 bg-[var(--color-bg-primary)]">
+    <section style={{ paddingBlock: 'var(--section-py)' }} className="bg-[var(--color-bg-primary)]">
       <div className="container-site">
         <motion.div
           initial={{ opacity: 0, y: 40 }}

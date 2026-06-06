@@ -4,7 +4,7 @@ import { ArrowRight } from 'lucide-react'
 
 export function CTAStrip() {
   return (
-    <section className="py-10 sm:py-16 md:py-32 relative overflow-hidden">
+    <section style={{ paddingBlock: 'var(--section-py)' }} className="relative overflow-hidden">
       {/* Background gradient */}
       <div className="absolute inset-0 bg-gradient-to-r from-[var(--color-accent)]/10 via-[var(--color-bg-primary)] to-[var(--color-accent)]/10" />
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full bg-[var(--color-accent)] opacity-[0.03] blur-[120px]" />
