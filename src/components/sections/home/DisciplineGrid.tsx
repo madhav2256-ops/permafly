@@ -61,7 +61,7 @@ export function DisciplineGrid() {
                       style={{ width: 'clamp(1.5rem,4vw,2.25rem)', height: 'clamp(1.5rem,4vw,2.25rem)' }}>
                       {(() => {
                         const IconComponent = disciplineIcons[discipline.icon]
-                        return IconComponent ? <IconComponent style={{ width: 'clamp(0.75rem,2vw,1.25rem)', height: 'clamp(0.75rem,2vw,1.25rem)' }} /> : null
+                        return IconComponent ? <IconComponent className="w-3 h-3 sm:w-4 sm:h-4 lg:w-5 lg:h-5" /> : null
                       })()}
                     </div>
                     <h3 style={{ fontSize: 'clamp(0.75rem,2.5vw,1rem)' }} className="font-semibold text-[var(--color-text-primary)] leading-tight">
