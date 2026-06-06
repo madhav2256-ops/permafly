@@ -57,9 +57,8 @@ export function VideoSection() {
               </>
             ) : (
               <iframe
-                src={`${siteConfig.heroVideo}?autoplay=1&rel=0&modestbranding=1`}
+                src={`${siteConfig.heroVideo}?autoplay=1&rel=0&modestbranding=1&controls=0&disablekb=1&iv_load_policy=3&fs=0&playsinline=1`}
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
                 title="PERMAFLY Academy — Training overview"
                 className="absolute inset-0 w-full h-full"
                 loading="eager"
