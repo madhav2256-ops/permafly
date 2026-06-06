@@ -24,7 +24,7 @@ export function Hero() {
       <div className="noise-overlay" />
 
       {/* Content */}
-      <div className="relative z-10 container-site text-center px-4">
+      <div className="relative z-10 container-site flex flex-col items-center text-center px-4">
         {/* Tagline */}
         <motion.p
           initial={{ opacity: 0, y: 20 }}
@@ -55,11 +55,12 @@ export function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.8 }}
-          className="mt-6 text-lg md:text-xl text-[var(--color-text-secondary)] max-w-2xl mx-auto text-center"
-          style={{ textAlign: 'center' }}
+          className="mt-6 text-lg md:text-xl text-[var(--color-text-secondary)] max-w-2xl text-center"
+          style={{ textAlign: 'center', width: '100%' }}
         >
-          Delhi&apos;s first machine-free parkour, calisthenics & gymnastics academy.<br className="hidden md:block" />
-          All ages. All levels. Zero limits.
+          {"Delhi's first machine-free parkour, calisthenics & gymnastics academy."}
+          <br className="hidden md:block" />
+          {"All ages. All levels. Zero limits."}
         </motion.p>
 
         {/* CTAs */}
