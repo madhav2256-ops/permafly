@@ -33,10 +33,10 @@
 
 :root {
   /* Typography scale */
-  --text-hero: clamp(3.5rem, 8vw, 7rem);
-  --text-h1: clamp(2.5rem, 5vw, 4.5rem);
-  --text-h2: clamp(1.75rem, 3vw, 2.75rem);
-  --text-h3: clamp(1.25rem, 2vw, 1.75rem);
+  --text-hero: clamp(2.5rem, 8vw, 7rem);
+  --text-h1: clamp(2rem, 5vw, 4.5rem);
+  --text-h2: clamp(1.5rem, 3vw, 2.75rem);
+  --text-h3: clamp(1.125rem, 2vw, 1.75rem);
   --text-body: 1rem;
   --text-small: 0.875rem;
 
@@ -71,17 +71,21 @@
   box-sizing: border-box;
 }
 
-body {
+html, body {
   margin: 0;
   padding: 0;
   overflow-x: hidden;
+  width: 100%;
   background-color: var(--color-bg-primary);
+  position: relative;
 }
 
 #root {
   min-height: 100svh;
   display: flex;
   flex-direction: column;
+  overflow-x: hidden;
+  width: 100%;
 }
 
 /* ============================================================

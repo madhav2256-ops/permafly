@@ -62,7 +62,7 @@ export function Hero() {
             textAlign: 'center',
             width: '100%'
           }}
-        >{"Delhi's first machine-free parkour, calisthenics & gymnastics academy."}<br className="hidden md:block" />{"All ages. All levels. Zero limits."}</motion.p>
+        >{"Delhi's first machine-free parkour, calisthenics & gymnastics academy."}<br className="hidden md:block" /><span className="md:hidden">{" "}</span>{"All ages. All levels. Zero limits."}</motion.p>
 
         {/* CTAs */}
         <motion.div
