@@ -1,23 +1,32 @@
 import { motion } from 'framer-motion'
 import { ArrowRight } from 'lucide-react'
 import { Button } from '@/components/ui/Button'
-import { siteConfig } from '@/data/siteConfig'
+import { siteConfig, getAssetUrl } from '@/data/siteConfig'
 export function Hero() {
   const words = ['JUST', 'BELIEVE,', 'EARN', 'YOURSELF']
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Video Background */}
-      <div className="absolute inset-0 z-0 overflow-hidden">
-        <iframe
-          src={`${siteConfig.heroVideo}?autoplay=1&mute=1&loop=1&playlist=${siteConfig.heroVideoId}&controls=0&showinfo=0&modestbranding=1&rel=0&disablekb=1&iv_load_policy=3&playsinline=1`}
-          allow="autoplay; encrypted-media"
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[177.78vh] min-w-[120%] min-h-[120%] pointer-events-none"
-          title="PERMAFLY hero video"
-          loading="eager"
+      <div className="absolute inset-0 z-0 overflow-hidden bg-[var(--color-bg-primary)]">
+        {/* Mobile Cover Image (Only visible on mobile) */}
+        <div 
+          className="absolute inset-0 md:hidden bg-cover bg-center bg-no-repeat"
+          style={{ backgroundImage: `url(${getAssetUrl('hero_cover', `https://img.youtube.com/vi/${siteConfig.heroVideoId}/maxresdefault.jpg`)})` }}
         />
-        {/* Transparent click/hover blocker — prevents YouTube UI from appearing */}
-        <div className="absolute inset-0 z-[1]" />
+        
+        {/* Desktop Video (Only rendered on desktop) */}
+        <div className="hidden md:block absolute inset-0">
+          <iframe
+            src={`${siteConfig.heroVideo}?autoplay=1&mute=1&loop=1&playlist=${siteConfig.heroVideoId}&controls=0&showinfo=0&modestbranding=1&rel=0&disablekb=1&iv_load_policy=3&playsinline=1`}
+            allow="autoplay; encrypted-media"
+            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[177.78vh] min-w-[120%] min-h-[120%] pointer-events-none"
+            title="PERMAFLY hero video"
+            loading="eager"
+          />
+          {/* Transparent click/hover blocker — prevents YouTube UI from appearing */}
+          <div className="absolute inset-0 z-[1]" />
+        </div>
         {/* Dark overlay */}
         <div className="absolute inset-0 z-[2] bg-gradient-to-b from-[var(--color-bg-primary)]/70 via-[var(--color-bg-primary)]/50 to-[var(--color-bg-primary)]" />
       </div>
