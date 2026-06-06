@@ -21,9 +21,16 @@ export default function NotFound() {
           <h2 className="text-2xl md:text-3xl font-semibold text-[var(--color-text-primary)] -mt-8">
             Page Not Found
           </h2>
-          <p className="mt-4 text-[var(--color-text-secondary)] max-w-md mx-auto">
-            Looks like you went off-course. Even the best parkour athletes miss a landing sometimes.
-          </p>
+          <p
+            className="mt-4 text-[var(--color-text-secondary)]"
+            style={{
+              display: 'block',
+              margin: '1rem auto 0 auto',
+              maxWidth: '448px',
+              textAlign: 'center',
+              width: '100%'
+            }}
+          >{"Looks like you went off-course. Even the best parkour athletes miss a landing sometimes."}</p>
           <Link
             to="/"
             className="mt-8 inline-flex items-center gap-2 px-6 py-3 bg-[var(--color-accent)] text-white font-semibold rounded-[var(--radius-md)] hover:bg-[var(--color-accent-hover)] hover:scale-[1.03] transition-all duration-200"

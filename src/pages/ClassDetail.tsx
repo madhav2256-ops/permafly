@@ -87,10 +87,17 @@ export default function ClassDetail() {
             <h2 className="text-[var(--text-h2)] font-semibold">
               Start Your <span className="text-[var(--color-accent)]">{discipline.name}</span> Journey
             </h2>
-            <p className="mt-4 text-[var(--color-text-secondary)] max-w-lg mx-auto">
-              No experience needed. Our coaches meet you where you are and guide you to where you want to be.
-            </p>
-            <Button variant="primary" size="lg" href="/contact" className="group mt-8 flex items-center gap-2">
+            <p
+              className="mt-4 text-[var(--color-text-secondary)]"
+              style={{
+                display: 'block',
+                margin: '1rem auto 0 auto',
+                maxWidth: '512px',
+                textAlign: 'center',
+                width: '100%'
+              }}
+            >{"No experience needed. Our coaches meet you where you are and guide you to where you want to be."}</p>
+            <Button variant="primary" size="lg" href="/contact" className="group mt-8">
               Join Now <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
             </Button>
           </motion.div>
