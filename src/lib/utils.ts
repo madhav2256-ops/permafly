@@ -5,6 +5,3 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
 }
 
-export function formatPhone(phone: string): string {
-  return phone.replace(/\s+/g, '').replace(/-/g, '')
-}

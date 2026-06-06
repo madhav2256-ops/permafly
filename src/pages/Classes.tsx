@@ -1,21 +1,12 @@
 import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
-import { ArrowRight, Flame, Zap, Dumbbell, Leaf, Target, Wind, Swords } from 'lucide-react'
+import { ArrowRight } from 'lucide-react'
 import { SEO } from '@/lib/seo'
 import { PageTransition } from '@/components/layout/PageTransition'
 import { SectionLabel } from '@/components/ui/SectionLabel'
 import { disciplines } from '@/data/disciplines'
-
-const iconMap: Record<string, React.ReactNode> = {
-  Flame: <Flame size={28} />,
-  Zap: <Zap size={28} />,
-  Dumbbell: <Dumbbell size={28} />,
-  Leaf: <Leaf size={28} />,
-  Target: <Target size={28} />,
-  Wind: <Wind size={28} />,
-  Weight: <Dumbbell size={28} />,
-  Swords: <Swords size={28} />,
-}
+import { LazyImage } from '@/components/ui/LazyImage'
+import { disciplineIcons } from '@/lib/icons'
 
 export default function Classes() {
   return (
@@ -59,7 +50,7 @@ export default function Classes() {
                 >
                   <div className="flex flex-col sm:flex-row h-full">
                     <div className="relative sm:w-48 h-48 sm:h-auto shrink-0 overflow-hidden bg-black">
-                      <img src={d.heroImage} alt={d.name} loading="lazy" className="w-full h-full object-cover opacity-60 group-hover:scale-110 transition-transform duration-500" />
+                      <LazyImage src={d.heroImage} alt={d.name} width={400} height={400} className="w-full h-full object-cover opacity-60 group-hover:scale-110 transition-transform duration-500" />
                       <div className="absolute inset-0 bg-gradient-to-r from-transparent to-[var(--color-bg-surface)] hidden sm:block" />
                       <div className="absolute inset-0 bg-gradient-to-b from-transparent to-[var(--color-bg-surface)] sm:hidden" />
                     </div>
@@ -67,7 +58,10 @@ export default function Classes() {
                       <div>
                         <div className="flex items-center gap-3 mb-3">
                           <div className="w-10 h-10 flex items-center justify-center rounded-[var(--radius-md)] bg-[var(--color-accent-glow)] text-[var(--color-accent)] group-hover:bg-[var(--color-accent)] group-hover:text-white transition-all duration-300">
-                            {iconMap[d.icon]}
+                            {(() => {
+                              const IconComponent = disciplineIcons[d.icon]
+                              return IconComponent ? <IconComponent size={28} /> : null
+                            })()}
                           </div>
                           <h2 className="text-xl font-semibold text-[var(--color-text-primary)]">{d.name}</h2>
                         </div>

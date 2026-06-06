@@ -173,27 +173,6 @@ ul, ol {
   color: white;
 }
 
-/* ============================================================
-   SKIP NAVIGATION (Accessibility)
-   ============================================================ */
-
-.skip-nav {
-  position: absolute;
-  top: -100%;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 9999;
-  padding: 0.75rem 1.5rem;
-  background: var(--color-accent);
-  color: white;
-  font-weight: 600;
-  border-radius: var(--radius-md);
-  transition: top 0.2s;
-}
-
-.skip-nav:focus {
-  top: 1rem;
-}
 
 /* ============================================================
    SECTION LABEL ("// ABOUT US" style)
@@ -289,6 +268,7 @@ ul, ol {
   position: fixed;
   top: 0;
   left: 0;
+  width: 100%;
   height: 3px;
   background: var(--color-accent);
   z-index: 9999;

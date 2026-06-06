@@ -1,11 +1,13 @@
 import { motion } from 'framer-motion'
-import { Link } from 'react-router-dom'
 import { ArrowRight } from 'lucide-react'
 import { SEO } from '@/lib/seo'
 import { PageTransition } from '@/components/layout/PageTransition'
 import { SectionLabel } from '@/components/ui/SectionLabel'
 import { GlowDivider } from '@/components/ui/GlowDivider'
 import { team } from '@/data/team'
+import { Button } from '@/components/ui/Button'
+import { LazyImage } from '@/components/ui/LazyImage'
+import { getAssetUrl } from '@/data/siteConfig'
 
 export default function About() {
   return (
@@ -55,7 +57,7 @@ export default function About() {
             </motion.div>
             <motion.div initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.6, delay: 0.2 }}>
               <div className="relative rounded-[var(--radius-xl)] overflow-hidden aspect-square">
-                <img src="https://login.permafly.in/imgs/202104241509340081545.jpg" alt="PERMAFLY parkour training session" loading="lazy" width="600" height="600" className="w-full h-full object-cover" />
+                <LazyImage src={getAssetUrl('about_mission', 'https://login.permafly.in/imgs/202104241509340081545.jpg')} alt="PERMAFLY parkour training session" width={600} height={600} className="w-full h-full object-cover" />
                 <div className="absolute inset-0 bg-gradient-to-t from-[var(--color-bg-primary)]/30 to-transparent" />
               </div>
             </motion.div>
@@ -108,7 +110,7 @@ export default function About() {
                 <div className="relative w-full aspect-[3/4] transition-transform duration-500 preserve-3d group-hover:rotate-y-180">
                   {/* Front */}
                   <div className="absolute inset-0 backface-hidden rounded-[var(--radius-lg)] overflow-hidden border border-[var(--color-border)]">
-                    <img src={member.image} alt={`${member.name} — ${member.specialty}`} loading="lazy" width="400" height="533" className="w-full h-full object-cover" />
+                    <LazyImage src={member.image} alt={`${member.name} — ${member.specialty}`} width={400} height={533} className="w-full h-full object-cover" />
                     <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-[var(--color-bg-primary)] via-[var(--color-bg-primary)]/80 to-transparent">
                       <h3 className="text-lg font-semibold text-[var(--color-text-primary)]">{member.name}</h3>
                       <p className="text-sm text-[var(--color-accent)]">{member.specialty}</p>
@@ -138,9 +140,9 @@ export default function About() {
               Visit our academy in Vishwas Nagar, Shahdara. See the space, meet the coaches,
               and discover your potential.
             </p>
-            <Link to="/contact" className="mt-8 inline-flex items-center gap-2 px-8 py-4 bg-[var(--color-accent)] text-white font-semibold rounded-[var(--radius-md)] hover:bg-[var(--color-accent-hover)] hover:scale-[1.03] transition-all duration-200">
-              Contact Us <ArrowRight size={18} />
-            </Link>
+            <Button variant="primary" size="lg" href="/contact" className="group mt-8 flex items-center gap-2">
+              Contact Us <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
+            </Button>
           </motion.div>
         </div>
       </section>

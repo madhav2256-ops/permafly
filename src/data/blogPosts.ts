@@ -1,4 +1,5 @@
 import type { BlogPost } from '@/types'
+import { getAssetUrl } from '@/data/siteConfig'
 
 export const blogPosts: BlogPost[] = [
   {
@@ -8,7 +9,7 @@ export const blogPosts: BlogPost[] = [
       'Every training session is an investment in your future self. Here\'s how consistent practice at PERMAFLY transforms not just your body, but your mindset.',
     date: '2026-06-06',
     author: 'Team PERMAFLY',
-    image: 'https://www.permafly.in/images/resource/post-thumb-3.jpg',
+    image: getAssetUrl('functional', 'https://www.permafly.in/images/resource/post-thumb-3.jpg'),
     readTime: '4 min read',
     content: `Every single day you step into the academy, you are making a choice — a choice to invest in yourself, to push beyond what's comfortable, and to build a version of yourself that didn't exist yesterday.
 
@@ -33,7 +34,7 @@ Whether you're 8 or 48, your future self will thank you for starting today. Come
       'Make every minute count at PERMAFLY. From warm-up protocols to post-training recovery, here are our coaches\' tips for getting the most out of every session.',
     date: '2026-06-05',
     author: 'Team PERMAFLY',
-    image: 'https://www.permafly.in/images/resource/post-thumb-4.jpg',
+    image: getAssetUrl('movement', 'https://www.permafly.in/images/resource/post-thumb-4.jpg'),
     readTime: '5 min read',
     content: `Getting the most out of your training at PERMAFLY isn't about training harder — it's about training smarter. Here are the strategies our coaches recommend.
 

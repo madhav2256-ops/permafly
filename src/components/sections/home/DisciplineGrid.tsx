@@ -1,19 +1,9 @@
 import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
-import { Flame, Zap, Dumbbell, Leaf, Target, Wind, Weight, Swords } from 'lucide-react'
 import { disciplines } from '@/data/disciplines'
 import { SectionLabel } from '@/components/ui/SectionLabel'
-
-const iconMap: Record<string, React.ReactNode> = {
-  Flame: <Flame size={24} />,
-  Zap: <Zap size={24} />,
-  Dumbbell: <Dumbbell size={24} />,
-  Leaf: <Leaf size={24} />,
-  Target: <Target size={24} />,
-  Wind: <Wind size={24} />,
-  Weight: <Dumbbell size={24} />,
-  Swords: <Swords size={24} />,
-}
+import { LazyImage } from '@/components/ui/LazyImage'
+import { disciplineIcons } from '@/lib/icons'
 
 export function DisciplineGrid() {
   return (
@@ -55,10 +45,11 @@ export function DisciplineGrid() {
                   style={{ height: isWide ? '280px' : '240px' }}
                 >
                   {/* Background image */}
-                  <img
+                  <LazyImage
                     src={discipline.heroImage}
                     alt={discipline.name}
-                    loading="lazy"
+                    width={600}
+                    height={400}
                     className="absolute inset-0 w-full h-full object-cover opacity-25 group-hover:opacity-40 group-hover:scale-105 transition-all duration-700"
                   />
                   {/* Gradient overlay */}
@@ -67,7 +58,10 @@ export function DisciplineGrid() {
                   {/* Content */}
                   <div className="relative z-10 p-5">
                     <div className="w-9 h-9 flex items-center justify-center rounded-[var(--radius-md)] bg-[var(--color-accent-glow)] text-[var(--color-accent)] mb-2.5 group-hover:bg-[var(--color-accent)] group-hover:text-white transition-all duration-300">
-                      {iconMap[discipline.icon]}
+                      {(() => {
+                        const IconComponent = disciplineIcons[discipline.icon]
+                        return IconComponent ? <IconComponent size={24} /> : null
+                      })()}
                     </div>
                     <h3 className="text-base font-semibold text-[var(--color-text-primary)] leading-tight">
                       {discipline.name}

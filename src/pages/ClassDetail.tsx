@@ -5,6 +5,8 @@ import { SEO } from '@/lib/seo'
 import { PageTransition } from '@/components/layout/PageTransition'
 import { SectionLabel } from '@/components/ui/SectionLabel'
 import { disciplines } from '@/data/disciplines'
+import { Button } from '@/components/ui/Button'
+import { LazyImage } from '@/components/ui/LazyImage'
 
 export default function ClassDetail() {
   const { slug } = useParams<{ slug: string }>()
@@ -22,7 +24,7 @@ export default function ClassDetail() {
 
       {/* Hero */}
       <section className="relative pt-24 pb-20 min-h-[50vh] flex items-end overflow-hidden">
-        <img src={discipline.heroImage} alt={discipline.name} className="absolute inset-0 w-full h-full object-cover" loading="eager" />
+        <LazyImage src={discipline.heroImage} alt={discipline.name} className="absolute inset-0 w-full h-full object-cover" priority={true} fetchPriority="high" width={1920} height={1080} />
         <div className="absolute inset-0 bg-gradient-to-t from-[var(--color-bg-primary)] via-[var(--color-bg-primary)]/70 to-transparent" />
         <div className="container-site relative z-10">
           <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
@@ -88,9 +90,9 @@ export default function ClassDetail() {
             <p className="mt-4 text-[var(--color-text-secondary)] max-w-lg mx-auto">
               No experience needed. Our coaches meet you where you are and guide you to where you want to be.
             </p>
-            <Link to="/contact" className="mt-8 inline-flex items-center gap-2 px-8 py-4 bg-[var(--color-accent)] text-white font-semibold rounded-[var(--radius-md)] hover:bg-[var(--color-accent-hover)] hover:scale-[1.03] transition-all duration-200">
-              Join Now <ArrowRight size={18} />
-            </Link>
+            <Button variant="primary" size="lg" href="/contact" className="group mt-8 flex items-center gap-2">
+              Join Now <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
+            </Button>
           </motion.div>
         </div>
       </section>

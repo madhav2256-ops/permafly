@@ -3,6 +3,7 @@ import { motion } from 'framer-motion'
 import { Play } from 'lucide-react'
 import { SectionLabel } from '@/components/ui/SectionLabel'
 import { siteConfig } from '@/data/siteConfig'
+import { LazyImage } from '@/components/ui/LazyImage'
 
 export function VideoSection() {
   const [isPlaying, setIsPlaying] = useState(false)
@@ -36,11 +37,12 @@ export function VideoSection() {
           >
             {!isPlaying ? (
               <>
-                <img
+                <LazyImage
                   src={`https://img.youtube.com/vi/${siteConfig.heroVideoId}/maxresdefault.jpg`}
                   alt="PERMAFLY Academy training video cover"
-                  loading="lazy"
-                  className="w-full h-full object-cover opacity-60 group-hover/video:scale-[1.02] transition-transform duration-700"
+                  width={1280}
+                  height={720}
+                  className="w-full h-full object-cover group-hover/video:scale-[1.02] transition-transform duration-700"
                 />
                 {/* Vignette Overlay */}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-black/70" />

@@ -1,3 +1,12 @@
+const R2_PUBLIC_URL = (import.meta.env?.VITE_R2_PUBLIC_URL || '').replace(/\/$/, '')
+
+export function getAssetUrl(key: string, fallbackUrl: string): string {
+  if (R2_PUBLIC_URL) {
+    return `${R2_PUBLIC_URL}/${key}.webp`
+  }
+  return fallbackUrl
+}
+
 export const siteConfig = {
   name: 'PERMAFLY',
   tagline: 'Fly with Us',
@@ -25,5 +34,6 @@ export const siteConfig = {
   },
   heroVideo: 'https://www.youtube.com/embed/wTnrJKeHsig',
   heroVideoId: 'wTnrJKeHsig',
-  logo: 'https://www.permafly.in/images/logo.png',
+  logo: getAssetUrl('logo', 'https://www.permafly.in/images/logo.png'),
 } as const
+

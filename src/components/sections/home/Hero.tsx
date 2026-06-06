@@ -1,8 +1,7 @@
 import { motion } from 'framer-motion'
 import { ArrowRight } from 'lucide-react'
-import { Link } from 'react-router-dom'
+import { Button } from '@/components/ui/Button'
 import { siteConfig } from '@/data/siteConfig'
-
 export function Hero() {
   const words = ['JUST', 'BELIEVE,', 'EARN', 'YOURSELF']
 
@@ -69,20 +68,22 @@ export function Hero() {
           transition={{ duration: 0.6, delay: 1.0 }}
           className="mt-10 flex flex-col sm:flex-row gap-4 justify-center items-center"
         >
-          <Link
-            to="/contact"
-            className="group relative px-8 py-4 bg-[var(--color-accent)] text-white font-semibold text-lg rounded-[var(--radius-md)] hover:bg-[var(--color-accent-hover)] hover:scale-[1.03] transition-all duration-200 flex items-center gap-2"
+          <Button
+            variant="primary"
+            size="lg"
+            href="/contact"
+            className="group flex items-center gap-2"
           >
-            <span className="absolute inset-0 rounded-[var(--radius-md)] bg-[var(--color-accent)] blur-xl opacity-30 group-hover:opacity-50 transition-opacity" />
-            <span className="relative">Join Us Now</span>
-            <ArrowRight size={20} className="relative group-hover:translate-x-1 transition-transform" />
-          </Link>
-          <Link
-            to="/classes"
-            className="px-8 py-4 border border-[var(--color-border)] text-[var(--color-text-primary)] font-semibold text-lg rounded-[var(--radius-md)] hover:border-[var(--color-border-accent)] hover:text-[var(--color-accent)] transition-all duration-200"
+            Join Us Now
+            <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
+          </Button>
+          <Button
+            variant="secondary"
+            size="lg"
+            href="/classes"
           >
             Explore Classes
-          </Link>
+          </Button>
         </motion.div>
 
       </div>

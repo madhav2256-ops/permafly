@@ -2,6 +2,8 @@ import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import { ArrowRight } from 'lucide-react'
 import { SectionLabel } from '@/components/ui/SectionLabel'
+import { LazyImage } from '@/components/ui/LazyImage'
+import { getAssetUrl } from '@/data/siteConfig'
 
 export function AboutTeaser() {
   return (
@@ -49,12 +51,11 @@ export function AboutTeaser() {
             className="relative select-none"
           >
             <div className="relative overflow-hidden rounded-[var(--radius-xl)] aspect-[4/5] group shadow-2xl">
-              <img
-                src="https://login.permafly.in/imgs/202104241541118418851.jpg"
+              <LazyImage
+                src={getAssetUrl('about_teaser', 'https://login.permafly.in/imgs/202104241541118418851.jpg')}
                 alt="PERMAFLY academy interior — athletes training in parkour and calisthenics"
-                loading="lazy"
-                width="600"
-                height="750"
+                width={600}
+                height={750}
                 className="w-full h-full object-cover group-hover:scale-[1.02] transition-transform duration-750"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[var(--color-bg-primary)]/40 to-transparent" />

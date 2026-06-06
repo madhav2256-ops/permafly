@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { Link } from 'react-router-dom'
+import { Button } from '@/components/ui/Button'
 import { ArrowRight } from 'lucide-react'
 
 export function CTAStrip() {
@@ -24,14 +24,15 @@ export function CTAStrip() {
           not a commitment.
         </p>
         <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
-          <Link
-            to="/contact"
-            className="group relative inline-flex items-center gap-2 px-8 py-4 bg-[var(--color-accent)] text-white font-semibold text-lg rounded-[var(--radius-md)] hover:bg-[var(--color-accent-hover)] hover:scale-[1.03] transition-all duration-200"
+          <Button
+            variant="primary"
+            size="lg"
+            href="/contact"
+            className="group flex items-center gap-2"
           >
-            <span className="absolute inset-0 rounded-[var(--radius-md)] bg-[var(--color-accent)] blur-xl opacity-30 group-hover:opacity-50 transition-opacity" />
-            <span className="relative">Get Started</span>
-            <ArrowRight size={20} className="relative group-hover:translate-x-1 transition-transform" />
-          </Link>
+            Get Started
+            <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
+          </Button>
           <a
             href="tel:+919485993322"
             className="px-8 py-4 border border-[var(--color-border)] text-[var(--color-text-primary)] font-semibold text-lg rounded-[var(--radius-md)] hover:border-[var(--color-border-accent)] hover:text-[var(--color-accent)] transition-all duration-200"

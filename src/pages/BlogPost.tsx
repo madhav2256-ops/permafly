@@ -5,6 +5,7 @@ import { SEO } from '@/lib/seo'
 import { PageTransition } from '@/components/layout/PageTransition'
 import { useScrollProgress } from '@/hooks/useScrollProgress'
 import { blogPosts } from '@/data/blogPosts'
+import ReactMarkdown from 'react-markdown'
 
 export default function BlogPost() {
   const { slug } = useParams<{ slug: string }>()
@@ -53,15 +54,11 @@ export default function BlogPost() {
               [&_h3]:text-[var(--color-text-primary)] [&_h3]:text-xl [&_h3]:font-semibold [&_h3]:mt-8 [&_h3]:mb-3
               [&_strong]:text-[var(--color-text-primary)]
               [&_a]:text-[var(--color-accent)] [&_a:hover]:underline
-              [&_ul]:space-y-2 [&_li]:text-[var(--color-text-secondary)]
+              [&_ul]:list-disc [&_ul]:pl-5 [&_ul]:mb-6 [&_ul]:space-y-2 [&_li]:text-[var(--color-text-secondary)]
             ">
-              {post.content.split('\n\n').map((block, i) => {
-                if (block.startsWith('## ')) {
-                  return <h2 key={i}>{block.replace('## ', '')}</h2>
-                }
-                return <p key={i}>{block}</p>
-              })}
+              <ReactMarkdown>{post.content}</ReactMarkdown>
             </div>
+
           </motion.div>
         </div>
       </article>

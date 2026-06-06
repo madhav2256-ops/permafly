@@ -1,15 +1,16 @@
+import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { SEO } from '@/lib/seo'
 import { PageTransition } from '@/components/layout/PageTransition'
 import { SectionLabel } from '@/components/ui/SectionLabel'
 import { schedule } from '@/data/schedule'
-import { useScheduleStore } from '@/store/scheduleStore'
 import { cn } from '@/lib/utils'
 
 const allDisciplines = ['all', 'gymnastics', 'parkour', 'calisthenics', 'yoga', 'functional', 'movement', 'free-weights', 'mma']
 
 export default function Schedule() {
-  const { activeDay, activeDiscipline, setActiveDay, setActiveDiscipline } = useScheduleStore()
+  const [activeDay, setActiveDay] = useState('Monday')
+  const [activeDiscipline, setActiveDiscipline] = useState('all')
   const dayData = schedule.find((d) => d.day === activeDay)
   const filteredSlots = dayData?.slots.filter(
     (s) => activeDiscipline === 'all' || s.discipline === activeDiscipline
