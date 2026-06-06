@@ -1,0 +1,10 @@
+allowBuilds:
+  cwebp-bin: true
+  esbuild: true
+  gifsicle: true
+  jpegtran-bin: true
+  mozjpeg: true
+  msw: true
+  optipng-bin: true
+  pngquant-bin: true
+  sharp: true
