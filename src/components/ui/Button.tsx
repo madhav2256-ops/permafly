@@ -1,4 +1,5 @@
 import { forwardRef } from 'react'
+import { Link } from 'react-router-dom'
 import { cn } from '@/lib/utils'
 
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
@@ -31,6 +32,18 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
     }
 
     if (href) {
+      const isInternal = href.startsWith('/') && !href.startsWith('//') && target !== '_blank'
+      if (isInternal) {
+        return (
+          <Link
+            to={href}
+            className={cn(baseStyles, variants[variant], sizes[size], className)}
+          >
+            {children}
+          </Link>
+        )
+      }
+
       return (
         <a
           href={href}
