@@ -127,18 +127,16 @@ export function TestimonialsCarousel() {
         </div>
 
         {/* Carousel Window */}
-        <div className="overflow-hidden relative w-full -mx-4 px-4 py-8">
-          <motion.div 
-            animate={{ x: `-${currentIndex * (100 / itemsPerView)}%` }}
-            transition={{ type: 'spring', stiffness: 300, damping: 30 }}
-            className="flex gap-6 md:gap-8"
-            style={{ width: `${(reviews.length / itemsPerView) * 100}%` }}
-          >
-            {reviews.map((review, i) => (
-              <div
+        <div className="relative w-full py-4 min-h-[360px] md:min-h-[320px]">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+            {reviews.slice(currentIndex, currentIndex + itemsPerView).map((review) => (
+              <motion.div
                 key={review.author}
-                style={{ width: `calc(${100 / reviews.length}% - ${(6 * (reviews.length - 1)) / reviews.length}px)` }}
-                className="shrink-0"
+                initial={{ opacity: 0, scale: 0.96 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.96 }}
+                transition={{ duration: 0.3 }}
+                className="w-full shrink-0"
               >
                 <div
                   className="flex flex-col justify-between p-8 rounded-2xl bg-[#141414] border border-white/5 hover:border-[var(--color-accent)]/20 shadow-2xl transition-all duration-300 relative group h-[320px] md:h-[300px] overflow-hidden"
@@ -147,7 +145,7 @@ export function TestimonialsCarousel() {
                   <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-[radial-gradient(circle_at_bottom_right,var(--color-accent-glow),transparent_60%)] pointer-events-none" />
 
                   <div className="relative z-10">
-                    {/* Star Rating & Pull Quote */}
+                    {/* Star Rating */}
                     <div className="flex items-center justify-between mb-4">
                       <div className="flex gap-1 text-[var(--color-accent)]">
                         {[...Array(review.rating)].map((_, idx) => (
@@ -184,9 +182,9 @@ export function TestimonialsCarousel() {
                     </div>
                   </div>
                 </div>
-              </div>
+              </motion.div>
             ))}
-          </motion.div>
+          </div>
         </div>
 
         {/* Bullet Pagination Indicators */}

@@ -81,8 +81,8 @@ const showcases = [
 export function DisciplineGrid() {
   return (
     <section 
-      style={{ paddingBlock: 'clamp(1rem, 4vw, 4rem)' }} 
-      className="bg-[#090909] text-white relative overflow-hidden"
+      style={{ paddingBlock: 'clamp(2.5rem, 6vw, 6rem)' }} 
+      className="bg-[#090909] text-white relative overflow-hidden border-t border-white/5"
     >
       <div className="container-site">
         
