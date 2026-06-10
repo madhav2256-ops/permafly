@@ -93,25 +93,28 @@ function StatCard({ stat, index }: { stat: typeof stats[number]; index: number }
       transition={{ duration: 0.5, delay: index * 0.1 }}
       className="group relative"
     >
+      {/* Vertical orange glow strip next to the metric */}
+      <div className="absolute -left-2 top-1/2 -translate-y-1/2 w-[2px] h-10 bg-[var(--color-accent)] blur-[1px] opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+      
       <div
-        className="relative overflow-hidden rounded-[var(--radius-lg)] border border-[var(--color-border)] hover:border-[var(--color-border-accent)] transition-all duration-300 h-full"
-        style={{ padding: 'clamp(1rem, 3vw, 1.5rem)' }}
+        className="relative overflow-hidden rounded-[var(--radius-lg)] transition-all duration-300 h-full"
+        style={{ padding: 'clamp(1rem, 2vw, 1.25rem)' }}
       >
         {/* Subtle glow on hover */}
         <div
           className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-[var(--radius-lg)]"
-          style={{ background: `radial-gradient(circle at 30% 30%, ${stat.glowColor}, transparent 70%)` }}
+          style={{ background: `radial-gradient(circle at 10% 50%, ${stat.glowColor}, transparent 70%)` }}
         />
 
         {/* Content */}
-        <div className="relative z-10 flex items-start gap-3">
+        <div className="relative z-10 flex items-start gap-4">
           {/* Icon */}
           <div
-            className="shrink-0 flex items-center justify-center rounded-[var(--radius-md)] bg-gradient-to-br text-white/90 group-hover:scale-110 transition-transform duration-300"
+            className="shrink-0 flex items-center justify-center rounded-[var(--radius-md)] text-[var(--color-accent)] group-hover:scale-110 transition-transform duration-300"
             style={{
-              width: 'clamp(2rem, 5vw, 2.75rem)',
-              height: 'clamp(2rem, 5vw, 2.75rem)',
-              background: `linear-gradient(135deg, var(--color-accent), var(--color-accent-hover))`,
+              width: 'clamp(2rem, 4vw, 2.5rem)',
+              height: 'clamp(2rem, 4vw, 2.5rem)',
+              background: `var(--color-accent-glow)`,
             }}
           >
             <Icon className="w-4 h-4 sm:w-5 sm:h-5" />
@@ -120,20 +123,20 @@ function StatCard({ stat, index }: { stat: typeof stats[number]; index: number }
           {/* Number + label */}
           <div className="min-w-0">
             <div
-              className="font-extrabold text-[var(--color-text-primary)] leading-none tracking-tight"
-              style={{ fontSize: 'clamp(1.5rem, 3.5vw, 2.5rem)' }}
+              className="font-extrabold text-[var(--color-text-primary)] leading-none tracking-tight group-hover:text-[var(--color-accent)] transition-colors duration-300"
+              style={{ fontSize: 'clamp(1.75rem, 3.5vw, 2.75rem)' }}
             >
               {displayCount}{stat.suffix}
             </div>
             <div
-              className="font-semibold text-[var(--color-text-primary)] mt-1 leading-tight"
-              style={{ fontSize: 'clamp(0.7rem, 1.2vw, 0.875rem)' }}
+              className="font-semibold text-[var(--color-text-primary)] mt-1.5 leading-tight"
+              style={{ fontSize: 'clamp(0.75rem, 1.2vw, 0.9rem)' }}
             >
               {stat.label}
             </div>
             <div
               className="text-[var(--color-text-muted)] leading-tight mt-0.5"
-              style={{ fontSize: 'clamp(0.625rem, 1vw, 0.75rem)' }}
+              style={{ fontSize: 'clamp(0.65rem, 1vw, 0.8rem)' }}
             >
               {stat.sublabel}
             </div>
@@ -169,14 +172,14 @@ function GoogleReviewBadge() {
 export function StatsStrip() {
   return (
     <section
-      style={{ paddingBlock: 'clamp(1.5rem, 4vw, 3rem)' }}
-      className="border-y border-[var(--color-border)] bg-[var(--color-bg-surface)] relative overflow-hidden"
+      style={{ paddingBlock: 'clamp(2rem, 5vw, 4rem)' }}
+      className="bg-transparent relative overflow-hidden"
     >
       {/* Subtle ambient glow */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[200px] bg-[var(--color-accent)] opacity-[0.03] blur-[100px] rounded-full" />
 
       <div className="container-site relative z-10">
-        <div className="grid grid-cols-2 lg:grid-cols-4" style={{ gap: 'clamp(0.625rem, 2vw, 1rem)' }}>
+        <div className="grid grid-cols-2 lg:grid-cols-4" style={{ gap: 'clamp(0.625rem, 2vw, 1.5rem)' }}>
           {stats.map((stat, i) => (
             <StatCard key={stat.label} stat={stat} index={i} />
           ))}

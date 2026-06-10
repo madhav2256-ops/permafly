@@ -2,13 +2,12 @@ import { Helmet } from 'react-helmet-async'
 import { SEO } from '@/lib/seo'
 import { PageTransition } from '@/components/layout/PageTransition'
 import { Hero } from '@/components/sections/home/Hero'
+import { AboutTeaser } from '@/components/sections/home/AboutTeaser'
 import { DisciplineGrid } from '@/components/sections/home/DisciplineGrid'
 import { StatsStrip } from '@/components/sections/home/StatsStrip'
-import { AboutTeaser } from '@/components/sections/home/AboutTeaser'
 import { TestimonialsCarousel } from '@/components/sections/home/TestimonialsCarousel'
 import { VideoSection } from '@/components/sections/home/VideoSection'
 import { CTAStrip } from '@/components/sections/home/CTAStrip'
-import { GlowDivider } from '@/components/ui/GlowDivider'
 import { siteConfig } from '@/data/siteConfig'
 
 export default function Home() {
@@ -67,11 +66,10 @@ export default function Home() {
       </Helmet>
       <Hero />
       <StatsStrip />
-      <DisciplineGrid />
-      <GlowDivider />
       <AboutTeaser />
-      <TestimonialsCarousel />
+      <DisciplineGrid />
       <VideoSection />
+      <TestimonialsCarousel />
       <CTAStrip />
     </PageTransition>
   )

@@ -16,23 +16,29 @@ export function Footer() {
   const currentYear = new Date().getFullYear()
 
   return (
-    <footer className="bg-[var(--color-bg-surface)] border-t border-[var(--color-border)]">
+    <footer className="bg-[#111111] border-t-2 border-[var(--color-accent)]">
       <div className="container-site" style={{ paddingBlock: 'clamp(2.5rem, 6vw, 5rem)' }}>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4" style={{ gap: 'clamp(1.5rem, 4vw, 3rem)' }}>
           {/* Brand */}
-          <div>
-            <Link to="/" className="flex items-center gap-3 mb-4">
-              <img
-                src="https://www.permafly.in/images/logo.png"
-                alt="PERMAFLY logo"
-                width="36"
-                height="36"
-                className="w-9 h-9 object-contain"
-              />
-              <span className="text-xl font-bold text-[var(--color-text-primary)]">PERMAFLY</span>
+          <div className="flex flex-col gap-1">
+            <Link to="/" className="flex flex-col gap-1.5 mb-4 group">
+              <div className="flex items-center gap-3">
+                <img
+                  src="https://www.permafly.in/images/logo.png"
+                  alt="PERMAFLY logo"
+                  width="36"
+                  height="36"
+                  className="w-9 h-9 object-contain group-hover:rotate-12 transition-transform duration-300"
+                />
+                <span className="text-xl font-bold text-[var(--color-text-primary)]">PERMAFLY</span>
+              </div>
+              <span className="font-display text-[9px] tracking-[0.3em] text-[var(--color-accent)] font-bold ml-12 uppercase leading-none">
+                FLY WITH US
+              </span>
             </Link>
+            
             <p className="text-sm text-[var(--color-text-secondary)] mb-6 leading-relaxed">
-              {siteConfig.description}
+              We believe the human body is the ultimate instrument of power. No machines, no shortcuts — just raw physics and relentless commitment.
             </p>
             <div className="flex gap-3">
               {[
@@ -125,6 +131,13 @@ export function Footer() {
               </li>
             </ul>
           </div>
+        </div>
+
+        {/* Giant outline brand banner */}
+        <div className="w-full overflow-hidden select-none pointer-events-none mt-12 md:mt-16 mb-4 flex justify-center items-center">
+          <span className="font-display font-black tracking-widest text-[clamp(36px,8vw,110px)] uppercase leading-none text-transparent" style={{ WebkitTextStroke: '1px rgba(255, 255, 255, 0.03)' }}>
+            BUILT FOR GRAVITY
+          </span>
         </div>
 
         {/* Bottom bar */}

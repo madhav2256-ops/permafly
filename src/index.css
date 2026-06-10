@@ -381,3 +381,85 @@ ul, ol {
 .fab-pulse {
   margin-bottom: env(safe-area-inset-bottom, 0px);
 }
+
+/* ============================================================
+   PREMIUM REDESIGN UTILITIES (SEAMLESS FLOW)
+   ============================================================ */
+
+.fade-edge {
+  mask-image: linear-gradient(to bottom, transparent, black 20%, black 80%, transparent);
+  -webkit-mask-image: linear-gradient(to bottom, transparent, black 20%, black 80%, transparent);
+}
+
+.image-mask {
+  mask-image: radial-gradient(circle at center, black 30%, transparent 80%);
+  -webkit-mask-image: radial-gradient(circle at center, black 30%, transparent 80%);
+}
+
+.bg-text-outline {
+  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.05);
+  color: transparent;
+  font-size: clamp(100px, 20vw, 220px);
+  line-height: 1;
+}
+
+.radial-glow {
+  background: radial-gradient(circle at center, rgba(255, 87, 34, 0.15) 0%, transparent 70%);
+}
+
+.kinetic-trail {
+  position: absolute;
+  width: 1px;
+  height: 200px;
+  background: linear-gradient(to bottom, transparent, var(--color-accent), transparent);
+  opacity: 0.4;
+  filter: blur(1px);
+  pointer-events: none;
+}
+
+.glowing-cta {
+  box-shadow: 0 0 20px rgba(255, 87, 34, 0.3);
+  transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.glowing-cta:hover {
+  box-shadow: 0 0 40px rgba(255, 87, 34, 0.6);
+  transform: translateY(-2px);
+}
+
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0px); }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+/* ============================================================
+   STACKING & HIGH-CONTRAST STYLING UTILITIES
+   ============================================================ */
+
+.bg-chalk {
+  background-color: #F5F5F7;
+  color: #111111;
+}
+
+.text-charcoal {
+  color: #111111;
+}
+
+.stark-shadow {
+  box-shadow: 0 -15px 45px -10px rgba(0, 0, 0, 0.16);
+}
+
+.stark-shadow-down {
+  box-shadow: 0 15px 45px -10px rgba(0, 0, 0, 0.16);
+}
+
+.orange-glow {
+  text-shadow: 0 0 30px rgba(255, 87, 34, 0.4);
+}
+
+

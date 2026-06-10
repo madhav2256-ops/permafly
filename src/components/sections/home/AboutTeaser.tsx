@@ -3,73 +3,112 @@ import { Link } from 'react-router-dom'
 import { ArrowRight } from 'lucide-react'
 import { SectionLabel } from '@/components/ui/SectionLabel'
 import { LazyImage } from '@/components/ui/LazyImage'
-import { getAssetUrl } from '@/data/siteConfig'
 
 export function AboutTeaser() {
+  const pillars = [
+    {
+      index: '01',
+      title: 'MANOEUVRE PATTERNS',
+      desc: "Delhi's first academy based on progressive, non-traditional movement frameworks designed for ultimate physical power.",
+    },
+    {
+      index: '02',
+      title: 'ELITE EQUIPMENT',
+      desc: 'Full access to international-standard gymnastics rigs, custom calisthenics bars, and premium padded training floor setups.',
+    },
+    {
+      index: '03',
+      title: 'PROFESSIONAL SPOTTING',
+      desc: 'Certified elite coaches who spot and guide you through complex aerial elements, flips, and high-tier strength holds safely.',
+    },
+  ]
+
   return (
-    <section style={{ paddingBlock: 'var(--section-py)' }} className="bg-[var(--color-bg-primary)]">
+    <section 
+      style={{ paddingBlock: 'var(--section-py)' }} 
+      className="bg-[#090909] text-white relative overflow-hidden"
+    >
       <div className="container-site">
-        <div className="grid grid-cols-1 lg:grid-cols-2 items-center" style={{ gap: 'var(--gap-lg)' }}>
-          {/* Text */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 items-center gap-12 lg:gap-16">
+          
+          {/* Text and Pillars Column */}
           <motion.div
             initial={{ opacity: 0, x: -40 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: '-100px' }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+            className="lg:col-span-7 flex flex-col justify-center"
           >
             <SectionLabel>About Us</SectionLabel>
-            <h2 className="mt-4" style={{ fontSize: 'var(--text-h2)', fontWeight: 600 }}>
-              Delhi&apos;s Pioneer <span className="text-[var(--color-accent)]">Calisthenics</span> Academy
+            <h2 className="mt-4 font-display font-black text-3xl md:text-5xl text-white uppercase leading-[1.1] tracking-tight">
+              WE DON&apos;T TEACH MOVEMENTS.<br />
+              <span className="font-serif italic lowercase text-[var(--color-accent)] font-normal">
+                we engineer
+              </span>{' '}
+              FREEDOM.
             </h2>
-            <p className="mt-6 text-[var(--color-text-secondary)] leading-relaxed">
-              PERMAFLY is a pioneer calisthenic, gymnastics, parkour and yoga academy in India.
-              It&apos;s the first calisthenics academy established in Delhi — totally based on a new
-              concept of manoeuvre pattern, designed by Team PERMAFLY to make you achieve your
-              ultimate fitness level.
-            </p>
-            <p className="mt-4 text-[var(--color-text-secondary)] leading-relaxed">
-              We encourage all athletes and fitness enthusiasts of India to take a step forward,
-              and take Indian fitness to a new horizon. We provide all necessary international
-              equipment so that our esteemed members can showcase their talent on any platform
-              they desire worldwide.
-            </p>
-            <Link
-              to="/about"
-              className="mt-8 inline-flex items-center gap-2 text-[var(--color-accent)] font-semibold hover:gap-3 transition-all duration-200"
-            >
-              Learn more about our story
-              <ArrowRight size={18} />
-            </Link>
+            
+            {/* 3-Column Pillars breakdown below headline */}
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mt-10 md:mt-12">
+              {pillars.map((pillar) => (
+                <div key={pillar.index} className="flex flex-col">
+                  {/* Large Display Index Number */}
+                  <span className="font-display font-black text-3xl text-[var(--color-accent)] mb-2">
+                    {pillar.index}
+                  </span>
+                  
+                  {/* Pillar Title */}
+                  <h4 className="font-display font-bold text-xs tracking-wider uppercase text-white mb-2 leading-tight">
+                    {pillar.title}
+                  </h4>
+                  
+                  {/* Pillar Description */}
+                  <p className="text-sm text-[var(--color-text-secondary)] leading-relaxed">
+                    {pillar.desc}
+                  </p>
+                </div>
+              ))}
+            </div>
+
+            <div className="mt-8 md:mt-10">
+              <Link
+                to="/about"
+                className="inline-flex items-center gap-2 text-[var(--color-accent)] font-bold tracking-wider uppercase text-xs hover:gap-3 transition-all duration-300"
+              >
+                Discover Our Full Philosophy
+                <ArrowRight size={16} />
+              </Link>
+            </div>
           </motion.div>
 
-          {/* Image */}
+          {/* Planche Image Column */}
           <motion.div
             initial={{ opacity: 0, x: 40 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: '-100px' }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="relative select-none"
+            transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+            className="lg:col-span-5 relative select-none"
           >
-            <div className="relative overflow-hidden rounded-[var(--radius-xl)] group shadow-2xl" style={{ aspectRatio: 'clamp(1.2, 1.5 + 0.3 * (100vw - 768px) / 512, 4/5)' }}>
+            {/* Spotlight drop-shadow orange aura */}
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,87,34,0.2)_0%,transparent_70%)] blur-3xl scale-125 -z-10 pointer-events-none" />
+            
+            {/* Framed Planche Image in wide landscape ratio to avoid box cropping */}
+            <div className="relative overflow-hidden rounded-xl border border-white/10 shadow-[0_0_50px_rgba(255,87,34,0.15)] group aspect-[3/2]">
               <LazyImage
-                src={getAssetUrl('about_teaser', 'https://login.permafly.in/imgs/202104241541118418851.jpg')}
-                alt="PERMAFLY academy interior — athletes training in parkour and calisthenics"
+                src="https://images.unsplash.com/photo-1544033527-b192daee1f5b?q=80&w=1200&auto=format&fit=crop"
+                alt="PERMAFLY athlete performing a horizontal planche hold on parallel bars"
                 width={600}
-                height={750}
-                className="w-full h-full object-cover group-hover:scale-[1.02] transition-transform duration-750"
+                height={400}
+                className="w-full h-full object-cover group-hover:scale-102 transition-transform duration-750 grayscale"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-[var(--color-bg-primary)]/40 to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent pointer-events-none" />
             </div>
-            {/* Accent decoration */}
+
+            {/* Accent decoration rings */}
             <motion.div 
-              animate={{ y: [0, 8, 0], x: [0, -4, 0] }}
-              transition={{ repeat: Infinity, duration: 4, ease: "easeInOut" }}
-              className="absolute -bottom-4 -right-4 w-32 h-32 border-2 border-[var(--color-border-accent)] rounded-[var(--radius-xl)] -z-10 hidden sm:block" 
-            />
-            <motion.div 
-              animate={{ scale: [1, 1.15, 1], opacity: [0.3, 0.5, 0.3] }}
+              animate={{ y: [0, 6, 0], x: [0, -4, 0] }}
               transition={{ repeat: Infinity, duration: 5, ease: "easeInOut" }}
-              className="absolute -top-4 -left-4 w-20 h-20 bg-[var(--color-accent-glow)] rounded-full blur-2xl hidden sm:block" 
+              className="absolute -bottom-4 -right-4 w-24 h-24 border border-white/10 rounded-xl -z-20 hidden sm:block pointer-events-none" 
             />
           </motion.div>
         </div>
