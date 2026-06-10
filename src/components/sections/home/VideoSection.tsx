@@ -44,9 +44,7 @@ export function VideoSection() {
           <SectionLabel>Watch</SectionLabel>
           <h2 className="mt-4 font-display font-black text-3xl md:text-5xl uppercase tracking-tight text-white leading-[1.1]">
             SEE US IN{' '}
-            <span className="font-serif italic lowercase text-[var(--color-accent)] font-normal">
-              action
-            </span>.
+            <span className="text-[var(--color-accent)]">ACTION</span>.
           </h2>
         </motion.div>
 

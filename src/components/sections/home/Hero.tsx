@@ -93,14 +93,7 @@ export function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.8 }}
-          className="mt-4 md:mt-6 text-base md:text-xl text-[var(--color-text-secondary)]"
-          style={{
-            display: 'block',
-            margin: '1.5rem auto 0 auto',
-            maxWidth: '672px',
-            textAlign: 'center',
-            width: '100%'
-          }}
+          className="mt-6 text-sm md:text-lg text-[var(--color-text-secondary)] bg-black/65 backdrop-blur-md border border-white/5 px-6 py-4 rounded-2xl max-w-2xl mx-auto leading-relaxed"
         >
           {"Delhi's first machine-free parkour, calisthenics & gymnastics academy."}
           <br className="hidden md:block" />

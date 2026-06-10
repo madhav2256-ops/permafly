@@ -172,8 +172,8 @@ function GoogleReviewBadge() {
 export function StatsStrip() {
   return (
     <section
-      style={{ paddingBlock: 'clamp(2rem, 5vw, 4rem)' }}
-      className="bg-transparent relative overflow-hidden"
+      style={{ paddingBlock: 'clamp(1.5rem, 4vw, 3rem)' }}
+      className="bg-[#0c0c0c] border-t border-[var(--color-accent)]/15 border-b border-white/5 relative overflow-hidden"
     >
       {/* Subtle ambient glow */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[200px] bg-[var(--color-accent)] opacity-[0.03] blur-[100px] rounded-full" />

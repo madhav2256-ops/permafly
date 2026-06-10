@@ -150,7 +150,7 @@ export function DisciplineGrid() {
                     }`}>
                       <div>
                         {/* Metadata index/category */}
-                        <div className="font-display text-[10px] md:text-xs tracking-[0.2em] text-[var(--color-accent)] uppercase mb-2 font-bold flex items-center gap-1.5">
+                        <div className="font-display text-xs tracking-[0.2em] text-[var(--color-accent)] uppercase mb-2 font-bold flex items-center gap-1.5">
                           <span>{showcase.index}</span>
                           <span>/</span>
                           <span>{showcase.category}</span>
@@ -162,12 +162,12 @@ export function DisciplineGrid() {
                         </div>
 
                         {/* Title */}
-                        <h3 className="font-display font-extrabold text-lg md:text-xl uppercase text-white mb-2 tracking-tight group-hover:text-[var(--color-accent)] transition-colors duration-300">
+                        <h3 className="font-display font-extrabold text-xl md:text-2xl uppercase text-white mb-2 tracking-tight group-hover:text-[var(--color-accent)] transition-colors duration-300">
                           {showcase.title}
                         </h3>
 
                         {/* Paragraph Description */}
-                        <p className="text-xs md:text-sm text-[var(--color-text-secondary)] leading-relaxed">
+                        <p className="text-sm text-[var(--color-text-secondary)] leading-relaxed">
                           {showcase.description}
                         </p>
                       </div>
