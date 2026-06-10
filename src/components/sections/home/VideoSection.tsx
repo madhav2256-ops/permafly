@@ -42,7 +42,7 @@ export function VideoSection() {
           className="mb-12 md:mb-16"
         >
           <SectionLabel>Watch</SectionLabel>
-          <h2 className="mt-4 font-display font-black text-3xl md:text-5xl uppercase tracking-tight text-white leading-[1.1]">
+          <h2 className="mt-4 font-display font-black text-4xl md:text-5xl uppercase tracking-tight text-white leading-[1.1]">
             SEE US IN{' '}
             <span className="text-[var(--color-accent)]">ACTION</span>.
           </h2>

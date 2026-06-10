@@ -40,7 +40,7 @@ export function AboutTeaser() {
             className="lg:col-span-7 flex flex-col justify-center"
           >
             <SectionLabel>About Us</SectionLabel>
-            <h2 className="mt-4 font-display font-black text-3xl md:text-5xl text-white uppercase leading-[1.1] tracking-tight">
+            <h2 className="mt-4 font-display font-black text-4xl md:text-5xl text-white uppercase leading-[1.1] tracking-tight">
               WE DON&apos;T TEACH MOVEMENTS.<br />
               <span className="font-serif italic lowercase text-[var(--color-accent)] font-normal">
                 we engineer

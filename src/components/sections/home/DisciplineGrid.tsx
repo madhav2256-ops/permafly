@@ -94,7 +94,7 @@ export function DisciplineGrid() {
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
           className="mb-12 md:mb-16"
         >
-          <h2 className="font-display font-black text-3xl md:text-5xl uppercase tracking-tight text-white leading-[1.1]">
+          <h2 className="font-display font-black text-4xl md:text-5xl uppercase tracking-tight text-white leading-[1.1]">
             OUR DISCIPLINE{' '}
             <span className="font-serif italic lowercase text-[var(--color-accent)] font-normal">
               visual
@@ -104,7 +104,7 @@ export function DisciplineGrid() {
         </motion.div>
 
         {/* Asymmetric Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-8">
           {showcases.map((showcase, i) => {
             const isFeatured = showcase.featured
 
@@ -115,13 +115,13 @@ export function DisciplineGrid() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: '-50px' }}
                 transition={{ duration: 0.8, delay: i * 0.05, ease: [0.16, 1, 0.3, 1] }}
-                className={`${isFeatured ? 'lg:col-span-2' : 'col-span-1'}`}
+                className={`${isFeatured ? 'col-span-2' : 'col-span-1'}`}
               >
                 <Link 
                   to={`/classes/${showcase.slug}`}
                   className="group block cursor-pointer h-full relative"
                 >
-                  <div className={`h-full flex flex-col justify-between rounded-xl bg-white/[0.01] border border-white/5 hover:border-[var(--color-accent)]/20 transition-all duration-300 relative overflow-hidden ${
+                  <div className={`h-full flex flex-col justify-between rounded-xl bg-white/[0.01] border border-white/5 hover:border-[var(--color-accent)]/20 transition-all duration-300 relative overflow-hidden shadow-[0_8px_30px_rgba(0,0,0,0.5)] md:shadow-none ${
                     isFeatured ? 'lg:flex-row lg:items-stretch' : ''
                   }`}>
                     {/* Image Container */}
@@ -193,7 +193,7 @@ export function DisciplineGrid() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-50px' }}
             transition={{ duration: 0.8, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
-            className="lg:col-span-2 col-span-1"
+            className="col-span-2"
           >
             <Link 
               to="/contact"

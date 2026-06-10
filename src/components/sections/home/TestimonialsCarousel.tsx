@@ -93,7 +93,7 @@ export function TestimonialsCarousel() {
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
           >
             <SectionLabel>Testimonials</SectionLabel>
-            <h2 className="mt-4 font-display font-black text-3xl md:text-5xl uppercase tracking-tight text-white leading-[1.1]">
+            <h2 className="mt-4 font-display font-black text-4xl md:text-5xl uppercase tracking-tight text-white leading-[1.1]">
               VOICES OF THE{' '}
               <span className="font-serif italic lowercase text-[var(--color-accent)] font-normal">
                 elite

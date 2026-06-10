@@ -29,8 +29,8 @@ export function Navbar() {
         className={cn(
           'fixed top-0 left-0 right-0 z-50 transition-all duration-300',
           isScrolled
-            ? 'backdrop-blur-xl border-b border-[var(--color-border)]'
-            : 'bg-transparent',
+            ? 'backdrop-blur-xl border-b border-[var(--color-border)] shadow-[0_4px_30px_rgba(0,0,0,0.4)]'
+            : 'bg-transparent shadow-none',
           isHidden ? '-translate-y-full' : 'translate-y-0'
         )}
         style={isScrolled ? { backgroundColor: 'rgba(26, 26, 26, 0.8)' } : undefined}
