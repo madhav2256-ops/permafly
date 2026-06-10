@@ -35,10 +35,10 @@ export function Navbar() {
         )}
         style={isScrolled ? { backgroundColor: 'rgba(26, 26, 26, 0.8)' } : undefined}
       >
-        <nav className="container-site flex items-center justify-between" style={{ height: 'clamp(3.5rem, 6vw, 4.5rem)' }} aria-label="Main navigation">
+        <nav className="container-site flex items-center justify-between px-2 md:px-0" style={{ height: 'clamp(3rem, 5vw, 4.5rem)' }} aria-label="Main navigation">
           {/* Logo */}
-          <Link to="/" className="flex items-center gap-2.5 group shrink-0" aria-label="PERMAFLY home">
-            <div className="w-8 h-8 rounded-[var(--radius-sm)] overflow-hidden shrink-0">
+          <Link to="/" className="flex items-center gap-2 group shrink-0" aria-label="PERMAFLY home">
+            <div className="w-7 h-7 rounded-[var(--radius-sm)] overflow-hidden shrink-0">
               <img
                 src="https://www.permafly.in/images/logo.png"
                 alt="PERMAFLY logo"

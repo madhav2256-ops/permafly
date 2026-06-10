@@ -9,7 +9,7 @@ export function CTAStrip() {
         backgroundImage: 'radial-gradient(circle at center, rgba(9, 9, 9, 0.8) 0%, rgba(9, 9, 9, 0.98) 100%), url("https://images.unsplash.com/photo-1541534741688-6078c6bfb5c5?q=80&w=1200&auto=format&fit=crop")',
         backgroundSize: 'cover',
         backgroundPosition: 'center',
-        paddingBlock: 'var(--section-py)',
+        paddingBlock: 'clamp(1rem, 4vw, 4rem)',
       }}
       className="relative overflow-hidden bg-[#090909] text-white"
     >

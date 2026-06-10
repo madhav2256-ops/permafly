@@ -32,7 +32,7 @@ export function Hero() {
         backgroundSize: 'cover',
         backgroundPosition: 'center',
       }}
-      className="relative min-h-screen flex items-center justify-center overflow-hidden bg-[var(--color-bg-primary)]"
+      className="relative min-h-[85vh] md:min-h-screen py-16 md:py-0 flex items-center justify-center overflow-hidden bg-[var(--color-bg-primary)]"
     >
       {/* Video Background */}
       <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
@@ -63,7 +63,7 @@ export function Hero() {
       />
 
       {/* Content */}
-      <div className="relative z-10 container-site flex flex-col items-center text-center px-4">
+      <div className="relative z-10 container-site flex flex-col items-center text-center px-0 md:px-4">
         {/* Tagline */}
         <motion.p
           initial={{ opacity: 0, y: 20 }}

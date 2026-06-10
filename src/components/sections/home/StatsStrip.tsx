@@ -98,7 +98,7 @@ function StatCard({ stat, index }: { stat: typeof stats[number]; index: number }
       
       <div
         className="relative overflow-hidden rounded-[var(--radius-lg)] transition-all duration-300 h-full"
-        style={{ padding: 'clamp(1rem, 2vw, 1.25rem)' }}
+        style={{ padding: 'clamp(0.5rem, 2vw, 1.25rem)' }}
       >
         {/* Subtle glow on hover */}
         <div
@@ -172,7 +172,7 @@ function GoogleReviewBadge() {
 export function StatsStrip() {
   return (
     <section
-      style={{ paddingBlock: 'clamp(1.5rem, 4vw, 3rem)' }}
+      style={{ paddingBlock: 'clamp(0.5rem, 3vw, 2.5rem)' }}
       className="bg-[#0c0c0c] border-t border-[var(--color-accent)]/15 border-b border-white/5 relative overflow-hidden"
     >
       {/* Subtle ambient glow */}

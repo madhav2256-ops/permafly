@@ -28,7 +28,7 @@ export function VideoSection() {
 
   return (
     <section 
-      style={{ paddingBlock: 'clamp(3rem, 6vw, 5rem)' }} 
+      style={{ paddingBlock: 'clamp(1rem, 4vw, 4rem)' }} 
       className="relative overflow-hidden bg-[#090909] text-white"
     >
       <div className="container-site relative z-10">

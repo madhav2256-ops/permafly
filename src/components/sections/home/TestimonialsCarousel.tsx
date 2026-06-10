@@ -79,7 +79,7 @@ export function TestimonialsCarousel() {
 
   return (
     <section 
-      style={{ paddingBlock: 'var(--section-py)' }} 
+      style={{ paddingBlock: 'clamp(1rem, 4vw, 4rem)' }} 
       className="bg-[#090909] text-white relative overflow-hidden"
     >
       <div className="container-site relative z-10">
