@@ -462,4 +462,22 @@ ul, ol {
   text-shadow: 0 0 30px rgba(255, 87, 34, 0.4);
 }
 
+/* ============================================================
+   INFINITE MARQUEE STYLING
+   ============================================================ */
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee 45s linear infinite;
+}
+
+
 

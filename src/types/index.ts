@@ -26,6 +26,8 @@ export interface Review {
   text: string
   rating: number
   avatar?: string
+  specialty?: string
+  pullQuote?: string
 }
 
 export interface BatchSlot {

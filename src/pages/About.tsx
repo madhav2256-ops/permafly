@@ -1,156 +1,391 @@
 import { motion } from 'framer-motion'
-import { ArrowRight } from 'lucide-react'
+import { ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react'
 import { SEO } from '@/lib/seo'
 import { PageTransition } from '@/components/layout/PageTransition'
 import { SectionLabel } from '@/components/ui/SectionLabel'
-import { GlowDivider } from '@/components/ui/GlowDivider'
 import { team } from '@/data/team'
 import { Button } from '@/components/ui/Button'
 import { LazyImage } from '@/components/ui/LazyImage'
-import { getAssetUrl } from '@/data/siteConfig'
 
 export default function About() {
+  // Fade-in animation variants
+  const fadeIn = {
+    initial: { opacity: 0, y: 30 },
+    whileInView: { opacity: 1, y: 0 },
+    viewport: { once: true, margin: '-100px' },
+    transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] as const }
+  }
+
+  const staggerContainer = {
+    initial: {},
+    whileInView: {},
+    viewport: { once: true, margin: '-50px' },
+    transition: { staggerChildren: 0.15 }
+  }
+
+  const cardHover = {
+    scale: 1.03,
+    borderColor: 'rgba(255, 87, 34, 0.25)',
+    boxShadow: '0 10px 30px -10px rgba(255, 87, 34, 0.15)',
+    transition: { duration: 0.3, ease: 'easeOut' as const }
+  }
+
   return (
     <PageTransition>
       <SEO
-        title="About Us | PERMAFLY — Delhi's First Parkour Academy"
-        description="Learn about PERMAFLY — Delhi's pioneer calisthenic, gymnastics, parkour and yoga academy. First calisthenics academy in Delhi. Machine-free. All ages."
+        title="Our Story | PERMAFLY — Movement Engineering"
+        description="Born in Delhi, PERMAFLY is a technical laboratory dedicated to the liberation of the human body through precision calisthenics, gymnastics, and parkour."
         path="/about"
       />
 
-      {/* Hero */}
-      <section className="bg-[var(--color-bg-primary)]" style={{ paddingTop: 'clamp(6rem, 10vw, 9rem)', paddingBottom: 'var(--section-py)' }}>
-        <div className="container-site">
-          <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
-            <SectionLabel>About Us</SectionLabel>
-            <h1 className="mt-4" style={{ fontSize: 'var(--text-h1)', fontWeight: 700, letterSpacing: '-0.02em' }}>
-              Fitness is not a destination.<br />
-              <span className="text-[var(--color-accent)]">It is a way of life.</span>
-            </h1>
+      {/* Hero Section */}
+      <section className="relative h-[95vh] flex flex-col justify-center items-center text-center px-4 overflow-hidden bg-[#090909]">
+        <div className="absolute inset-0 z-0">
+          <LazyImage
+            src="https://lh3.googleusercontent.com/aida/AP1WRLt9yJF5v-rsN4vfUwBz8DygPQaeiICqVrZW1-0NMGiEMjZSwk5ghVtn3XUs_BnJVooAbStGA99khVCnLSNx23nrlUcsiSRvIrvH8SyVFIUKacXJFGWikO_AG25vS9ON-qEF7JnY0ABpip32BZcHTii_yDYs60eNfvQqvELGvpR5NEoJfkL2D8pGpTA5uV9egKMat-2MncQagaKCkzSFkZlnnnqYPXOyFpKF5fxDM243SotXyRnFiAYEsSA"
+            alt="Gymnast handstand training"
+            width={1920}
+            height={1080}
+            className="w-full h-full object-cover opacity-35 mix-blend-luminosity grayscale"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#090909] via-transparent to-[#090909]" />
+          <div className="absolute inset-0 bg-radial-glow opacity-30" />
+        </div>
+
+        <div className="relative z-10 max-w-4xl mx-auto space-y-6">
+          <motion.span 
+            initial={{ opacity: 0, letterSpacing: '0.1em' }}
+            animate={{ opacity: 0.8, letterSpacing: '0.4em' }}
+            transition={{ duration: 1.2, ease: 'easeOut' }}
+            className="font-mono text-xs text-[var(--color-accent)] tracking-[0.4em] block uppercase"
+          >
+            EST. 2018 — DELHI, INDIA
+          </motion.span>
+          
+          <motion.h1 
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+            className="font-display font-black text-5xl sm:text-7xl md:text-[96px] lg:text-[110px] leading-[0.95] tracking-tighter text-white uppercase"
+          >
+            ENGINEERING<br />
+            <span className="text-[var(--color-accent)] orange-glow">FREEDOM</span>
+          </motion.h1>
+
+          <motion.p 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1, delay: 0.4 }}
+            className="max-w-2xl mx-auto text-base md:text-xl text-[var(--color-text-secondary)] leading-relaxed pt-4"
+          >
+            Born in the heart of Delhi, Permafly is more than a gym. It is a technical laboratory dedicated to the liberation of the human body through precision engineering and pure movement.
+          </motion.p>
+        </div>
+
+        <div className="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce">
+          <ChevronRight size={24} className="rotate-90 text-[var(--color-accent)]" />
+        </div>
+      </section>
+
+      {/* The Evolution (Timeline) */}
+      <section className="py-24 bg-[#090909] border-t border-white/5 relative overflow-hidden">
+        <div className="container-site relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
+          {/* Sticky Left Column */}
+          <div className="lg:col-span-4 flex flex-col justify-start lg:sticky lg:top-32 h-fit">
+            <SectionLabel>Our Story</SectionLabel>
+            <h2 className="mt-6 font-display font-black text-4xl md:text-5xl uppercase tracking-tight text-white leading-none">
+              THE<br />
+              <span className="text-[var(--color-accent)]">EVOLUTION</span>
+            </h2>
+            <p className="mt-6 text-[var(--color-text-secondary)] text-sm md:text-base leading-relaxed">
+              Our trajectory from a local experiment to a global standard in bodyweight performance engineering.
+            </p>
+          </div>
+
+          {/* Right Timeline Column */}
+          <div className="lg:col-span-8 relative py-8">
+            {/* Core Vertical Timeline Line */}
+            <div className="absolute left-4 md:left-1/2 top-0 bottom-0 w-[1px] bg-gradient-to-b from-transparent via-[var(--color-accent)] to-transparent -translate-x-1/2 opacity-30" />
+
+            <div className="space-y-16 md:space-y-24 relative">
+              {/* 2018 */}
+              <motion.div 
+                {...fadeIn}
+                className="flex flex-col md:flex-row items-start md:items-center md:justify-end group"
+              >
+                <div className="hidden md:block w-5/12 pr-12 text-right">
+                  <h3 className="font-display font-bold text-xl md:text-2xl text-white mb-2">The Spark in Delhi</h3>
+                  <p className="text-xs md:text-sm text-[var(--color-text-secondary)] leading-relaxed">
+                    Inception of the movement engineering protocol.
+                  </p>
+                </div>
+                <div className="relative z-10 w-6 h-6 rounded-full bg-[var(--color-accent)] border-4 border-[#090909] shadow-[0_0_15px_rgba(255,87,34,0.6)] md:-translate-x-1/2" />
+                <div className="flex-1 pl-8 md:pl-0 md:hidden">
+                  <span className="font-mono text-xs text-[var(--color-accent)] font-semibold">2018</span>
+                  <h3 className="font-display font-bold text-lg text-white mt-1">The Spark in Delhi</h3>
+                  <p className="text-xs text-[var(--color-text-secondary)] mt-1 leading-relaxed">
+                    Inception of the movement engineering protocol.
+                  </p>
+                </div>
+                <div className="hidden md:block w-5/12 pl-12 text-left">
+                  <span className="font-display font-black text-5xl text-white/10 group-hover:text-[var(--color-accent)]/20 transition-colors duration-500">2018</span>
+                </div>
+              </motion.div>
+
+              {/* 2020 */}
+              <motion.div 
+                {...fadeIn}
+                className="flex flex-col md:flex-row items-start md:items-center group"
+              >
+                <div className="hidden md:block w-5/12 pr-12 text-right">
+                  <span className="font-display font-black text-5xl text-white/10 group-hover:text-[var(--color-accent)]/20 transition-colors duration-500">2020</span>
+                </div>
+                <div className="relative z-10 w-6 h-6 rounded-full bg-[var(--color-accent)] border-4 border-[#090909] shadow-[0_0_15px_rgba(255,87,34,0.6)] md:translate-x-1/2" />
+                <div className="flex-1 pl-8 md:pl-12">
+                  <span className="font-mono text-xs text-[var(--color-accent)] font-semibold">2020</span>
+                  <h3 className="font-display font-bold text-lg md:text-2xl text-white mt-1">1000+ Athletes</h3>
+                  <p className="text-xs md:text-sm text-[var(--color-text-secondary)] mt-1 leading-relaxed">
+                    Scaling movement patterns across the subcontinent.
+                  </p>
+                </div>
+              </motion.div>
+
+              {/* 2022 */}
+              <motion.div 
+                {...fadeIn}
+                className="flex flex-col md:flex-row items-start md:items-center md:justify-end group"
+              >
+                <div className="hidden md:block w-5/12 pr-12 text-right">
+                  <h3 className="font-display font-bold text-xl md:text-2xl text-white mb-2">The Academy</h3>
+                  <p className="text-xs md:text-sm text-[var(--color-text-secondary)] leading-relaxed">
+                    Codifying our technical curriculum for future coaches.
+                  </p>
+                </div>
+                <div className="relative z-10 w-6 h-6 rounded-full bg-[var(--color-accent)] border-4 border-[#090909] shadow-[0_0_15px_rgba(255,87,34,0.6)] md:-translate-x-1/2" />
+                <div className="flex-1 pl-8 md:pl-0 md:hidden">
+                  <span className="font-mono text-xs text-[var(--color-accent)] font-semibold">2022</span>
+                  <h3 className="font-display font-bold text-lg text-white mt-1">The Academy</h3>
+                  <p className="text-xs text-[var(--color-text-secondary)] mt-1 leading-relaxed">
+                    Codifying our technical curriculum for future coaches.
+                  </p>
+                </div>
+                <div className="hidden md:block w-5/12 pl-12 text-left">
+                  <span className="font-display font-black text-5xl text-white/10 group-hover:text-[var(--color-accent)]/20 transition-colors duration-500">2022</span>
+                </div>
+              </motion.div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Machine-Free Philosophy Section */}
+      <section className="relative py-24 bg-[#0e0e0e] overflow-hidden border-t border-white/5">
+        <div className="absolute inset-0 bg-radial-glow opacity-20 pointer-events-none" />
+        
+        <div className="container-site relative z-10">
+          <motion.div 
+            {...fadeIn}
+            className="text-center mb-16 space-y-4"
+          >
+            <SectionLabel className="justify-center">Philosophy</SectionLabel>
+            <h2 className="font-display font-black text-4xl md:text-6xl text-white uppercase tracking-tight">
+              MACHINE-FREE
+            </h2>
+            <p className="text-[var(--color-accent)] font-mono text-xs uppercase tracking-widest">
+              Biological Sovereignty
+            </p>
+          </motion.div>
+
+          <motion.div 
+            variants={staggerContainer}
+            initial="initial"
+            whileInView="whileInView"
+            viewport={{ once: true }}
+            className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12"
+          >
+            {[
+              { stat: '0%', label: 'Machines', desc: 'No treadmills. No mechanical cables. Gravity is your resistance, your body is the engine.' },
+              { stat: '100%', label: 'Human Power', desc: 'Unlocking raw structural force. We train kinetic integration, not isolated muscles.' },
+              { stat: '360°', label: 'Mobility', desc: 'Restoring functional range. Move in every vector without limitations or restrictions.' }
+            ].map((item, index) => (
+              <motion.div
+                key={index}
+                variants={fadeIn}
+                whileHover={cardHover}
+                className="glass p-8 md:p-12 rounded-2xl text-center flex flex-col items-center border border-white/5 transition-all duration-300 relative group overflow-hidden"
+              >
+                <div className="absolute inset-0 opacity-0 group-hover:opacity-10 transition-opacity duration-500 bg-[radial-gradient(circle_at_center,var(--color-accent),transparent_70%)] pointer-events-none" />
+                <span className="font-display font-black text-6xl md:text-7xl text-[var(--color-accent)] block group-hover:scale-105 transition-transform duration-300">
+                  {item.stat}
+                </span>
+                <h3 className="font-mono text-sm uppercase tracking-widest text-white mt-4 font-bold">
+                  {item.label}
+                </h3>
+                <p className="text-xs md:text-sm text-[var(--color-text-secondary)] mt-3 leading-relaxed max-w-xs">
+                  {item.desc}
+                </p>
+                <div className="h-[2px] w-12 bg-[var(--color-accent)] mt-6 opacity-30 group-hover:opacity-100 group-hover:w-20 transition-all duration-500" />
+              </motion.div>
+            ))}
           </motion.div>
         </div>
       </section>
 
-      {/* Mission */}
-      <section style={{ paddingBlock: 'var(--section-py)' }} className="bg-[var(--color-bg-surface)]">
+      {/* The Visionary (Founder) */}
+      <section className="py-24 bg-[#090909] border-t border-white/5 relative">
         <div className="container-site">
-          <div className="grid grid-cols-1 lg:grid-cols-2 items-center" style={{ gap: 'var(--gap-lg)' }}>
-            <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }}>
-              <SectionLabel>Our Mission</SectionLabel>
-              <h2 className="mt-4 text-[var(--text-h2)] font-semibold">
-                Pioneer of <span className="text-[var(--color-accent)]">Manoeuvre Pattern</span> Training
-              </h2>
-              <p className="mt-6 text-[var(--color-text-secondary)] leading-relaxed">
-                PERMAFLY is a pioneer calisthenic, gymnastics, parkour and yoga academy in India.
-                It&apos;s the first calisthenics academy established in Delhi.
-              </p>
-              <p className="mt-4 text-[var(--color-text-secondary)] leading-relaxed">
-                PERMAFLY is totally based on a new concept of manoeuvre pattern, designed by Team PERMAFLY
-                to make you achieve your ultimate fitness level.
-              </p>
-              <p className="mt-4 text-[var(--color-text-secondary)] leading-relaxed">
-                At PERMAFLY we encourage all the athletes and fitness enthusiasts of India to take a step
-                forward, and take Indian fitness to a new horizon. We as an organization want to provide
-                all necessary international equipment to our esteemed members so that they can showcase
-                their talent on any platform they desire worldwide.
-              </p>
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+            {/* Portrait Column */}
+            <motion.div 
+              {...fadeIn}
+              className="lg:col-span-5 relative group"
+            >
+              <div className="absolute -inset-4 bg-[var(--color-accent)]/10 blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
+              <div className="aspect-[4/5] bg-[#111111] overflow-hidden rounded-2xl border border-white/10 shadow-2xl relative">
+                <LazyImage
+                  src="https://lh3.googleusercontent.com/aida/AP1WRLs3V1wJteuLqsz5HNFpCYTGQMPRA3BoX09PnrUDqjq-Vu_s5mpNoAyuBRbcPvIqfTOdSCuQ6TK5wrU-MGoR7zd6bYbQNuEmvhcL-fy6owTEkT13MiFhwj52g2sTZ4vg84a3g2R925t7T-JT1YFuiYjeU89pW3HbvXUMS4rdUrFUsyOQOY1qFtFuO1JyTWVk4MSmKfR8bSlh6KTXWlp0XHlM24LkyLHp4Jq0P_oknh1WXjQrFoPb8vQqRA"
+                  alt="Rohan Malhotra - Founder of PERMAFLY"
+                  width={600}
+                  height={750}
+                  className="w-full h-full object-cover grayscale hover:grayscale-0 hover:scale-103 transition-all duration-700"
+                />
+              </div>
             </motion.div>
-            <motion.div initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.6, delay: 0.2 }}>
-              <div className="relative rounded-[var(--radius-xl)] overflow-hidden aspect-square">
-                <LazyImage src={getAssetUrl('about_mission', 'https://login.permafly.in/imgs/202104241509340081545.jpg')} alt="PERMAFLY parkour training session" width={600} height={600} className="w-full h-full object-cover" />
-                <div className="absolute inset-0 bg-gradient-to-t from-[var(--color-bg-primary)]/30 to-transparent" />
+
+            {/* Quote/Content Column */}
+            <motion.div 
+              {...fadeIn}
+              className="lg:col-span-7 lg:pl-8 space-y-6"
+            >
+              <span className="font-mono text-xs text-[var(--color-accent)] uppercase tracking-[0.3em] font-semibold block">
+                The Visionary
+              </span>
+              <h2 className="font-display font-black text-4xl md:text-6xl text-white uppercase leading-none tracking-tight">
+                ROHAN <span className="text-[var(--color-accent)]">MALHOTRA</span>
+              </h2>
+              
+              <div className="relative">
+                <span className="absolute -top-6 -left-4 font-serif text-8xl text-[var(--color-accent)]/10 select-none">“</span>
+                <p className="font-serif italic text-lg md:text-2xl text-[var(--color-text-secondary)] leading-relaxed relative z-10 pt-2">
+                  "We are not just training bodies; we are debugging movement software. Every joint is an interface, every muscle a motor. When we strip away the machines, we find the engineering excellence already within us."
+                </p>
+              </div>
+
+              <div className="flex items-center gap-6 pt-4">
+                <div className="h-[1px] w-12 bg-[var(--color-accent)]" />
+                <span className="font-mono text-xs text-white uppercase tracking-widest font-semibold">
+                  Founder & Movement Engineer
+                </span>
               </div>
             </motion.div>
           </div>
         </div>
       </section>
 
-      {/* Values */}
-      <section style={{ paddingBlock: 'var(--section-py)' }} className="bg-[var(--color-bg-primary)]">
+      {/* The Elite Force (Coaches) */}
+      <section className="py-24 bg-[#0e0e0e] border-t border-white/5 relative">
         <div className="container-site">
-          <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }} className="text-center mb-16">
-            <SectionLabel className="justify-center">Our Values</SectionLabel>
-            <h2 className="mt-4 text-[var(--text-h2)] font-semibold">
-              What We <span className="text-[var(--color-accent)]">Stand For</span>
-            </h2>
-          </motion.div>
-          <div className="grid grid-cols-1 md:grid-cols-3" style={{ gap: 'var(--gap-md)' }}>
-            {[
-              { title: 'Machine-Free Philosophy', desc: 'We believe your body is the ultimate machine. No treadmills, no cables — just you, gravity, and the will to fly.' },
-              { title: 'All Ages, All Levels', desc: 'From 4-year-old gymnasts to 40-year-old beginners, every athlete finds their place and pace at PERMAFLY.' },
-              { title: 'International Standards', desc: 'We equip our facility with international-grade equipment so our athletes can compete on any platform, worldwide.' },
-            ].map((value, i) => (
-              <motion.div key={i} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: i * 0.1 }}
-                className="p-[clamp(1.25rem,3vw,2rem)] rounded-[var(--radius-lg)] bg-[var(--color-bg-surface)] border border-[var(--color-border)] hover:border-[var(--color-border-accent)] transition-colors"
-              >
-                <h3 className="text-lg font-semibold text-[var(--color-text-primary)] mb-3">{value.title}</h3>
-                <p className="text-sm text-[var(--color-text-secondary)] leading-relaxed">{value.desc}</p>
-              </motion.div>
-            ))}
+          <div className="mb-16 flex flex-col md:flex-row justify-between items-end gap-6">
+            <motion.div {...fadeIn} className="space-y-4">
+              <SectionLabel>The Instructors</SectionLabel>
+              <h2 className="font-display font-black text-4xl md:text-5xl text-white uppercase tracking-tight leading-none">
+                THE <span className="text-[var(--color-accent)]">ELITE FORCE</span>
+              </h2>
+              <p className="text-[var(--color-text-secondary)] text-sm md:text-base">
+                Specialists in the mechanics of human flight.
+              </p>
+            </motion.div>
+
+            <div className="hidden md:flex gap-4">
+              <button aria-label="Previous coach" className="w-12 h-12 rounded-xl border border-white/10 flex items-center justify-center hover:bg-white/5 hover:border-[var(--color-accent)]/30 text-white transition-all active:scale-95">
+                <ChevronLeft size={20} />
+              </button>
+              <button aria-label="Next coach" className="w-12 h-12 rounded-xl border border-white/10 flex items-center justify-center hover:bg-white/5 hover:border-[var(--color-accent)]/30 text-[var(--color-accent)] transition-all active:scale-95">
+                <ChevronRight size={20} />
+              </button>
+            </div>
           </div>
-        </div>
-      </section>
 
-      <GlowDivider />
-
-      {/* Team */}
-      <section style={{ paddingBlock: 'var(--section-py)' }} className="bg-[var(--color-bg-primary)]">
-        <div className="container-site">
-          <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }} className="text-center mb-16">
-            <SectionLabel className="justify-center">Our Team</SectionLabel>
-            <h2 className="mt-4 text-[var(--text-h2)] font-semibold">
-              Team <span className="text-[var(--color-accent)]">PERMAFLY</span>
-            </h2>
-          </motion.div>
-          <div className="grid grid-cols-1 md:grid-cols-3 max-w-4xl mx-auto" style={{ gap: 'var(--gap-md)' }}>
-            {team.map((member, i) => (
-              <motion.div key={i} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: i * 0.1 }}
-                className="group perspective-1000"
+          <motion.div 
+            variants={staggerContainer}
+            initial="initial"
+            whileInView="whileInView"
+            viewport={{ once: true }}
+            className="grid grid-cols-1 md:grid-cols-3 gap-8"
+          >
+            {team.map((member, index) => (
+              <motion.div
+                key={index}
+                variants={fadeIn}
+                whileHover={cardHover}
+                className="glass rounded-2xl overflow-hidden border border-white/5 hover:border-[var(--color-accent)]/20 transition-all duration-300 relative group flex flex-col h-full"
               >
-                <div className="relative w-full aspect-[3/4] transition-transform duration-500 preserve-3d group-hover:rotate-y-180">
-                  {/* Front */}
-                  <div className="absolute inset-0 backface-hidden rounded-[var(--radius-lg)] overflow-hidden border border-[var(--color-border)]">
-                    <LazyImage src={member.image} alt={`${member.name} — ${member.specialty}`} width={400} height={533} className="w-full h-full object-cover" />
-                    <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-[var(--color-bg-primary)] via-[var(--color-bg-primary)]/80 to-transparent">
-                      <h3 className="text-lg font-semibold text-[var(--color-text-primary)]">{member.name}</h3>
-                      <p className="text-sm text-[var(--color-accent)]">{member.specialty}</p>
+                <div className="aspect-[4/3] relative overflow-hidden bg-[#141414]">
+                  <LazyImage
+                    src={member.image}
+                    alt={`${member.name} - ${member.specialty}`}
+                    width={400}
+                    height={300}
+                    className="w-full h-full object-cover grayscale transition-all duration-500 group-hover:scale-103 group-hover:grayscale-0"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#0e0e0e] to-transparent opacity-60 pointer-events-none" />
+                  <div className="absolute bottom-4 left-4">
+                    <span className="bg-[var(--color-accent)] text-white text-[10px] font-mono font-semibold px-3 py-1 rounded-md uppercase tracking-wider">
+                      {member.role}
+                    </span>
+                  </div>
+                </div>
+
+                <div className="p-6 flex flex-col justify-between flex-grow">
+                  <div className="space-y-2">
+                    <h3 className="font-display font-bold text-xl text-white group-hover:text-[var(--color-accent)] transition-colors duration-300">
+                      {member.name}
+                    </h3>
+                    <div className="flex items-center gap-2">
+                      <div className="w-1.5 h-1.5 rounded-full bg-[var(--color-accent)]" />
+                      <span className="font-mono text-xs text-[var(--color-text-secondary)] uppercase tracking-wider">
+                        {member.specialty}
+                      </span>
                     </div>
                   </div>
-                  {/* Back */}
-                  <div className="absolute inset-0 backface-hidden rotate-y-180 rounded-[var(--radius-lg)] bg-[var(--color-bg-surface)] border border-[var(--color-border-accent)] p-8 flex flex-col justify-center">
-                    <h3 className="text-lg font-semibold text-[var(--color-text-primary)] mb-1">{member.name}</h3>
-                    <p className="text-sm text-[var(--color-accent)] mb-4">{member.role}</p>
-                    <p className="text-sm text-[var(--color-text-secondary)] leading-relaxed">{member.bio}</p>
-                  </div>
+                  <p className="text-xs text-[var(--color-text-secondary)] leading-relaxed mt-4">
+                    {member.bio}
+                  </p>
                 </div>
               </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
       </section>
 
-      {/* CTA */}
-      <section style={{ paddingBlock: 'var(--section-py)' }} className="bg-[var(--color-bg-surface)]">
-        <div className="container-site text-center">
-          <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }}>
-            <h2 className="text-[var(--text-h2)] font-semibold">
-              Come <span className="text-[var(--color-accent)]">Fly</span> with Us
-            </h2>
-            <p
-              className="mt-4 text-[var(--color-text-secondary)]"
-              style={{
-                display: 'block',
-                margin: '1rem auto 0 auto',
-                maxWidth: '512px',
-                textAlign: 'center',
-                width: '100%'
-              }}
-            >{"Visit our academy in Vishwas Nagar, Shahdara. See the space, meet the coaches, and discover your potential."}</p>
-            <Button variant="primary" size="lg" href="/contact" className="group mt-8">
-              Contact Us <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
+      {/* CTA Section */}
+      <section className="relative py-28 flex flex-col items-center justify-center text-center px-4 overflow-hidden bg-[#090909] border-t border-white/5">
+        <div className="absolute inset-0 bg-radial-glow opacity-30 pointer-events-none" />
+        
+        <motion.div 
+          {...fadeIn}
+          className="relative z-10 space-y-8 max-w-3xl"
+        >
+          <h2 className="font-display font-black text-5xl sm:text-7xl md:text-8xl leading-none text-white tracking-tighter uppercase">
+            START YOUR <span className="text-[var(--color-accent)] italic font-serif lowercase">story</span>
+          </h2>
+          
+          <p className="text-[var(--color-text-secondary)] text-base md:text-lg max-w-xl mx-auto leading-relaxed">
+            Visit our academy in Shahdara, Delhi. Build structural power, debug physical limits, and engineer true somatic freedom.
+          </p>
+
+          <div className="pt-4 flex justify-center">
+            <Button
+              href="/contact"
+              variant="primary"
+              size="lg"
+              className="glowing-cta group flex items-center justify-center gap-3 px-12 py-5 font-display font-bold uppercase rounded-xl tracking-wider text-base"
+            >
+              Join the Academy
+              <ArrowRight size={20} className="group-hover:translate-x-1.5 transition-transform duration-300" />
             </Button>
-          </motion.div>
-        </div>
+          </div>
+        </motion.div>
       </section>
     </PageTransition>
   )
