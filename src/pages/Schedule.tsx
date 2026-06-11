@@ -7,6 +7,7 @@ import { SectionLabel } from '@/components/ui/SectionLabel'
 import { schedule } from '@/data/schedule'
 import { cn } from '@/lib/utils'
 import { useActiveOnScroll } from '@/hooks/useActiveOnScroll'
+import { CTAStrip } from '@/components/sections/home/CTAStrip'
 
 const DISCIPLINE_COLORS: Record<string, { bg: string; text: string; dot: string; border: string }> = {
   yoga:        { bg: 'bg-purple-500/10',   text: 'text-purple-400',  dot: 'bg-purple-400', border: 'border-purple-500/30' },
@@ -272,6 +273,7 @@ export default function Schedule() {
 
         </div>
       </section>
+      <CTAStrip />
     </PageTransition>
   )
 }

@@ -8,6 +8,7 @@ import { disciplines } from '@/data/disciplines'
 import { LazyImage } from '@/components/ui/LazyImage'
 import { disciplineIcons } from '@/lib/icons'
 import { useActiveOnScroll } from '@/hooks/useActiveOnScroll'
+import { CTAStrip } from '@/components/sections/home/CTAStrip'
 
 export default function Classes() {
   const activeSlugs = useActiveOnScroll('.discipline-list-card')
@@ -194,6 +195,7 @@ export default function Classes() {
           </motion.div>
         </div>
       </section>
+      <CTAStrip />
     </PageTransition>
   )
 }
