@@ -10,7 +10,7 @@ import { disciplineIcons } from '@/lib/icons'
 import { useActiveOnScroll } from '@/hooks/useActiveOnScroll'
 
 export default function Classes() {
-  const activeSlug = useActiveOnScroll('.discipline-list-card', 1024)
+  const activeSlugs = useActiveOnScroll('.discipline-list-card', 1024)
 
   // Fade-in animation variants
   const fadeIn = {
@@ -89,7 +89,7 @@ export default function Classes() {
             {disciplines.map((d, i) => {
               const category = categories[d.slug] || 'PERFORMANCE'
               const numPrefix = String(i + 1).padStart(2, '0')
-              const isActive = activeSlug === d.slug
+              const isActive = activeSlugs.includes(d.slug)
 
               return (
                 <motion.div

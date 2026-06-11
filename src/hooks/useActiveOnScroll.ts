@@ -1,38 +1,57 @@
 import { useState, useEffect } from 'react'
 
 export function useActiveOnScroll(selector: string, breakpoint = 1024) {
-  const [activeId, setActiveId] = useState<string | null>(null)
+  const [activeIds, setActiveIds] = useState<string[]>([])
 
   useEffect(() => {
     const handleScroll = () => {
       // Only run under the breakpoint (mobile/tablet viewports)
       if (window.innerWidth >= breakpoint) {
-        if (activeId !== null) {
-          setActiveId(null)
+        if (activeIds.length > 0) {
+          setActiveIds([])
         }
         return
       }
 
       const elements = document.querySelectorAll(selector)
-      let closestId: string | null = null
-      let closestDistance = Infinity
+      let minDistance = Infinity
       const centerY = window.innerHeight / 2
 
+      // First pass: find the minimum vertical distance from viewport center to element center
       elements.forEach((el) => {
         const rect = el.getBoundingClientRect()
         const elementCenterY = rect.top + rect.height / 2
         const distance = Math.abs(centerY - elementCenterY)
 
-        // Only consider elements that are visible on screen
         if (rect.bottom > 0 && rect.top < window.innerHeight) {
-          if (distance < closestDistance) {
-            closestDistance = distance
-            closestId = el.getAttribute('data-slug') || el.getAttribute('data-active-id') || null
+          if (distance < minDistance) {
+            minDistance = distance
           }
         }
       })
 
-      setActiveId(closestId)
+      // Second pass: gather all IDs that are close to the minimum distance (within a 30px tolerance)
+      const currentActiveIds: string[] = []
+      elements.forEach((el) => {
+        const rect = el.getBoundingClientRect()
+        const elementCenterY = rect.top + rect.height / 2
+        const distance = Math.abs(centerY - elementCenterY)
+
+        if (rect.bottom > 0 && rect.top < window.innerHeight && Math.abs(distance - minDistance) < 30) {
+          const id = el.getAttribute('data-slug') || el.getAttribute('data-active-id') || el.getAttribute('data-id') || null
+          if (id) {
+            currentActiveIds.push(id)
+          }
+        }
+      })
+
+      // Update state only if changed to avoid unnecessary re-renders
+      setActiveIds((prev) => {
+        if (prev.length === currentActiveIds.length && prev.every((val, index) => val === currentActiveIds[index])) {
+          return prev
+        }
+        return currentActiveIds
+      })
     }
 
     window.addEventListener('scroll', handleScroll, { passive: true })
@@ -46,7 +65,7 @@ export function useActiveOnScroll(selector: string, breakpoint = 1024) {
       window.removeEventListener('resize', handleScroll)
       clearTimeout(timer)
     }
-  }, [selector, breakpoint, activeId])
+  }, [selector, breakpoint, activeIds.length])
 
-  return activeId
+  return activeIds
 }

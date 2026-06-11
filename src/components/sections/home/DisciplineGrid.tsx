@@ -80,7 +80,7 @@ const showcases = [
 ]
 
 export function DisciplineGrid() {
-  const activeSlug = useActiveOnScroll('.discipline-card', 1024)
+  const activeSlugs = useActiveOnScroll('.discipline-card', 1024)
 
   return (
     <section 
@@ -110,7 +110,7 @@ export function DisciplineGrid() {
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-8">
           {showcases.map((showcase, i) => {
             const isFeatured = showcase.featured
-            const isActive = activeSlug === showcase.slug
+            const isActive = activeSlugs.includes(showcase.slug)
 
             return (
               <motion.div
@@ -228,7 +228,7 @@ export function DisciplineGrid() {
               data-slug="contact"
             >
               <div className={`h-full flex flex-col justify-between rounded-xl bg-[var(--color-accent)] p-8 md:p-10 text-white relative overflow-hidden transition-all duration-300 min-h-[260px] lg:min-h-0 ${
-                activeSlug === 'contact' 
+                activeSlugs.includes('contact') 
                   ? 'shadow-[0_10px_30px_rgba(255,87,34,0.4)] scale-[1.01]' 
                   : 'hover:shadow-[0_10px_30px_rgba(255,87,34,0.3)]'
               }`}>
@@ -252,7 +252,7 @@ export function DisciplineGrid() {
                 <div className="relative z-10 mt-8 flex items-center gap-3 font-display font-bold text-xs md:text-sm tracking-widest uppercase text-white">
                   <span>BOOK FREE TRIAL NOW</span>
                   <div className={`w-8 h-8 rounded-full flex items-center justify-center transition-all duration-300 ${
-                    activeSlug === 'contact'
+                    activeSlugs.includes('contact')
                       ? 'bg-white text-[var(--color-accent)]'
                       : 'bg-white/20 group-hover:bg-white group-hover:text-[var(--color-accent)]'
                   }`}>

@@ -6,8 +6,12 @@ import { SectionLabel } from '@/components/ui/SectionLabel'
 import { team } from '@/data/team'
 import { Button } from '@/components/ui/Button'
 import { LazyImage } from '@/components/ui/LazyImage'
+import { useActiveOnScroll } from '@/hooks/useActiveOnScroll'
 
 export default function About() {
+  const activePhilosophyIds = useActiveOnScroll('.philosophy-card', 1024)
+  const activeCoachIds = useActiveOnScroll('.coach-card', 1024)
+
   // Fade-in animation variants
   const fadeIn = {
     initial: { opacity: 0, y: 30 },
@@ -207,26 +211,37 @@ export default function About() {
               { stat: '0%', label: 'Machines', desc: 'No treadmills. No mechanical cables. Gravity is your resistance, your body is the engine.' },
               { stat: '100%', label: 'Human Power', desc: 'Unlocking raw structural force. We train kinetic integration, not isolated muscles.' },
               { stat: '360°', label: 'Mobility', desc: 'Restoring functional range. Move in every vector without limitations or restrictions.' }
-            ].map((item, index) => (
-              <motion.div
-                key={index}
-                variants={fadeIn}
-                whileHover={cardHover}
-                className="glass p-8 md:p-12 rounded-2xl text-center flex flex-col items-center border border-white/5 transition-all duration-300 relative group overflow-hidden"
-              >
-                <div className="absolute inset-0 opacity-0 group-hover:opacity-10 transition-opacity duration-500 bg-[radial-gradient(circle_at_center,var(--color-accent),transparent_70%)] pointer-events-none" />
-                <span className="font-display font-black text-6xl md:text-7xl text-[var(--color-accent)] block group-hover:scale-105 transition-transform duration-300">
-                  {item.stat}
-                </span>
-                <h3 className="font-mono text-sm uppercase tracking-widest text-white mt-4 font-bold">
-                  {item.label}
-                </h3>
-                <p className="text-xs md:text-sm text-[var(--color-text-secondary)] mt-3 leading-relaxed max-w-xs">
-                  {item.desc}
-                </p>
-                <div className="h-[2px] w-12 bg-[var(--color-accent)] mt-6 opacity-30 group-hover:opacity-100 group-hover:w-20 transition-all duration-500" />
-              </motion.div>
-            ))}
+            ].map((item, index) => {
+              const isActive = activePhilosophyIds.includes(index.toString())
+              return (
+                <motion.div
+                  key={index}
+                  variants={fadeIn}
+                  whileHover={cardHover}
+                  animate={isActive ? cardHover : undefined}
+                  className="glass p-8 md:p-12 rounded-2xl text-center flex flex-col items-center border border-white/5 transition-all duration-300 relative group overflow-hidden philosophy-card"
+                  data-id={index.toString()}
+                >
+                  <div className={`absolute inset-0 transition-opacity duration-500 bg-[radial-gradient(circle_at_center,var(--color-accent),transparent_70%)] pointer-events-none ${
+                    isActive ? 'opacity-10' : 'opacity-0 group-hover:opacity-10'
+                  }`} />
+                  <span className={`font-display font-black text-6xl md:text-7xl text-[var(--color-accent)] block transition-transform duration-300 ${
+                    isActive ? 'scale-105' : 'group-hover:scale-105'
+                  }`}>
+                    {item.stat}
+                  </span>
+                  <h3 className="font-mono text-sm uppercase tracking-widest text-white mt-4 font-bold">
+                    {item.label}
+                  </h3>
+                  <p className="text-xs md:text-sm text-[var(--color-text-secondary)] mt-3 leading-relaxed max-w-xs">
+                    {item.desc}
+                  </p>
+                  <div className={`bg-[var(--color-accent)] mt-6 transition-all duration-500 ${
+                    isActive ? 'h-[2px] w-20 opacity-100' : 'h-[2px] w-12 opacity-30 group-hover:opacity-100 group-hover:w-20'
+                  }`} />
+                </motion.div>
+              )
+            })}
           </motion.div>
         </div>
       </section>
@@ -313,47 +328,62 @@ export default function About() {
             viewport={{ once: true }}
             className="grid grid-cols-1 md:grid-cols-3 gap-8"
           >
-            {team.map((member, index) => (
-              <motion.div
-                key={index}
-                variants={fadeIn}
-                whileHover={cardHover}
-                className="glass rounded-2xl overflow-hidden border border-white/5 hover:border-[var(--color-accent)]/20 transition-all duration-300 relative group flex flex-col h-full"
-              >
-                <div className="aspect-[4/3] relative overflow-hidden bg-[#141414]">
-                  <LazyImage
-                    src={member.image}
-                    alt={`${member.name} - ${member.specialty}`}
-                    width={400}
-                    height={300}
-                    className="w-full h-full object-cover grayscale transition-all duration-500 group-hover:scale-103 group-hover:grayscale-0"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#0e0e0e] to-transparent opacity-60 pointer-events-none" />
-                  <div className="absolute bottom-4 left-4">
-                    <span className="bg-[var(--color-accent)] text-white text-[10px] font-mono font-semibold px-3 py-1 rounded-md uppercase tracking-wider">
-                      {member.role}
-                    </span>
-                  </div>
-                </div>
-
-                <div className="p-6 flex flex-col justify-between flex-grow">
-                  <div className="space-y-2">
-                    <h3 className="font-display font-bold text-xl text-white group-hover:text-[var(--color-accent)] transition-colors duration-300">
-                      {member.name}
-                    </h3>
-                    <div className="flex items-center gap-2">
-                      <div className="w-1.5 h-1.5 rounded-full bg-[var(--color-accent)]" />
-                      <span className="font-mono text-xs text-[var(--color-text-secondary)] uppercase tracking-wider">
-                        {member.specialty}
+            {team.map((member, index) => {
+              const isActive = activeCoachIds.includes(member.name)
+              return (
+                <motion.div
+                  key={index}
+                  variants={fadeIn}
+                  whileHover={cardHover}
+                  animate={isActive ? cardHover : undefined}
+                  className={`glass rounded-2xl overflow-hidden border transition-all duration-300 relative group flex flex-col h-full coach-card ${
+                    isActive
+                      ? 'border-[var(--color-accent)]/20 shadow-[0_10px_30px_-10px_rgba(255,87,34,0.15)] bg-white/[0.02]'
+                      : 'border-white/5 hover:border-[var(--color-accent)]/20'
+                  }`}
+                  data-id={member.name}
+                >
+                  <div className="aspect-[4/3] relative overflow-hidden bg-[#141414]">
+                    <LazyImage
+                      src={member.image}
+                      alt={`${member.name} - ${member.specialty}`}
+                      width={400}
+                      height={300}
+                      className={`w-full h-full object-cover grayscale transition-all duration-500 ${
+                        isActive
+                          ? 'scale-103 grayscale-0'
+                          : 'grayscale group-hover:scale-103 group-hover:grayscale-0'
+                      }`}
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#0e0e0e] to-transparent opacity-60 pointer-events-none" />
+                    <div className="absolute bottom-4 left-4">
+                      <span className="bg-[var(--color-accent)] text-white text-[10px] font-mono font-semibold px-3 py-1 rounded-md uppercase tracking-wider">
+                        {member.role}
                       </span>
                     </div>
                   </div>
-                  <p className="text-xs text-[var(--color-text-secondary)] leading-relaxed mt-4">
-                    {member.bio}
-                  </p>
-                </div>
-              </motion.div>
-            ))}
+
+                  <div className="p-6 flex flex-col justify-between flex-grow">
+                    <div className="space-y-2">
+                      <h3 className={`font-display font-bold text-xl transition-colors duration-300 ${
+                        isActive ? 'text-[var(--color-accent)]' : 'text-white group-hover:text-[var(--color-accent)]'
+                      }`}>
+                        {member.name}
+                      </h3>
+                      <div className="flex items-center gap-2">
+                        <div className="w-1.5 h-1.5 rounded-full bg-[var(--color-accent)]" />
+                        <span className="font-mono text-xs text-[var(--color-text-secondary)] uppercase tracking-wider">
+                          {member.specialty}
+                        </span>
+                      </div>
+                    </div>
+                    <p className="text-xs text-[var(--color-text-secondary)] leading-relaxed mt-4">
+                      {member.bio}
+                    </p>
+                  </div>
+                </motion.div>
+              )
+            })}
           </motion.div>
         </div>
       </section>
