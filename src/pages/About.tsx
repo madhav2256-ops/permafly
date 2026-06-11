@@ -206,7 +206,7 @@ export default function About() {
             initial="initial"
             whileInView="whileInView"
             viewport={{ once: true }}
-            className="grid grid-cols-1 lg:grid-cols-3 gap-8 md:gap-12"
+            className="grid grid-cols-3 gap-3 md:gap-8 lg:gap-12"
           >
             {[
               { stat: '0%', label: 'Machines', desc: 'No treadmills. No mechanical cables. Gravity is your resistance, your body is the engine.' },
@@ -220,24 +220,24 @@ export default function About() {
                   variants={fadeIn}
                   whileHover={cardHover}
                   animate={isActive ? cardHover : undefined}
-                  className="glass p-8 md:p-12 rounded-2xl text-center flex flex-col items-center border border-white/5 transition-all duration-300 relative group overflow-hidden philosophy-card"
+                  className="glass p-4 sm:p-8 md:p-12 rounded-2xl text-center flex flex-col items-center border border-white/5 transition-all duration-300 relative group overflow-hidden philosophy-card"
                   data-id={index.toString()}
                 >
                   <div className={`absolute inset-0 transition-opacity duration-500 bg-[radial-gradient(circle_at_center,var(--color-accent),transparent_70%)] pointer-events-none ${
                     isActive ? 'opacity-10' : 'opacity-0 group-hover:opacity-10'
                   }`} />
-                  <span className={`font-display font-black text-6xl md:text-7xl text-[var(--color-accent)] block transition-transform duration-300 ${
+                  <span className={`font-display font-black text-2xl sm:text-5xl md:text-7xl text-[var(--color-accent)] block transition-transform duration-300 ${
                     isActive ? 'scale-105' : 'group-hover:scale-105'
                   }`}>
                     {item.stat}
                   </span>
-                  <h3 className="font-mono text-sm uppercase tracking-widest text-white mt-4 font-bold">
+                  <h3 className="font-mono text-[10px] sm:text-xs md:text-sm uppercase tracking-widest text-white mt-3 sm:mt-4 font-bold">
                     {item.label}
                   </h3>
-                  <p className="text-xs md:text-sm text-[var(--color-text-secondary)] mt-3 leading-relaxed max-w-xs">
+                  <p className="text-[9px] sm:text-xs md:text-sm text-[var(--color-text-secondary)] mt-2 sm:mt-3 leading-relaxed max-w-xs">
                     {item.desc}
                   </p>
-                  <div className={`bg-[var(--color-accent)] mt-6 transition-all duration-500 ${
+                  <div className={`bg-[var(--color-accent)] mt-4 sm:mt-6 transition-all duration-500 ${
                     isActive ? 'h-[2px] w-20 opacity-100' : 'h-[2px] w-12 opacity-30 group-hover:opacity-100 group-hover:w-20'
                   }`} />
                 </motion.div>
