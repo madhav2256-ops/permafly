@@ -6,6 +6,7 @@ import { PageTransition } from '@/components/layout/PageTransition'
 import { SectionLabel } from '@/components/ui/SectionLabel'
 import { schedule } from '@/data/schedule'
 import { cn } from '@/lib/utils'
+import { useActiveOnScroll } from '@/hooks/useActiveOnScroll'
 
 const DISCIPLINE_COLORS: Record<string, { bg: string; text: string; dot: string; border: string }> = {
   yoga:        { bg: 'bg-purple-500/10',   text: 'text-purple-400',  dot: 'bg-purple-400', border: 'border-purple-500/30' },
@@ -21,6 +22,8 @@ const DISCIPLINE_COLORS: Record<string, { bg: string; text: string; dot: string;
 const DAYS_WITH_SLOTS = schedule.filter(d => d.day !== 'Sunday')
 
 export default function Schedule() {
+  const activeSlots = useActiveOnScroll('.schedule-card')
+
   const todayIndex = (() => {
     const jsDay = new Date().getDay() // 0=Sun, 1=Mon…6=Sat
     if (jsDay === 0) return 0 // Sunday → show Monday
@@ -189,33 +192,41 @@ export default function Schedule() {
               >
                 {activeDayData.slots.map((slot, i) => {
                   const disciplineColor = DISCIPLINE_COLORS[slot.discipline] || DISCIPLINE_COLORS['functional']
+                  const isActive = activeSlots.includes(`${slot.time}-${slot.className}`)
                   
                   return (
-                    <motion.div
-                      key={`${slot.time}-${slot.className}`}
-                      initial={{ opacity: 0, y: 15 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.4, delay: i * 0.05 }}
-                      className="glass p-5 md:p-6 rounded-xl flex flex-col sm:flex-row sm:items-center justify-between gap-4 border border-white/5 hover:border-[var(--color-accent)]/20 hover:shadow-[0_8px_30px_rgba(255,87,34,0.1)] transition-all duration-300 relative group active:scale-[0.995]"
-                    >
-                      {/* Left accent vertical color code strip */}
-                      <div className={cn('absolute left-0 top-0 bottom-0 w-1 rounded-l-xl', disciplineColor.dot)} />
-
-                      {/* Info details */}
-                      <div className="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-8 flex-grow pl-2">
-                        {/* Time label */}
-                        <div className="flex items-center gap-2 text-[var(--color-accent)] shrink-0 w-32">
-                          <Clock size={14} className="opacity-75" />
-                          <span className="font-mono text-xs md:text-sm font-bold tracking-tight">
-                            {slot.time}
-                          </span>
-                        </div>
-
-                        {/* Name and Coach details */}
-                        <div className="space-y-1">
-                          <h3 className="font-display font-bold text-base md:text-lg text-white group-hover:text-[var(--color-accent)] transition-colors duration-300">
-                            {slot.className}
-                          </h3>
+                      <motion.div
+                        key={`${slot.time}-${slot.className}`}
+                        initial={{ opacity: 0, y: 15 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.4, delay: i * 0.05 }}
+                        className={`glass p-5 md:p-6 rounded-xl flex flex-col sm:flex-row sm:items-center justify-between gap-4 border transition-all duration-300 relative group active:scale-[0.995] schedule-card ${
+                          isActive
+                            ? 'border-[var(--color-accent)]/20 shadow-[0_8px_30px_rgba(255,87,34,0.1)] bg-white/[0.02]'
+                            : 'border-white/5 hover:border-[var(--color-accent)]/20 hover:shadow-[0_8px_30px_rgba(255,87,34,0.1)]'
+                        }`}
+                        data-id={`${slot.time}-${slot.className}`}
+                      >
+                        {/* Left accent vertical color code strip */}
+                        <div className={cn('absolute left-0 top-0 bottom-0 w-1 rounded-l-xl', disciplineColor.dot)} />
+  
+                        {/* Info details */}
+                        <div className="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-8 flex-grow pl-2">
+                          {/* Time label */}
+                          <div className="flex items-center gap-2 text-[var(--color-accent)] shrink-0 w-32">
+                            <Clock size={14} className="opacity-75" />
+                            <span className="font-mono text-xs md:text-sm font-bold tracking-tight">
+                              {slot.time}
+                            </span>
+                          </div>
+  
+                          {/* Name and Coach details */}
+                          <div className="space-y-1">
+                            <h3 className={`font-display font-bold text-base md:text-lg transition-colors duration-300 ${
+                              isActive ? 'text-[var(--color-accent)]' : 'text-white group-hover:text-[var(--color-accent)]'
+                            }`}>
+                              {slot.className}
+                            </h3>
                           <div className="flex items-center gap-2 text-[var(--color-text-secondary)]">
                             <User size={12} className="opacity-60" />
                             <span className="text-xs uppercase tracking-wider">{slot.instructor}</span>

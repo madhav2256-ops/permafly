@@ -6,8 +6,10 @@ import { SEO } from '@/lib/seo'
 import { PageTransition } from '@/components/layout/PageTransition'
 import { SectionLabel } from '@/components/ui/SectionLabel'
 import { blogPosts } from '@/data/blogPosts'
+import { useActiveOnScroll } from '@/hooks/useActiveOnScroll'
 
 export default function Blog() {
+  const activeBlogSlugs = useActiveOnScroll('.blog-post-card')
   const [searchQuery, setSearchQuery] = useState('')
   const [activeCategory, setActiveCategory] = useState('All')
 
@@ -133,15 +135,21 @@ export default function Blog() {
               >
                 {filteredPosts.map((post) => {
                   const category = getCategory(post.slug)
+                  const isActive = activeBlogSlugs.includes(post.slug)
                   return (
                     <motion.div
                       key={post.slug}
                       variants={fadeIn}
-                      className="h-full"
+                      className="h-full blog-post-card"
+                      data-id={post.slug}
                     >
                       <Link
                         to={`/blog/${post.slug}`}
-                        className="group flex flex-col rounded-[var(--radius-xl)] overflow-hidden bg-[var(--color-bg-surface)] border border-[var(--color-border)] hover:border-[var(--color-border-accent)] transition-all duration-300 hover:scale-[1.01] h-full shadow-lg hover:shadow-[0_10px_30px_-10px_rgba(255,87,34,0.15)]"
+                        className={`group flex flex-col rounded-[var(--radius-xl)] overflow-hidden bg-[var(--color-bg-surface)] border transition-all duration-300 h-full shadow-lg ${
+                          isActive
+                            ? 'border-[var(--color-border-accent)] scale-[1.01] shadow-[0_10px_30px_-10px_rgba(255,87,34,0.15)] bg-white/[0.01]'
+                            : 'border-[var(--color-border)] hover:border-[var(--color-border-accent)] hover:scale-[1.01] hover:shadow-[0_10px_30px_-10px_rgba(255,87,34,0.15)]'
+                        }`}
                       >
                         {/* Thumbnail Wrap */}
                         <div className="relative aspect-[16/9] w-full overflow-hidden bg-[#0a0a0a]">
@@ -149,7 +157,11 @@ export default function Blog() {
                             src={post.image}
                             alt={post.title}
                             loading="lazy"
-                            className="w-full h-full object-cover grayscale opacity-75 group-hover:opacity-90 group-hover:grayscale-0 group-hover:scale-[1.03] transition-all duration-700"
+                            className={`w-full h-full object-cover transition-all duration-700 ${
+                              isActive
+                                ? 'opacity-90 grayscale-0 scale-[1.03]'
+                                : 'grayscale opacity-75 group-hover:opacity-90 group-hover:grayscale-0 group-hover:scale-[1.03]'
+                            }`}
                           />
                           <div className="absolute inset-0 bg-gradient-to-t from-[var(--color-bg-surface)] via-transparent to-transparent pointer-events-none" />
                           <div className="absolute top-4 left-4">
@@ -172,7 +184,9 @@ export default function Blog() {
                             </span>
                           </div>
 
-                          <h2 className="font-display font-bold text-xl md:text-2xl text-[var(--color-text-primary)] group-hover:text-[var(--color-accent)] transition-colors duration-300 leading-tight">
+                          <h2 className={`font-display font-bold text-xl md:text-2xl transition-colors duration-300 leading-tight ${
+                            isActive ? 'text-[var(--color-accent)]' : 'text-[var(--color-text-primary)] group-hover:text-[var(--color-accent)]'
+                          }`}>
                             {post.title}
                           </h2>
                           <p className="mt-3 text-sm text-[var(--color-text-secondary)] line-clamp-2 leading-relaxed">

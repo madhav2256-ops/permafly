@@ -80,7 +80,7 @@ const showcases = [
 ]
 
 export function DisciplineGrid() {
-  const activeSlugs = useActiveOnScroll('.discipline-card', 1024)
+  const activeSlugs = useActiveOnScroll('.discipline-card')
 
   return (
     <section 

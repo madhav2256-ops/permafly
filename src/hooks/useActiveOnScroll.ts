@@ -1,18 +1,10 @@
 import { useState, useEffect } from 'react'
 
-export function useActiveOnScroll(selector: string, breakpoint = 1024) {
+export function useActiveOnScroll(selector: string) {
   const [activeIds, setActiveIds] = useState<string[]>([])
 
   useEffect(() => {
     const handleScroll = () => {
-      // Only run under the breakpoint (mobile/tablet viewports)
-      if (window.innerWidth >= breakpoint) {
-        if (activeIds.length > 0) {
-          setActiveIds([])
-        }
-        return
-      }
-
       const elements = document.querySelectorAll(selector)
       let minDistance = Infinity
       const centerY = window.innerHeight / 2
@@ -65,7 +57,7 @@ export function useActiveOnScroll(selector: string, breakpoint = 1024) {
       window.removeEventListener('resize', handleScroll)
       clearTimeout(timer)
     }
-  }, [selector, breakpoint, activeIds.length])
+  }, [selector, activeIds.length])
 
   return activeIds
 }

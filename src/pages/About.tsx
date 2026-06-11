@@ -9,9 +9,9 @@ import { LazyImage } from '@/components/ui/LazyImage'
 import { useActiveOnScroll } from '@/hooks/useActiveOnScroll'
 
 export default function About() {
-  const activePhilosophyIds = useActiveOnScroll('.philosophy-card', 1024)
-  const activeCoachIds = useActiveOnScroll('.coach-card', 1024)
-  const activeVisionaryIds = useActiveOnScroll('.visionary-card', 1024)
+  const activePhilosophyIds = useActiveOnScroll('.philosophy-card')
+  const activeCoachIds = useActiveOnScroll('.coach-card')
+  const activeVisionaryIds = useActiveOnScroll('.visionary-card')
 
   // Fade-in animation variants
   const fadeIn = {
