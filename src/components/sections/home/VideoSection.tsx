@@ -4,9 +4,14 @@ import { Play } from 'lucide-react'
 import { SectionLabel } from '@/components/ui/SectionLabel'
 import { LazyImage } from '@/components/ui/LazyImage'
 import { siteConfig } from '@/data/siteConfig'
+import { useActiveOnScroll } from '@/hooks/useActiveOnScroll'
 
 export function VideoSection() {
   const [isPlaying, setIsPlaying] = useState(false)
+  const activeVideoIds = useActiveOnScroll('.video-wrapper-card')
+  const activeStatIds = useActiveOnScroll('.video-stat-card')
+  const isVideoActive = activeVideoIds.includes('video-player')
+
 
   const stats = [
     {
@@ -64,7 +69,12 @@ export function VideoSection() {
 
             <div 
               onClick={() => setIsPlaying(true)}
-              className="relative rounded-xl overflow-hidden aspect-video bg-black group/video cursor-pointer border border-white/10 transition-all duration-500 hover:border-[var(--color-accent)]/30 shadow-[0_15px_45px_-10px_rgba(0,0,0,0.8)]"
+              className={`relative rounded-xl overflow-hidden aspect-video bg-black group/video cursor-pointer border transition-all duration-500 video-wrapper-card ${
+                isVideoActive 
+                  ? 'border-[var(--color-accent)]/40 shadow-[0_15px_45px_-10px_rgba(255,87,34,0.3)]' 
+                  : 'border-white/10 hover:border-[var(--color-accent)]/30 shadow-[0_15px_45px_-10px_rgba(0,0,0,0.8)]'
+              }`}
+              data-id="video-player"
             >
               {!isPlaying ? (
                 <>
@@ -73,15 +83,25 @@ export function VideoSection() {
                     alt="PERMAFLY Academy action training video cover"
                     width={1280}
                     height={720}
-                    className="w-full h-full object-cover group-hover/video:scale-102 transition-transform duration-700 grayscale"
+                    className={`w-full h-full object-cover transition-transform duration-700 ${
+                      isVideoActive
+                        ? 'scale-102 grayscale-0'
+                        : 'grayscale group-hover/video:scale-102'
+                    }`}
                   />
                   {/* Vignette Overlay */}
                   <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-black/30 pointer-events-none" />
                   
                   {/* Pulsing Play Button */}
                   <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="relative w-16 h-16 md:w-20 md:h-20 flex items-center justify-center rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white group-hover/video:bg-[var(--color-accent)] group-hover/video:border-transparent group-hover/video:scale-110 transition-all duration-300 shadow-2xl">
-                      <span className="absolute -inset-4 rounded-full bg-[var(--color-accent)] opacity-10 animate-ping group-hover/video:opacity-20" />
+                    <div className={`relative w-16 h-16 md:w-20 md:h-20 flex items-center justify-center rounded-full backdrop-blur-md border text-white transition-all duration-300 shadow-2xl ${
+                      isVideoActive 
+                        ? 'bg-[var(--color-accent)] border-transparent scale-110' 
+                        : 'bg-white/10 border-white/20 group-hover/video:bg-[var(--color-accent)] group-hover/video:border-transparent group-hover/video:scale-110'
+                    }`}>
+                      <span className={`absolute -inset-4 rounded-full bg-[var(--color-accent)] animate-ping transition-opacity duration-300 ${
+                        isVideoActive ? 'opacity-20' : 'opacity-10 group-hover/video:opacity-20'
+                      }`} />
                       <Play size={28} className="fill-current ml-1" />
                     </div>
                   </div>
@@ -110,19 +130,32 @@ export function VideoSection() {
             transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
             className="lg:col-span-5 flex flex-col gap-8 md:gap-10"
           >
-            {stats.map((stat, idx) => (
-              <div key={idx} className="border-l-2 border-white/10 pl-6 hover:border-[var(--color-accent)] transition-colors duration-300">
-                <div className="font-display font-black text-4xl md:text-5xl text-white tracking-tight leading-none mb-1.5">
-                  {stat.value}
+            {stats.map((stat, idx) => {
+              const isStatActive = activeStatIds.includes(idx.toString())
+              return (
+                <div 
+                  key={idx} 
+                  className={`border-l-2 pl-6 transition-all duration-300 video-stat-card ${
+                    isStatActive 
+                      ? 'border-[var(--color-accent)] bg-white/[0.01]' 
+                      : 'border-white/10 hover:border-[var(--color-accent)]'
+                  }`}
+                  data-id={idx.toString()}
+                >
+                  <div className={`font-display font-black text-4xl md:text-5xl tracking-tight leading-none mb-1.5 transition-colors duration-300 ${
+                    isStatActive ? 'text-[var(--color-accent)]' : 'text-white'
+                  }`}>
+                    {stat.value}
+                  </div>
+                  <div className="font-display text-[10px] md:text-xs tracking-[0.2em] font-bold text-[var(--color-accent)] uppercase mb-2">
+                    {stat.label}
+                  </div>
+                  <p className="text-xs md:text-sm text-[var(--color-text-secondary)] leading-relaxed">
+                    {stat.desc}
+                  </p>
                 </div>
-                <div className="font-display text-[10px] md:text-xs tracking-[0.2em] font-bold text-[var(--color-accent)] uppercase mb-2">
-                  {stat.label}
-                </div>
-                <p className="text-xs md:text-sm text-[var(--color-text-secondary)] leading-relaxed">
-                  {stat.desc}
-                </p>
-              </div>
-            ))}
+              )
+            })}
           </motion.div>
         </div>
 
