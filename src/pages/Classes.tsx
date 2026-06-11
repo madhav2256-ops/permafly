@@ -7,8 +7,11 @@ import { SectionLabel } from '@/components/ui/SectionLabel'
 import { disciplines } from '@/data/disciplines'
 import { LazyImage } from '@/components/ui/LazyImage'
 import { disciplineIcons } from '@/lib/icons'
+import { useActiveOnScroll } from '@/hooks/useActiveOnScroll'
 
 export default function Classes() {
+  const activeSlug = useActiveOnScroll('.discipline-list-card', 1024)
+
   // Fade-in animation variants
   const fadeIn = {
     initial: { opacity: 0, y: 30 },
@@ -86,13 +89,16 @@ export default function Classes() {
             {disciplines.map((d, i) => {
               const category = categories[d.slug] || 'PERFORMANCE'
               const numPrefix = String(i + 1).padStart(2, '0')
+              const isActive = activeSlug === d.slug
 
               return (
                 <motion.div
                   key={d.slug}
                   variants={fadeIn}
                   whileHover={cardHover}
-                  className="glass rounded-2xl overflow-hidden border border-white/5 hover:border-[var(--color-accent)]/20 transition-all duration-300 relative group flex flex-col h-full shadow-[0_8px_30px_rgba(0,0,0,0.5)]"
+                  animate={isActive ? cardHover : undefined}
+                  className="glass rounded-2xl overflow-hidden border border-white/5 hover:border-[var(--color-accent)]/20 transition-all duration-300 relative group flex flex-col h-full shadow-[0_8px_30px_rgba(0,0,0,0.5)] discipline-list-card"
+                  data-slug={d.slug}
                 >
                   <Link
                     to={`/classes/${d.slug}`}
@@ -105,7 +111,11 @@ export default function Classes() {
                         alt={d.name} 
                         width={400} 
                         height={400} 
-                        className="w-full h-full object-cover opacity-50 group-hover:scale-103 group-hover:grayscale-0 grayscale transition-all duration-700" 
+                        className={`w-full h-full object-cover transition-all duration-700 ${
+                          isActive
+                            ? 'scale-103 grayscale-0 opacity-90'
+                            : 'opacity-50 grayscale group-hover:scale-103 group-hover:grayscale-0 group-hover:opacity-90'
+                        }`} 
                       />
                       <div className="absolute inset-0 bg-gradient-to-r from-transparent to-[#141414] hidden sm:block pointer-events-none" />
                       <div className="absolute inset-0 bg-gradient-to-b from-transparent to-[#141414] sm:hidden pointer-events-none" />
@@ -123,13 +133,21 @@ export default function Classes() {
 
                         {/* Title & Icon Header */}
                         <div className="flex items-center gap-3.5 mb-4">
-                          <div className="w-10 h-10 flex items-center justify-center rounded-xl bg-[var(--color-accent-glow)] text-[var(--color-accent)] group-hover:bg-[var(--color-accent)] group-hover:text-white transition-all duration-300">
+                          <div className={`w-10 h-10 flex items-center justify-center rounded-xl transition-all duration-300 ${
+                            isActive
+                              ? 'bg-[var(--color-accent)] text-white'
+                              : 'bg-[var(--color-accent-glow)] text-[var(--color-accent)] group-hover:bg-[var(--color-accent)] group-hover:text-white'
+                          }`}>
                             {(() => {
                               const IconComponent = disciplineIcons[d.icon]
                               return IconComponent ? <IconComponent size={20} /> : null
                             })()}
                           </div>
-                          <h2 className="font-display font-black text-xl md:text-2xl uppercase tracking-tight text-white group-hover:text-[var(--color-accent)] transition-colors duration-300">
+                          <h2 className={`font-display font-black text-xl md:text-2xl uppercase tracking-tight transition-colors duration-300 ${
+                            isActive
+                              ? 'text-[var(--color-accent)]'
+                              : 'text-white group-hover:text-[var(--color-accent)]'
+                          }`}>
                             {d.name}
                           </h2>
                         </div>
@@ -146,16 +164,26 @@ export default function Classes() {
                           {d.levels.map((level) => (
                             <span 
                               key={level} 
-                              className="px-3 py-1 text-[10px] font-mono font-bold uppercase tracking-wider rounded-md bg-white/5 text-[var(--color-text-secondary)] border border-white/5 group-hover:border-[var(--color-accent)]/20 group-hover:text-white transition-all"
+                              className={`px-3 py-1 text-[10px] font-mono font-bold uppercase tracking-wider rounded-md bg-white/5 border transition-all ${
+                                isActive
+                                  ? 'border-[var(--color-accent)]/20 text-white'
+                                  : 'text-[var(--color-text-secondary)] border-white/5 group-hover:border-[var(--color-accent)]/20 group-hover:text-white'
+                              }`}
                             >
                               {level}
                             </span>
                           ))}
                         </div>
                         
-                        <div className="inline-flex items-center gap-2 text-xs font-mono font-bold uppercase tracking-wider text-[var(--color-accent)] hover:text-white transition-colors">
+                        <div className={`inline-flex items-center gap-2 text-xs font-mono font-bold uppercase tracking-wider transition-colors ${
+                          isActive
+                            ? 'text-white'
+                            : 'text-[var(--color-accent)] hover:text-white'
+                        }`}>
                           Explore Program 
-                          <ArrowRight size={14} className="transform group-hover:translate-x-1 transition-transform" />
+                          <ArrowRight size={14} className={`transform transition-transform ${
+                            isActive ? 'translate-x-1' : 'group-hover:translate-x-1'
+                          }`} />
                         </div>
                       </div>
                     </div>

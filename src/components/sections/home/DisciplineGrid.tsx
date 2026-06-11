@@ -2,6 +2,7 @@ import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import { LazyImage } from '@/components/ui/LazyImage'
 import { ArrowRight } from 'lucide-react'
+import { useActiveOnScroll } from '@/hooks/useActiveOnScroll'
 
 const showcases = [
   {
@@ -79,6 +80,8 @@ const showcases = [
 ]
 
 export function DisciplineGrid() {
+  const activeSlug = useActiveOnScroll('.discipline-card', 1024)
+
   return (
     <section 
       style={{ paddingBlock: 'clamp(2.5rem, 6vw, 6rem)' }} 
@@ -107,6 +110,7 @@ export function DisciplineGrid() {
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-8">
           {showcases.map((showcase, i) => {
             const isFeatured = showcase.featured
+            const isActive = activeSlug === showcase.slug
 
             return (
               <motion.div
@@ -119,10 +123,15 @@ export function DisciplineGrid() {
               >
                 <Link 
                   to={`/classes/${showcase.slug}`}
-                  className="group block cursor-pointer h-full relative"
+                  className="group block cursor-pointer h-full relative discipline-card"
+                  data-slug={showcase.slug}
                 >
-                  <div className={`h-full flex flex-col justify-between rounded-xl bg-white/[0.01] border border-white/5 hover:border-[var(--color-accent)]/20 transition-all duration-300 relative overflow-hidden shadow-[0_8px_30px_rgba(0,0,0,0.5)] md:shadow-none ${
+                  <div className={`h-full flex flex-col justify-between rounded-xl transition-all duration-300 relative overflow-hidden shadow-[0_8px_30px_rgba(0,0,0,0.5)] md:shadow-none ${
                     isFeatured ? 'lg:flex-row lg:items-stretch' : ''
+                  } ${
+                    isActive 
+                      ? 'border-[var(--color-accent)]/30 bg-white/[0.03]' 
+                      : 'bg-white/[0.01] border border-white/5 hover:border-[var(--color-accent)]/20'
                   }`}>
                     {/* Image Container */}
                     <div className={`relative overflow-hidden bg-[#111111] stark-shadow-down shrink-0 ${
@@ -133,7 +142,11 @@ export function DisciplineGrid() {
                         alt={showcase.title}
                         width={isFeatured ? 600 : 500}
                         height={375}
-                        className="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-105 grayscale group-hover:grayscale-0"
+                        className={`w-full h-full object-cover transition-transform duration-500 ease-out ${
+                          isActive 
+                            ? 'scale-105 grayscale-0' 
+                            : 'grayscale group-hover:scale-105 group-hover:grayscale-0'
+                        }`}
                       />
                       {/* Soft Vignette Overlay */}
                       <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-60 pointer-events-none" />
@@ -162,7 +175,11 @@ export function DisciplineGrid() {
                         </div>
 
                         {/* Title */}
-                        <h3 className="font-display font-extrabold text-xl md:text-2xl uppercase text-white mb-2 tracking-tight group-hover:text-[var(--color-accent)] transition-colors duration-300">
+                        <h3 className={`font-display font-extrabold text-xl md:text-2xl uppercase mb-2 tracking-tight transition-colors duration-300 ${
+                          isActive 
+                            ? 'text-[var(--color-accent)]' 
+                            : 'text-white group-hover:text-[var(--color-accent)]'
+                        }`}>
                           {showcase.title}
                         </h3>
 
@@ -173,14 +190,24 @@ export function DisciplineGrid() {
                       </div>
 
                       {/* Action trigger text for desktop */}
-                      <div className="mt-6 flex items-center gap-2 text-xs font-bold tracking-widest uppercase text-white/40 group-hover:text-[var(--color-accent)] transition-colors duration-300">
+                      <div className={`mt-6 flex items-center gap-2 text-xs font-bold tracking-widest uppercase transition-colors duration-300 ${
+                        isActive 
+                          ? 'text-[var(--color-accent)]' 
+                          : 'text-white/40 group-hover:text-[var(--color-accent)]'
+                      }`}>
                         <span>EXPLORE PROGRAM</span>
-                        <ArrowRight size={14} className="transform group-hover:translate-x-1 transition-transform duration-300" />
+                        <ArrowRight size={14} className={`transform transition-transform duration-300 ${
+                          isActive ? 'translate-x-1' : 'group-hover:translate-x-1'
+                        }`} />
                       </div>
                     </div>
 
                     {/* Rising bottom border hover effect */}
-                    <div className="absolute bottom-0 left-0 right-0 h-[2px] bg-[var(--color-accent)] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
+                    <div className={`absolute bottom-0 left-0 right-0 h-[2px] bg-[var(--color-accent)] transition-transform duration-300 origin-left ${
+                      isActive 
+                        ? 'scale-x-100' 
+                        : 'transform scale-x-0 group-hover:scale-x-100'
+                    }`} />
                   </div>
                 </Link>
               </motion.div>
@@ -197,9 +224,14 @@ export function DisciplineGrid() {
           >
             <Link 
               to="/contact"
-              className="group block cursor-pointer h-full relative"
+              className="group block cursor-pointer h-full relative discipline-card"
+              data-slug="contact"
             >
-              <div className="h-full flex flex-col justify-between rounded-xl bg-[var(--color-accent)] p-8 md:p-10 text-white relative overflow-hidden transition-all duration-300 hover:shadow-[0_10px_30px_rgba(255,87,34,0.3)] min-h-[260px] lg:min-h-0">
+              <div className={`h-full flex flex-col justify-between rounded-xl bg-[var(--color-accent)] p-8 md:p-10 text-white relative overflow-hidden transition-all duration-300 min-h-[260px] lg:min-h-0 ${
+                activeSlug === 'contact' 
+                  ? 'shadow-[0_10px_30px_rgba(255,87,34,0.4)] scale-[1.01]' 
+                  : 'hover:shadow-[0_10px_30px_rgba(255,87,34,0.3)]'
+              }`}>
                 {/* Diagonal lines texture overlay */}
                 <div className="absolute inset-0 bg-[linear-gradient(45deg,rgba(0,0,0,0.05)_25%,transparent_25%,transparent_50%,rgba(0,0,0,0.05)_50%,rgba(0,0,0,0.05)_75%,transparent_75%,transparent)] bg-[length:40px_40px] opacity-20 pointer-events-none" />
                 
@@ -219,7 +251,11 @@ export function DisciplineGrid() {
 
                 <div className="relative z-10 mt-8 flex items-center gap-3 font-display font-bold text-xs md:text-sm tracking-widest uppercase text-white">
                   <span>BOOK FREE TRIAL NOW</span>
-                  <div className="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center group-hover:bg-white group-hover:text-[var(--color-accent)] transition-all duration-300">
+                  <div className={`w-8 h-8 rounded-full flex items-center justify-center transition-all duration-300 ${
+                    activeSlug === 'contact'
+                      ? 'bg-white text-[var(--color-accent)]'
+                      : 'bg-white/20 group-hover:bg-white group-hover:text-[var(--color-accent)]'
+                  }`}>
                     <ArrowRight size={16} />
                   </div>
                 </div>
