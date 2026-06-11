@@ -63,7 +63,7 @@ export function Hero() {
       />
 
       {/* Content */}
-      <div className="relative z-10 container-site flex flex-col items-center text-center px-0 md:px-4">
+      <div className="relative z-10 container-site flex flex-col items-center text-center">
         {/* Tagline */}
         <motion.p
           initial={{ opacity: 0, y: 20 }}
