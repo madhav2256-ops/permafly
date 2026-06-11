@@ -7,6 +7,7 @@ import { PageTransition } from '@/components/layout/PageTransition'
 import { SectionLabel } from '@/components/ui/SectionLabel'
 import { blogPosts } from '@/data/blogPosts'
 import { useActiveOnScroll } from '@/hooks/useActiveOnScroll'
+import { CTAStrip } from '@/components/sections/home/CTAStrip'
 
 export default function Blog() {
   const activeBlogSlugs = useActiveOnScroll('.blog-post-card')
@@ -229,6 +230,7 @@ export default function Blog() {
           </AnimatePresence>
         </div>
       </section>
+      <CTAStrip />
     </PageTransition>
   )
 }
