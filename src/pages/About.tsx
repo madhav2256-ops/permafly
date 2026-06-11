@@ -11,6 +11,7 @@ import { useActiveOnScroll } from '@/hooks/useActiveOnScroll'
 export default function About() {
   const activePhilosophyIds = useActiveOnScroll('.philosophy-card', 1024)
   const activeCoachIds = useActiveOnScroll('.coach-card', 1024)
+  const activeVisionaryIds = useActiveOnScroll('.visionary-card', 1024)
 
   // Fade-in animation variants
   const fadeIn = {
@@ -205,7 +206,7 @@ export default function About() {
             initial="initial"
             whileInView="whileInView"
             viewport={{ once: true }}
-            className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12"
+            className="grid grid-cols-1 lg:grid-cols-3 gap-8 md:gap-12"
           >
             {[
               { stat: '0%', label: 'Machines', desc: 'No treadmills. No mechanical cables. Gravity is your resistance, your body is the engine.' },
@@ -253,16 +254,23 @@ export default function About() {
             {/* Portrait Column */}
             <motion.div 
               {...fadeIn}
-              className="lg:col-span-5 relative group"
+              className="lg:col-span-5 relative group visionary-card"
+              data-id="visionary"
             >
-              <div className="absolute -inset-4 bg-[var(--color-accent)]/10 blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
+              <div className={`absolute -inset-4 bg-[var(--color-accent)]/10 blur-xl transition-opacity duration-700 pointer-events-none ${
+                activeVisionaryIds.includes('visionary') ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'
+              }`} />
               <div className="aspect-[4/5] bg-[#111111] overflow-hidden rounded-2xl border border-white/10 shadow-2xl relative">
                 <LazyImage
                   src="https://lh3.googleusercontent.com/aida/AP1WRLs3V1wJteuLqsz5HNFpCYTGQMPRA3BoX09PnrUDqjq-Vu_s5mpNoAyuBRbcPvIqfTOdSCuQ6TK5wrU-MGoR7zd6bYbQNuEmvhcL-fy6owTEkT13MiFhwj52g2sTZ4vg84a3g2R925t7T-JT1YFuiYjeU89pW3HbvXUMS4rdUrFUsyOQOY1qFtFuO1JyTWVk4MSmKfR8bSlh6KTXWlp0XHlM24LkyLHp4Jq0P_oknh1WXjQrFoPb8vQqRA"
                   alt="Rohan Malhotra - Founder of PERMAFLY"
                   width={600}
                   height={750}
-                  className="w-full h-full object-cover grayscale hover:grayscale-0 hover:scale-103 transition-all duration-700"
+                  className={`w-full h-full object-cover transition-all duration-700 ${
+                    activeVisionaryIds.includes('visionary')
+                      ? 'scale-103 grayscale-0'
+                      : 'grayscale group-hover:scale-103 group-hover:grayscale-0 hover:scale-103 hover:grayscale-0'
+                  }`}
                 />
               </div>
             </motion.div>
