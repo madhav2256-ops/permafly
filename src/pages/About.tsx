@@ -220,7 +220,7 @@ export default function About() {
                   variants={fadeIn}
                   whileHover={cardHover}
                   animate={isActive ? cardHover : undefined}
-                  className="glass p-4 sm:p-8 md:p-12 rounded-2xl text-center flex flex-col items-center border border-white/5 transition-all duration-300 relative group overflow-hidden philosophy-card"
+                  className="glass p-3 sm:p-8 md:p-12 rounded-2xl text-center flex flex-col items-center border border-white/5 transition-all duration-300 relative group overflow-hidden philosophy-card"
                   data-id={index.toString()}
                 >
                   <div className={`absolute inset-0 transition-opacity duration-500 bg-[radial-gradient(circle_at_center,var(--color-accent),transparent_70%)] pointer-events-none ${
@@ -231,14 +231,14 @@ export default function About() {
                   }`}>
                     {item.stat}
                   </span>
-                  <h3 className="font-mono text-[10px] sm:text-xs md:text-sm uppercase tracking-widest text-white mt-3 sm:mt-4 font-bold">
+                  <h3 className="font-mono text-[9px] sm:text-xs md:text-sm uppercase tracking-widest text-white mt-2 sm:mt-4 font-bold">
                     {item.label}
                   </h3>
-                  <p className="text-[9px] sm:text-xs md:text-sm text-[var(--color-text-secondary)] mt-2 sm:mt-3 leading-relaxed max-w-xs">
+                  <p className="hidden sm:block text-xs md:text-sm text-[var(--color-text-secondary)] mt-3 leading-relaxed max-w-xs">
                     {item.desc}
                   </p>
-                  <div className={`bg-[var(--color-accent)] mt-4 sm:mt-6 transition-all duration-500 ${
-                    isActive ? 'h-[2px] w-20 opacity-100' : 'h-[2px] w-12 opacity-30 group-hover:opacity-100 group-hover:w-20'
+                  <div className={`bg-[var(--color-accent)] mt-3 sm:mt-6 transition-all duration-500 ${
+                    isActive ? 'h-[2px] w-12 sm:w-20 opacity-100' : 'h-[2px] w-6 sm:w-12 opacity-30 group-hover:opacity-100 group-hover:w-20'
                   }`} />
                 </motion.div>
               )
