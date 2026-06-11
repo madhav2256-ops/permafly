@@ -111,7 +111,7 @@ export default function About() {
               {/* 2018 */}
               <motion.div 
                 {...fadeIn}
-                className="flex flex-col md:flex-row items-start md:items-center md:justify-end group"
+                className="flex flex-row items-center md:justify-end group"
               >
                 <div className="hidden md:block w-5/12 pr-12 text-right">
                   <h3 className="font-display font-bold text-xl md:text-2xl text-white mb-2">The Spark in Delhi</h3>
@@ -119,7 +119,7 @@ export default function About() {
                     Inception of the movement engineering protocol.
                   </p>
                 </div>
-                <div className="relative z-10 w-6 h-6 rounded-full bg-[var(--color-accent)] border-4 border-[#090909] shadow-[0_0_15px_rgba(255,87,34,0.6)] md:-translate-x-1/2" />
+                <div className="relative z-10 w-8 h-8 rounded-full bg-[var(--color-accent)] border-4 border-[#090909] shadow-[0_0_15px_rgba(255,87,34,0.6)] shrink-0 md:-translate-x-1/2" />
                 <div className="flex-1 pl-8 md:pl-0 md:hidden">
                   <span className="font-mono text-xs text-[var(--color-accent)] font-semibold">2018</span>
                   <h3 className="font-display font-bold text-lg text-white mt-1">The Spark in Delhi</h3>
@@ -135,12 +135,12 @@ export default function About() {
               {/* 2020 */}
               <motion.div 
                 {...fadeIn}
-                className="flex flex-col md:flex-row items-start md:items-center group"
+                className="flex flex-row items-center group"
               >
                 <div className="hidden md:block w-5/12 pr-12 text-right">
                   <span className="font-display font-black text-5xl text-white/10 group-hover:text-[var(--color-accent)]/20 transition-colors duration-500">2020</span>
                 </div>
-                <div className="relative z-10 w-6 h-6 rounded-full bg-[var(--color-accent)] border-4 border-[#090909] shadow-[0_0_15px_rgba(255,87,34,0.6)] md:translate-x-1/2" />
+                <div className="relative z-10 w-8 h-8 rounded-full bg-[var(--color-accent)] border-4 border-[#090909] shadow-[0_0_15px_rgba(255,87,34,0.6)] shrink-0 md:translate-x-1/2" />
                 <div className="flex-1 pl-8 md:pl-12">
                   <span className="font-mono text-xs text-[var(--color-accent)] font-semibold">2020</span>
                   <h3 className="font-display font-bold text-lg md:text-2xl text-white mt-1">1000+ Athletes</h3>
@@ -153,7 +153,7 @@ export default function About() {
               {/* 2022 */}
               <motion.div 
                 {...fadeIn}
-                className="flex flex-col md:flex-row items-start md:items-center md:justify-end group"
+                className="flex flex-row items-center md:justify-end group"
               >
                 <div className="hidden md:block w-5/12 pr-12 text-right">
                   <h3 className="font-display font-bold text-xl md:text-2xl text-white mb-2">The Academy</h3>
@@ -161,7 +161,7 @@ export default function About() {
                     Codifying our technical curriculum for future coaches.
                   </p>
                 </div>
-                <div className="relative z-10 w-6 h-6 rounded-full bg-[var(--color-accent)] border-4 border-[#090909] shadow-[0_0_15px_rgba(255,87,34,0.6)] md:-translate-x-1/2" />
+                <div className="relative z-10 w-8 h-8 rounded-full bg-[var(--color-accent)] border-4 border-[#090909] shadow-[0_0_15px_rgba(255,87,34,0.6)] shrink-0 md:-translate-x-1/2" />
                 <div className="flex-1 pl-8 md:pl-0 md:hidden">
                   <span className="font-mono text-xs text-[var(--color-accent)] font-semibold">2022</span>
                   <h3 className="font-display font-bold text-lg text-white mt-1">The Academy</h3>
